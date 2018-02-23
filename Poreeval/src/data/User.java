@@ -1,4 +1,4 @@
-package de.dbae.bean;
+package data;
 
 public class User {
 
