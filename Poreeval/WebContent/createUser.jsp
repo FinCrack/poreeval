@@ -35,6 +35,11 @@
 				<input type="email" class="form-control" placeholder="E-Mail hinzufügen" name="email">
 			</div>
 			
+			<div class="form-group">
+				<label>Password</label>
+				<input type="password" class="form-control" placeholder="Password eingeben" name="password">
+			</div>
+			
 			<button class="btn-default" type="submit">Registrieren</button>
 		</form>
 		<button class="btn btn-default" onclick="window.location.href='welcome.jsp'">Zurück</button>
