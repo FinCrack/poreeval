@@ -19,7 +19,7 @@
 			<h1>Willkommen bei Poreeval!</h1>
 		</div>
 	</div>
-	
+
 	<nav class="navbar navbar-default">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -48,22 +48,34 @@
 									<button type="submit">Login</button>
 								</form>
 							</li>
-						</ul></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Produktsuche <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li>
+								<form action="SearchProductServlet" method="post">
+									<label>Produktname:</label><input type="text" name="productname">
+									<button type="submit">Login</button>
+								</form>
+							</li>
+						</ul>
+					</li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Menü <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Login</a></li>
-							<li><a href="#">Produktsuche</a></li>
 							<li><a href="#">Produkterstellung</a></li>
 							<li><a href="#">Produkte editieren</a></li>
 							<li><a href="#">Review abgeben</a></li>
-						</ul></li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	
+
 	<div class="container">
 		<button class="btn-default" onclick="createUser()">Als
 			Benutzer registrieren</button>
@@ -85,20 +97,21 @@
 			class="table table-striped tabled-bordered table-hover table-condensed">
 			<tr>
 				<th>Recently Reviewed</th>
-				<th>Random Product</th>
-				<th>Best Rated</th>
-			</tr>
-			<tr class="danger">
 				<td>Sahnejoghut</td>
 				<td>Kartoffelchips</td>
 				<td>Humus</td>
 			</tr>
+			<tr class="danger">
+
+			</tr>
 			<tr class="success">
+				<th>Random Product</th>
 				<td>Milchkaffee</td>
 				<td>Coca Cola</td>
 				<td>Pommes</td>
 			</tr>
 			<tr>
+				<th>Best Rated</th>
 				<td>Mio Mio Ginger + Rating</td>
 				<td>Pueblo Tabak + Rating</td>
 				<td>Erdinger Weißbier + Rating</td>

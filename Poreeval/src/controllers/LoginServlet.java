@@ -38,6 +38,11 @@ public class LoginServlet extends HttpServlet {
 		
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		
+		if(username.equals(password)){
+			System.out.println("Alles gut");
+		}
+		// läuft bis hier hin
 	}
 
 }
