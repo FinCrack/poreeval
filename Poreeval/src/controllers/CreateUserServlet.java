@@ -43,12 +43,12 @@ public class CreateUserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String firstname = request.getParameter("fistname");
-		String lastname = request.getParameter("lastname");
+		String userName = request.getParameter("userName");
 		String email = request.getParameter("email");
 		String role = request.getParameter("role");
+		String password = request.getParameter("password");
 
-		User user = new User(firstname, lastname, email, role);
+		User user = new User(userName, email, role, password);
 
 		ArrayList<User> userList = new ArrayList<User>();
 		userList.add(user);

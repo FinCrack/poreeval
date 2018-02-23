@@ -21,13 +21,8 @@
 			</div>
 			
 			<div class="form-group">
-				<label>Nachname</label>
-				<input type="text" class="form-control" placeholder="Namen hinzufügen" name="lastname">
-			</div>
-			
-			<div class="form-group">
-				<label>Vorname</label>
-				<input type="text" class="form-control" placeholder="Namen hinzufügen" name="firstname">
+				<label>Username</label>
+				<input type="text" class="form-control" placeholder="Namen hinzufügen" name="userName">
 			</div>
 			
 			<div class="form-group">
