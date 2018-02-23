@@ -31,7 +31,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="welcome.jsp">Poreeval</a>
+				<a class="navbar-brand" href="welcome.jsp">Home</a>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
@@ -51,7 +51,7 @@
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Dropdown <span class="caret"></span></a>
+						aria-expanded="false">Menü <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="#">Login</a></li>
 							<li><a href="#">Produktsuche</a></li>
