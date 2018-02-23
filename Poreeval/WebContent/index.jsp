@@ -12,6 +12,8 @@
 <label for="email">E-Mail: </label> <input type="email" name="email" placeholder="E-Mail eingeben...">
 <label for="password">Passwort: </label> <input type="password" name="password" placeholder="Passwort eingeben...">
 <input type="submit" value="Login"> <input type="button" name="register" value="Registrieren" onclick="">
+
+<h1>HALLO!</h1>
 </form>
 </body>
 
