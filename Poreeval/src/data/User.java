@@ -8,7 +8,7 @@ public class User {
 
 	public User(String username, String email, String role) {
 		super();
-		this.setUsername(username);
+		this.username = username;
 		this.email = email;
 		this.role = role;
 	}
