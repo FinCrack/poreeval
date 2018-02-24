@@ -10,7 +10,7 @@
 </head>
 <body>
 	<nav:navigation></nav:navigation>
-	<h1>Bitte geben Sie ihr Daten an!</h1>
+	<h1 style="text-align:center">Bitte geben Sie ihre Daten an!</h1>
 	<div class="container">
 		<form action="CreateUserServlet" method="post">
 
@@ -24,22 +24,22 @@
 
 			<div class="form-group">
 				<label>Username</label> <input type="text" class="form-control"
-					placeholder="Username hinzufügen" name="username">
+					placeholder="Username eingeben" name="username">
 			</div>
 
 			<div class="form-group">
 				<label>E-Mail</label> <input type="email" class="form-control"
-					placeholder="E-Mail hinzufügen" name="email">
+					placeholder="E-Mail eingeben" name="email">
 			</div>
 
 			<div class="form-group">
-				<label>Password</label> <input type="password" class="form-control"
-					placeholder="Password eingeben" name="password1">
+				<label>Passwort</label> <input type="password" class="form-control"
+					placeholder="Passwort eingeben" name="password1">
 			</div>
 
 			<div class="form-group">
-				<label>Password bestätigen</label> <input type="password"
-					class="form-control" placeholder="Password bestätigen"
+				<label>Passwort bestätigen</label> <input type="password"
+					class="form-control" placeholder="Passwort bestätigen"
 					name="password2">
 			</div>
 
