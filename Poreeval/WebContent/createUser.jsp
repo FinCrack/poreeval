@@ -10,7 +10,7 @@
 </head>
 <body>
 	<nav:navigation></nav:navigation>
-	<h1 style="text-align:center">Bitte geben Sie ihre Daten an!</h1>
+	<h1 style="text-align: center">Bitte geben Sie ihre Daten an!</h1>
 	<div class="container">
 		<form action="CreateUserServlet" method="post">
 
