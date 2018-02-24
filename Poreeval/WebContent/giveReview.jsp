@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <%@ taglib prefix="nav" uri="/WEB-INF/navigation.tld"%>
+<%@ taglib prefix="rew" uri="/WEB-INF/giveReview.tld"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -10,6 +11,6 @@
 </head>
 <body>
 	<nav:navigation></nav:navigation>
-	<h1>Hier können Sie Reviews abgeben</h1>
+	<rew:review></rew:review>
 </body>
 </html>
