@@ -1,6 +1,9 @@
 Hier bitte Patchnots mit Namen und Zeit angeben, damit man Änderungen nachvollziehen kann!
 
 
-Jannik: 17:58 24.02.
-
+Jannik: 
+17:58 24.02.
 Überflüssige Buttons in der Navbar überarbeitet und korregiert
+
+18:03 24.02.
+Navbartag um Script für Bootsrap erweitert damit auf den jsp´s noch weniger los ist
