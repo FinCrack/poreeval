@@ -7,12 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Poreeval</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<style>
-.navbar {
-	margin-bottom: 0;
-	border-radius: 0;
-}
-</style>
 </head>
 <body>
 	<nav:navigation></nav:navigation>
@@ -21,14 +15,13 @@
 			<h1>Willkommen bei Poreeval!</h1>
 		</div>
 	</div>
-	<!-- Nur Beispiele natürlich ihr kleinen Zuckerschnuten -->
 	<div class="container">
 		<table
 			class="table table-striped tabled-bordered table-hover table-condensed">
 			<tr>
-				<th>Recently Reviewed</th>
-				<th class="success">Best Rated</th>
-				<th class="danger">Random Product</th>
+				<th>Zuletzt bewertet</th>
+				<th class="success">Am besten bewertet</th>
+				<th class="danger">Zufälliges Produkt</th>
 			</tr>
 			<tr>
 				<td>Sahnejoghut</td>
