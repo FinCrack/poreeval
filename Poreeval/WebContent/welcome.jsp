@@ -19,7 +19,6 @@
 			<h1>Willkommen bei Poreeval!</h1>
 		</div>
 	</div>
-
 	<nav class="navbar navbar-default">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -46,8 +45,13 @@
 									<label>Username:</label><input type="text" name="username">
 									<label>Password:</label><input type="password" name="password">
 									<button type="submit">Login</button>
+									<button type="submit">Login</button>
 								</form>
 							</li>
+						</ul></li>
+					<li><a href="createUser.jsp" role="button"
+						aria-haspopup="true" aria-expanded="false">Registrieren</a>
+						<ul class="dropdown-menu">
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -65,9 +69,9 @@
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Menü <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Produkterstellung</a></li>
-							<li><a href="#">Produkte editieren</a></li>
-							<li><a href="#">Review abgeben</a></li>
+							<li><a href="createProduct.jsp">Produkterstellung</a></li>
+							<li><a href="editProduct.jsp">Produkte editieren</a></li>
+							<li><a href="giveReview.jsp">Review abgeben</a></li>
 						</ul></li>
 				</ul>
 			</div>
@@ -77,8 +81,6 @@
 	<div class="container">
 		<button class="btn-default" onclick="createUser()">Als
 			Benutzer registrieren</button>
-		<button class="btn-default" onclick="createProduct()">Neues
-			Produkt hinzufügen</button>
 	</div>
 
 	<script>
@@ -94,11 +96,25 @@
 		<table
 			class="table table-striped tabled-bordered table-hover table-condensed">
 			<tr>
-				<th>Recently Reviewed</th><th class="success">Best Rated</th><th class="danger">Random Product</th>
+				<th>Recently Reviewed</th>
+				<th class="success">Best Rated</th>
+				<th class="danger">Random Product</th>
 			</tr>
-			<tr><td>Sahnejoghut</td><td>Mio Mio Ginger + Rating</td><td>Milchkaffee</td></tr>
-			<tr><td>Kartoffelchips</td><td>Pueblo Tabak + Rating</td><td>Coca Cola</td></tr>
-			<tr><td>Humus</td><td>Erdinger Weißbier + Rating</td><td>Pommes</td></tr>	
+			<tr>
+				<td>Sahnejoghut</td>
+				<td>Mio Mio Ginger + Rating</td>
+				<td>Milchkaffee</td>
+			</tr>
+			<tr>
+				<td>Kartoffelchips</td>
+				<td>Pueblo Tabak + Rating</td>
+				<td>Coca Cola</td>
+			</tr>
+			<tr>
+				<td>Humus</td>
+				<td>Erdinger Weißbier + Rating</td>
+				<td>Pommes</td>
+			</tr>
 		</table>
 	</div>
 	<script

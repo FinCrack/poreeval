@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Registrierung</title>
+<title>Edit Product</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -66,44 +66,7 @@
 			</div>
 		</div>
 	</nav>
-	<h1>Bitte geben Sie ihr Daten an!</h1>
-	<div class="container">
-		<form action="CreateUserServlet" method="post">
-
-			<div class="form-group">
-				<label>Rolle</label> <select class="form-control" id="role"
-					name="role">
-					<option value="RegUser">Benutzer</option>
-					<option value="Mod">Moderator</option>
-				</select>
-			</div>
-
-			<div class="form-group">
-				<label>Username</label> <input type="text" class="form-control"
-					placeholder="Username hinzufügen" name="username">
-			</div>
-
-			<div class="form-group">
-				<label>E-Mail</label> <input type="email" class="form-control"
-					placeholder="E-Mail hinzufügen" name="email">
-			</div>
-
-			<div class="form-group">
-				<label>Password</label> <input type="password" class="form-control"
-					placeholder="Password eingeben" name="password1">
-			</div>
-
-			<div class="form-group">
-				<label>Password bestätigen</label> <input type="password"
-					class="form-control" placeholder="Password bestätigen"
-					name="password2">
-			</div>
-
-			<button class="btn-default" type="submit">Registrieren</button>
-		</form>
-		<button class="btn-default"
-			onclick="window.location.href='welcome.jsp'">Zurück</button>
-	</div>
+	<h1>Bearbeitung von Produkten</h1>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
