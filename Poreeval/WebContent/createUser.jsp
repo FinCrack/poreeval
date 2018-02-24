@@ -21,13 +21,8 @@
 			</div>
 			
 			<div class="form-group">
-				<label>Nachname</label>
-				<input type="text" class="form-control" placeholder="Namen hinzufügen" name="lastname">
-			</div>
-			
-			<div class="form-group">
-				<label>Vorname</label>
-				<input type="text" class="form-control" placeholder="Namen hinzufügen" name="firstname">
+				<label>Username</label>
+				<input type="text" class="form-control" placeholder="Username hinzufügen" name="username">
 			</div>
 			
 			<div class="form-group">
@@ -37,7 +32,12 @@
 			
 			<div class="form-group">
 				<label>Password</label>
-				<input type="password" class="form-control" placeholder="Password eingeben" name="password">
+				<input type="password" class="form-control" placeholder="Password eingeben" name="password1">
+			</div>
+			
+			<div class="form-group">
+				<label>Password bestätigen</label>
+				<input type="password" class="form-control" placeholder="Password eingeben" name="password2">
 			</div>
 			
 			<button class="btn-default" type="submit">Registrieren</button>
