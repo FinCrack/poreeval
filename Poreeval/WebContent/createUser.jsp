@@ -37,7 +37,7 @@
 			
 			<div class="form-group">
 				<label>Password bestätigen</label>
-				<input type="password" class="form-control" placeholder="Password eingeben" name="password2">
+				<input type="password" class="form-control" placeholder="Password bestätigen" name="password2">
 			</div>
 			
 			<button class="btn-default" type="submit">Registrieren</button>

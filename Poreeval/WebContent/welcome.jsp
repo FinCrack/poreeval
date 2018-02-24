@@ -48,20 +48,19 @@
 									<button type="submit">Login</button>
 								</form>
 							</li>
-						</ul>
-					</li>
+						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Produktsuche <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li>
 								<form action="SearchProductServlet" method="post">
-									<label>Produktname:</label><input type="text" name="productname">
+									<label>Produktname:</label><input type="text"
+										name="productname">
 									<button type="submit">Login</button>
 								</form>
 							</li>
-						</ul>
-					</li>
+						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Menü <span class="caret"></span></a>
@@ -69,8 +68,7 @@
 							<li><a href="#">Produkterstellung</a></li>
 							<li><a href="#">Produkte editieren</a></li>
 							<li><a href="#">Review abgeben</a></li>
-						</ul>
-					</li>
+						</ul></li>
 				</ul>
 			</div>
 		</div>
@@ -96,26 +94,11 @@
 		<table
 			class="table table-striped tabled-bordered table-hover table-condensed">
 			<tr>
-				<th>Recently Reviewed</th>
-				<td>Sahnejoghut</td>
-				<td>Kartoffelchips</td>
-				<td>Humus</td>
+				<th>Recently Reviewed</th><th class="success">Best Rated</th><th class="danger">Random Product</th>
 			</tr>
-			<tr class="danger">
-
-			</tr>
-			<tr class="success">
-				<th>Random Product</th>
-				<td>Milchkaffee</td>
-				<td>Coca Cola</td>
-				<td>Pommes</td>
-			</tr>
-			<tr>
-				<th>Best Rated</th>
-				<td>Mio Mio Ginger + Rating</td>
-				<td>Pueblo Tabak + Rating</td>
-				<td>Erdinger Weißbier + Rating</td>
-			</tr>
+			<tr><td>Sahnejoghut</td><td>Mio Mio Ginger + Rating</td><td>Milchkaffee</td></tr>
+			<tr><td>Kartoffelchips</td><td>Pueblo Tabak + Rating</td><td>Coca Cola</td></tr>
+			<tr><td>Humus</td><td>Erdinger Weißbier + Rating</td><td>Pommes</td></tr>	
 		</table>
 	</div>
 	<script
