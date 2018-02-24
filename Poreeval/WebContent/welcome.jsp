@@ -11,11 +11,6 @@
 </head>
 <body>
 	<nav:navigation></nav:navigation>
-	<div class="jumbotron text-center">
-		<div class="container">
-			<h1>Willkommen bei Poreeval!</h1>
-		</div>
-	</div>
 	<wel:welcome></wel:welcome>
 </body>
 </html>
