@@ -12,6 +12,6 @@
 <body>
 	<nav:navigation></nav:navigation>
 	<h1>Erstellen und bewerten Sie ein neues Produkt</h1>
-	<cprod:navigation></cprod:navigation>
+	<cprod:product></cprod:product>
 </body>
 </html>
