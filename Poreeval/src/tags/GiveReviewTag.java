@@ -20,7 +20,7 @@ public class GiveReviewTag extends TagSupport {
 	private String getCreateReviewForm() {
 		
 		String createReviewForm = "<h1>Hier können Sie Reviews abgeben</h1>"
-				+ "<form action='CreateReviewServlet' method='post'>"
+				+ "<form action='CreateReviewServlet' method='post'  style='text-align: center;'>"
 				+ "<div class='form-group'>"
 				+ "<label>Wählen Sie ein Produkt</label>"
 				+ "<select class='form-control'>"
@@ -34,12 +34,12 @@ public class GiveReviewTag extends TagSupport {
 				+ "<input type='text' class='form-control'	placeholder='Bewertungstext hinzufügen' name='note'>"
 				+ "</div>"
 				+ "<div class='chechbox'>"
-				+ "<label>0 Sterne <input type='radio' name='star' id='0s'></label>"
-				+ "<label>1 Stern  <input type='radio' name='star' id='1s'></label>"
-				+ "<label>2 Sterne <input type='radio' name='star' id='2s'></label>"
-				+ "<label>3 Sterne <input type='radio' name='star' id='3s'></label>"
-				+ "<label>4 Sterne <input type='radio' name='star' id='4s'></label>"
-				+ "<label>5 Sterne <input type='radio' name='star' id='5s'></label>"
+				+ "<label><input type='radio' name='star' id='0s'>0 Sterne </label>"
+				+ "<label><input type='radio' name='star' id='1s'>1 Stern  </label>"
+				+ "<label><input type='radio' name='star' id='2s'>2 Sterne </label>"
+				+ "<label><input type='radio' name='star' id='3s'>3 Sterne </label>"
+				+ "<label><input type='radio' name='star' id='4s'>4 Sterne </label>"
+				+ "<label><input type='radio' name='star' id='5s'>5 Sterne </label>"
 				+ "</div>"
 				+ "<button type='submit' class='btn-default'>Bewertung abgeben</button>"
 				+ "</form>";

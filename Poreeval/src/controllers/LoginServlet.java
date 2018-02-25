@@ -42,7 +42,9 @@ public class LoginServlet extends HttpServlet {
 		if(username.equals(password)){
 			System.out.println("Alles gut");
 		}
-		// läuft bis hier hin
+		
+		request.setAttribute("username", username);
+		request.getRequestDispatcher("welcome.jsp").forward(request, response);
 	}
 
 }

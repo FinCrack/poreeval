@@ -41,8 +41,10 @@ public class NavigationTag extends TagSupport {
 				+ "<form action='LoginServlet' method='post'>"
 				+ "<label>Username:</label><input type='text' name='username'>"
 				+ "<label>Password:</label><input type='password' name='password'>"
-				+ "<button type='submit'>Login</button>"
+				+ "<button type='submit' onclick='hideForm(); showName();'>Login</button>"
 				+ "</form>"
+				+ "<div id='user'>"
+				+ "</div>"
 				+ "</li>"
 				+ "</ul>"
 				+ "</li>"
@@ -56,7 +58,7 @@ public class NavigationTag extends TagSupport {
 				+ "<ul class='dropdown-menu'>"
 				+ "<li>"
 				+ "<form action='SearchProductServlet' method='post'>"
-				+ "<label>Produktname:</label>"
+				+ "<label>Produktname/ -nummer:</label>"
 				+ "<input type='text' name='productname'>"
 				+ "<button type='submit'>Suchen</button>"
 				+ "</form>"
@@ -81,7 +83,9 @@ public class NavigationTag extends TagSupport {
 				+ "</div>"
 				+ "</div>"
 				+ "</nav>'"
-				+ "<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script><script src='js/bootstrap.min.js'></script>";
+				+ "<script "
+				+ "src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script><script src='js/bootstrap.min.js'>"
+				+ "</script>";
 		return navbar;
 	}
 }
