@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <%@ taglib prefix="nav" uri="/WEB-INF/navigation.tld"%>
-<%@ taglib prefix="user" uri="/WEB-INF/createUser.tld" %>
+<%@ taglib prefix="user" uri="/WEB-INF/createUser.tld"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">

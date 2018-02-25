@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<taglib>
+<tlib-version>1.0</tlib-version>
+<jsp-version>2.0</jsp-version>
+<short-name>CreateProduct Tag</short-name>
+<tag>
+	<name>product</name>
+	<tag-class>tags.CreateProductTag</tag-class>
+</tag>
+</taglib>

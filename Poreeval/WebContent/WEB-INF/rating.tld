@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<taglib>
+<tlib-version>1.0</tlib-version>
+<jsp-version>2.0</jsp-version>
+<short-name>Rating Tag</short-name>
+<tag>
+	<name>recently</name>
+	<tag-class>tags.RecentlyRatedTag</tag-class>
+</tag>
+<tag>
+	<name>best</name>
+	<tag-class>tags.BestRatedTag</tag-class>
+</tag>
+<tag>
+	<name>random</name>
+	<tag-class>tags.RandomRatedTag</tag-class>
+</tag>
+</taglib>
