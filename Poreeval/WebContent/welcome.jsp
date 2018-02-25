@@ -11,11 +11,7 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
 	<nav:navigation></nav:navigation>
 	<wel:welcome></wel:welcome>
-<%-- <rating:recently></rating:recently><br>
-	<rating:best></rating:best><br>
-	<rating:random></rating:random> --%>
 </body>
 </html>

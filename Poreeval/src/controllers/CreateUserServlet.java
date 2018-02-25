@@ -47,7 +47,7 @@ public class CreateUserServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String role = request.getParameter("role");
 		String password = request.getParameter("password");
-		User user = new User(username, role, email, password);
+		User user = new User(0, username, role, email, password);
 
 		ArrayList<User> userList = new ArrayList<User>();
 		userList.add(user);
