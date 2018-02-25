@@ -12,5 +12,5 @@
 <body>
 	<nav:navigation></nav:navigation>
 	<wel:welcome></wel:welcome>
-</body>
+	<!-- <rating:recently></rating:recently> <rating:bestrated></rating:bestrated> <rating:random></rating:random> -->
 </html>
