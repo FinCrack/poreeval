@@ -1,12 +1,19 @@
 package controllers;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dataAccess.DatabaseConnection;
 
 /**
  * Servlet implementation class LoginServlet
@@ -34,16 +41,39 @@ public class LoginServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
+	private boolean authenticate(String username, String password) {
+		boolean validate = false;
+		Connection con = DatabaseConnection.getConnection();
+		try {
+			PreparedStatement psmt = con.prepareStatement("SELECT * from USERS where username= ? AND password = ?");
+			psmt.setString(1, username);
+			psmt.setString(2, password);
+			ResultSet rs = psmt.executeQuery();
+			if(rs.next()) {
+				validate = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return validate;
+	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	
+		String errormsg = null;
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-		if(username.equals(password)){
-			System.out.println("Alles gut");
+		HttpSession session = request.getSession();
+		boolean isValid = false;
+		isValid = authenticate(username, password);
+		if(isValid) {
+			session.setAttribute("username", username);
+		} else {
+		errormsg = "Username oder Passwort sind falsch.";
 		}
-		
-		request.setAttribute("username", username);
+		session.setAttribute("errormsg", errormsg);
+	
 		request.getRequestDispatcher("welcome.jsp").forward(request, response);
 	}
 
