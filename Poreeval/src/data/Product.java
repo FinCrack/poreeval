@@ -1,59 +1,57 @@
 package data;
 
+import java.awt.Image;
+
 public class Product {
 
-	private String productname;
-	private Integer ean;
-	private String note;
-	private Integer rating;
-	private String date;
+    private int ean;
 
-	public Product(String productname, Integer ean, String note, Integer rating, String date) {
-		super();
-		this.productname = productname;
-		this.ean = ean;
-		this.note = note;
-		this.rating = rating;
-		this.setDate(date);
-	}
+    private String name;
 
-	public String getProductname() {
-		return productname;
-	}
+    private String description;
 
-	public void setProductname(String productname) {
-		this.productname = productname;
-	}
+    private Image picture;
+    
+    
 
-	public Integer getEan() {
-		return ean;
-	}
+    public Product(String name, Integer ean, String description,
+        Image picture) {
+        this.name = name;
+        this.ean = ean;
+        this.description = description;
+        this.picture = picture;
+    }
 
-	public void setEan(Integer ean) {
-		this.ean = ean;
-	}
+    public String getProductname() {
+        return name;
+    }
 
-	public String getNote() {
-		return note;
-	}
+    public void setProductname(String productname) {
+        this.name = productname;
+    }
 
-	public void setNote(String note) {
-		this.note = note;
-	}
+    public Integer getEan() {
+        return ean;
+    }
 
-	public Integer getRating() {
-		return rating;
-	}
+    public void setEan(Integer ean) {
+        this.ean = ean;
+    }
 
-	public void setRating(Integer rating) {
-		this.rating = rating;
-	}
+    public String getNote() {
+        return description;
+    }
 
-	public String getDate() {
-		return date;
-	}
+    public void setNote(String note) {
+        this.description = note;
+    }
 
-	public void setDate(String date) {
-		this.date = date;
-	}
+    public Image getPicture() {
+        return picture;
+    }
+
+    public void setPicture(Image picture) {
+        this.picture = picture;
+    }
+
 }

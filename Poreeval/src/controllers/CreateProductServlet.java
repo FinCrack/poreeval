@@ -1,5 +1,7 @@
 package controllers;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import data.Product;
+import data.Review;
+import models.ProductModel;
 
 /**
  * Servlet implementation class CreateProductServlet
@@ -45,21 +49,13 @@ public class CreateProductServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String productname = request.getParameter("productname");
+		String name = request.getParameter("name");
 		Integer ean = Integer.parseInt(request.getParameter("ean"));
-		String note = request.getParameter("note");
-		Integer rating = Integer.parseInt(request.getParameter("rating"));
-		String date = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(new Date());
+		String description = request.getParameter("description");
+		//Integer rating = Integer.parseInt(request.getParameter("rating"));
 
-		// hier müsste eigentlich noch das bild rein aber da hab ich kein plan
-		// von
-		// research sagte was von bild in bytearray packen und dann wieder
-		// umdröseln wegen request - String zusammenhang etc
-
-		Product product = new Product(productname, ean, note, rating, date);
-
-		ArrayList<Product> productList = new ArrayList<Product>();
-		productList.add(product);
+		ProductModel model = new ProductModel();
+		model.CreateProduct(ean, name, description, null);
 	}
 
 }
