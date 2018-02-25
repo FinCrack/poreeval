@@ -13,7 +13,7 @@
 <body>
 	<nav:navigation></nav:navigation>
 	<wel:welcome></wel:welcome>
-<%-- 	<rating:recently></rating:recently><br>
+<%-- <rating:recently></rating:recently><br>
 	<rating:best></rating:best><br>
 	<rating:random></rating:random> --%>
 </body>
