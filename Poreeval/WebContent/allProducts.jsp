@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC>
 <%@ taglib prefix="nav" uri="/WEB-INF/navigation.tld"%>
-<%@ taglib prefix="products" uri="/WEB-INF/allProducts.tld" %>
+<%@ taglib prefix="allProducts" uri="/WEB-INF/allProducts.tld" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -11,6 +11,6 @@
 </head>
 <body>
 	<nav:navigation></nav:navigation>
-	<products:products></products:products>
+	<allProducts:products></allProducts:products>
 </body>
 </html>
