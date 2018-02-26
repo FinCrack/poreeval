@@ -21,10 +21,22 @@ public class RandomRatedTag extends TagSupport {
 	}
 
 	private String getRandomRatedProduct() {
-		String randomRatedProduct = "<div class='container'>"
-				+ "<table class='table table-striped tabled-bordered table-hover table-condensed'>" + "<tr>"
-				+ "<th class='danger'>Zufälliges Produkt</th>" + "</tr>" + "<tr>" + "<td>Milchkaffee</td>" + "</tr>"
-				+ "<tr>" + "<td>Coca Cola</td>" + "</tr>" + "<tr>" + "<td>Pommes</td>" + "</tr>" + "</table>"
+		String randomRatedProduct = 
+				"<div>"
+				+ "<table class='table table-striped tabled-bordered table-hover table-condensed'>" 
+				+ "<tr>"
+				+ "<th class='danger'>Zufälliges Produkt</th>" 
+				+ "</tr>" 
+				+ "<tr>" 
+				+ "<td>Milchkaffee</td>" 
+				+ "</tr>"
+				+ "<tr>" 
+				+ "<td>Coca Cola</td>" 
+				+ "</tr>" 
+				+ "<tr>" 
+				+ "<td>Pommes</td>" 
+				+ "</tr>" 
+				+ "</table>"
 				+ "</div>";
 		return randomRatedProduct;
 	}

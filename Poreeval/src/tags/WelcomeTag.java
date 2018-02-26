@@ -19,11 +19,9 @@ public class WelcomeTag extends TagSupport{
 
 	private String getWelcomeContent() {
 		String welcomeContent = 
-				"<div class='jumbotron text-center'>"
-				+ "<div class='container'>"
-				+ "<h1> Poreeval </h1>"
-				+ "</div>"
-				+ "</div>";		
+				"<div class='text-center h1'>"
+				+ "<h1> Poreeval - Ihr Portal für Lebensmittelevaluation </h1>"
+				+ "</div>";
 		return welcomeContent;
 	}
 }

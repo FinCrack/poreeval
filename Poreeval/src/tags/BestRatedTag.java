@@ -18,7 +18,8 @@ public class BestRatedTag extends TagSupport {
 	}
 	
 	private String getBestRatedProduct() {
-		String bestRatedProduct = "<div class='container'>"
+		String bestRatedProduct = 
+				"<div>"
 				+ "<table class='table table-striped tabled-bordered table-hover table-condensed'>" 
 				+ "<tr>"
 				+ "<th class='success'>Am besten Bewertet</th>" 

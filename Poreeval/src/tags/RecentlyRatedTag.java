@@ -21,10 +21,21 @@ public class RecentlyRatedTag extends TagSupport {
 	}
 
 	private String getRecentlyRatedProduct() {
-		String recentlyRatedProduct = "<div class='container'>"
-				+ "<table class='table table-striped tabled-bordered table-hover table-condensed'>" + "<tr>"
-				+ "<th class='success'>Zuletzt bewertet</th>" + "</tr>" + "<tr>" + "<td>Sahnejoghut</td>" + "</tr>"
-				+ "<tr>" + "<td>Kartoffelchips</td>" + "</tr>" + "<tr>" + "<td>Humus</td>" + "</tr>" + "</table>"
+		String recentlyRatedProduct = 
+				"<div>"
+				+ "<table class='table table-striped tabled-bordered table-hover table-condensed'>" 
+				+ "<tr>"
+				+ "<th class='success'>Zuletzt bewertet</th>" 
+				+ "</tr>" 
+				+ "<tr>" 
+				+ "<td>Sahnejoghut</td>" 
+				+ "</tr>"
+				+ "<tr>" 
+				+ "<td>Kartoffelchips</td>" 
+				+ "</tr>" + "<tr>" 
+				+ "<td>Humus</td>" 
+				+ "</tr>" 
+				+ "</table>"
 				+ "</div>";
 		return recentlyRatedProduct;
 	}
