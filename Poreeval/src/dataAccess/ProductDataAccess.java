@@ -14,7 +14,7 @@ public class ProductDataAccess {
 	private Connection connection =  DatabaseConnection.getConnection();
 
     public void InsertProduct(Product product) throws SQLException {
-        PreparedStatement psmt = connection.prepareStatement(
+        PreparedStatement psmt = this.connection.prepareStatement(
             "INSERT INTO PRODUCTS (EAN, NAME, DESCRIPTION, PICTURE) "
                 + "VALUES (?, ?, ?, ?)");
 
@@ -30,7 +30,7 @@ public class ProductDataAccess {
 
     public void UpdateProduct(Product product) throws SQLException {
         PreparedStatement psmt =
-        		connection.prepareStatement(
+        		this.connection.prepareStatement(
                 "UPDATE PRODUCTS SET EAN = ?, NAME = ?, DESCRIPTION = ?, PICTURE = ?)");
 
         psmt.setLong(1, product.getEan());
@@ -46,7 +46,7 @@ public class ProductDataAccess {
     public List<Product> GetProductByEan(long ean) throws SQLException {
 
         PreparedStatement psmt =
-        		connection.prepareStatement(
+        		this.connection.prepareStatement(
                 "SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS WHERE EAN = ?");
 
         psmt.setLong(1, ean);
@@ -59,10 +59,20 @@ public class ProductDataAccess {
     public List<Product> GetProductsByName(String name) throws SQLException {
 
         PreparedStatement psmt =
-            DatabaseConnection.getConnection().prepareStatement(
+            this.connection.prepareStatement(
                 "SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS WHERE NAME LIKE ?");
 
         psmt.setString(1, "%" + name + "%");
+
+        ResultSet rs = psmt.executeQuery();
+
+        return this.GetProductsFromResultSet(rs);
+    }
+    
+    public List<Product> GetAllProducts() throws SQLException {
+        PreparedStatement psmt =
+            this.connection.prepareStatement(
+                "SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS");
 
         ResultSet rs = psmt.executeQuery();
 
