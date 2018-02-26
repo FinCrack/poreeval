@@ -34,6 +34,5 @@ public class AllProductsTag extends TagSupport{
 				+ "</tr>"
 				+ "</table>";
 		return table;
-	}
-	
+	}	
 }
