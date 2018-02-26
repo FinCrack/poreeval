@@ -11,7 +11,14 @@ import data.Product;
 
 public class ProductDataAccess {
 
+<<<<<<< HEAD
 	private Connection connection = DatabaseConnection.getConnection();
+=======
+    public void InsertProduct(Product product) throws SQLException {
+        PreparedStatement psmt = this.connection.prepareStatement(
+            "INSERT INTO PRODUCTS (EAN, NAME, DESCRIPTION, PICTURE) "
+                + "VALUES (?, ?, ?, ?)");
+>>>>>>> branch 'master' of ssh://git@github.com/FinCrack/poreeval.git
 
 	public void InsertProduct(Product product) throws SQLException {
 		PreparedStatement psmt = connection
@@ -24,8 +31,15 @@ public class ProductDataAccess {
 		// TODO image speichern recherchieren
 		// psmt.setBinaryStream(parameterIndex, x);
 
+<<<<<<< HEAD
 		psmt.executeUpdate();
 	}
+=======
+    public void UpdateProduct(Product product) throws SQLException {
+        PreparedStatement psmt =
+        		this.connection.prepareStatement(
+                "UPDATE PRODUCTS SET EAN = ?, NAME = ?, DESCRIPTION = ?, PICTURE = ?)");
+>>>>>>> branch 'master' of ssh://git@github.com/FinCrack/poreeval.git
 
 	public void UpdateProduct(Product product) throws SQLException {
 		PreparedStatement psmt = connection
@@ -41,7 +55,13 @@ public class ProductDataAccess {
 		psmt.executeUpdate();
 	}
 
+<<<<<<< HEAD
 	public List<Product> GetProductByEan(long ean) throws SQLException {
+=======
+        PreparedStatement psmt =
+        		this.connection.prepareStatement(
+                "SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS WHERE EAN = ?");
+>>>>>>> branch 'master' of ssh://git@github.com/FinCrack/poreeval.git
 
 		PreparedStatement psmt = connection.prepareStatement(
 				"SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS WHERE EAN = ?");
@@ -53,14 +73,35 @@ public class ProductDataAccess {
 		return this.GetProductsFromResultSet(rs);
 	}
 
+<<<<<<< HEAD
 	public List<Product> GetProductsByName(String name) throws SQLException {
+=======
+        PreparedStatement psmt =
+            this.connection.prepareStatement(
+                "SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS WHERE NAME LIKE ?");
+>>>>>>> branch 'master' of ssh://git@github.com/FinCrack/poreeval.git
 
 		PreparedStatement psmt = DatabaseConnection.getConnection().prepareStatement(
 				"SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS WHERE NAME LIKE ?");
 
 		psmt.setString(1, "%" + name + "%");
 
+<<<<<<< HEAD
 		ResultSet rs = psmt.executeQuery();
+=======
+        return this.GetProductsFromResultSet(rs);
+    }
+    
+    public List<Product> GetAllProducts() throws SQLException {
+        PreparedStatement psmt =
+            this.connection.prepareStatement(
+                "SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS");
+
+        ResultSet rs = psmt.executeQuery();
+
+        return this.GetProductsFromResultSet(rs);
+    }
+>>>>>>> branch 'master' of ssh://git@github.com/FinCrack/poreeval.git
 
 		return this.GetProductsFromResultSet(rs);
 	}
