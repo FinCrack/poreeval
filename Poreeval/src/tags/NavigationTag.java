@@ -72,6 +72,8 @@ public class NavigationTag extends TagSupport {
 				+ "<li>"
 				+ "<a href='giveReview.jsp'>Review abgeben</a>"
 				+ "</li>"
+				+ "<li>"
+				+ "<a href='allProducts.jsp'>Alle Produkte</a>"
 				+ "</li>"
 				+ "</ul>"
 				+ "</div>"

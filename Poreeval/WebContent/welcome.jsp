@@ -14,6 +14,7 @@
 <body>
 	<nav:navigation></nav:navigation>
 	<wel:welcome></wel:welcome>
+
 	<table>
 		<tr>
 			<rating:recently></rating:recently>
@@ -27,8 +28,6 @@
 	</table>
 	<searchR:search></searchR:search>
 
-    ${ createUserMessage }
-	${ searchResults }
-	${ user.userName }
+	${ createUserMessage } ${ searchResults } ${ user.userName }
 </body>
 </html>

@@ -10,81 +10,77 @@ import java.util.List;
 import data.Product;
 
 public class ProductDataAccess {
-	
-	private Connection connection =  DatabaseConnection.getConnection();
 
-    public void InsertProduct(Product product) throws SQLException {
-        PreparedStatement psmt = connection.prepareStatement(
-            "INSERT INTO PRODUCTS (EAN, NAME, DESCRIPTION, PICTURE) "
-                + "VALUES (?, ?, ?, ?)");
+	private Connection connection = DatabaseConnection.getConnection();
 
-        psmt.setLong(1, product.getEan());
-        psmt.setString(2, product.getProductname());
-        psmt.setString(3, product.getDescription());
-        psmt.setBytes(4, null);
-        // TODO image speichern recherchieren
-        // psmt.setBinaryStream(parameterIndex, x);
+	public void InsertProduct(Product product) throws SQLException {
+		PreparedStatement psmt = connection
+				.prepareStatement("INSERT INTO PRODUCTS (EAN, NAME, DESCRIPTION, PICTURE) " + "VALUES (?, ?, ?, ?)");
 
-        psmt.executeUpdate();
-    }
+		psmt.setLong(1, product.getEan());
+		psmt.setString(2, product.getProductname());
+		psmt.setString(3, product.getDescription());
+		psmt.setBytes(4, null);
+		// TODO image speichern recherchieren
+		// psmt.setBinaryStream(parameterIndex, x);
 
-    public void UpdateProduct(Product product) throws SQLException {
-        PreparedStatement psmt =
-        		connection.prepareStatement(
-                "UPDATE PRODUCTS SET EAN = ?, NAME = ?, DESCRIPTION = ?, PICTURE = ?)");
+		psmt.executeUpdate();
+	}
 
-        psmt.setLong(1, product.getEan());
-        psmt.setString(2, product.getProductname());
-        psmt.setString(3, product.getDescription());
-        psmt.setBytes(4, null);
-        // TODO image speichern recherchieren
-        // psmt.setBinaryStream(parameterIndex, x);
+	public void UpdateProduct(Product product) throws SQLException {
+		PreparedStatement psmt = connection
+				.prepareStatement("UPDATE PRODUCTS SET EAN = ?, NAME = ?, DESCRIPTION = ?, PICTURE = ?)");
 
-        psmt.executeUpdate();
-    }
+		psmt.setLong(1, product.getEan());
+		psmt.setString(2, product.getProductname());
+		psmt.setString(3, product.getDescription());
+		psmt.setBytes(4, null);
+		// TODO image speichern recherchieren
+		// psmt.setBinaryStream(parameterIndex, x);
 
-    public List<Product> GetProductByEan(long ean) throws SQLException {
+		psmt.executeUpdate();
+	}
 
-        PreparedStatement psmt =
-        		connection.prepareStatement(
-                "SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS WHERE EAN = ?");
+	public List<Product> GetProductByEan(long ean) throws SQLException {
 
-        psmt.setLong(1, ean);
+		PreparedStatement psmt = connection.prepareStatement(
+				"SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS WHERE EAN = ?");
 
-        ResultSet rs = psmt.executeQuery();
+		psmt.setLong(1, ean);
 
-        return this.GetProductsFromResultSet(rs);
-    }
+		ResultSet rs = psmt.executeQuery();
 
-    public List<Product> GetProductsByName(String name) throws SQLException {
+		return this.GetProductsFromResultSet(rs);
+	}
 
-        PreparedStatement psmt =
-            DatabaseConnection.getConnection().prepareStatement(
-                "SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS WHERE NAME LIKE ?");
+	public List<Product> GetProductsByName(String name) throws SQLException {
 
-        psmt.setString(1, "%" + name + "%");
+		PreparedStatement psmt = DatabaseConnection.getConnection().prepareStatement(
+				"SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS WHERE NAME LIKE ?");
 
-        ResultSet rs = psmt.executeQuery();
+		psmt.setString(1, "%" + name + "%");
 
-        return this.GetProductsFromResultSet(rs);
-    }
+		ResultSet rs = psmt.executeQuery();
 
-    private List<Product> GetProductsFromResultSet(ResultSet rs)
-        throws SQLException {
+		return this.GetProductsFromResultSet(rs);
+	}
 
-        List<Product> productList = new ArrayList<Product>();
-        
-        while (rs.next()) {
-            long ean = rs.getLong(1);
-            String name = rs.getString(2);
-            String description = rs.getString(3);
-            int rating = rs.getInt(4);
-            Product product = new Product(ean, name, description, null);
-            product.setRating(rating);
-            // TODO picture
-            productList.add(product);
-        }
+	private List<Product> GetProductsFromResultSet(ResultSet rs) throws SQLException {
 
-        return productList;
-    }
+		List<Product> productList = new ArrayList<Product>();
+
+		while (rs.next()) {
+			long ean = rs.getLong(1);
+			String name = rs.getString(2);
+			String description = rs.getString(3);
+			int rating = rs.getInt(4);
+			Product product = new Product(ean, name, description, null);
+			product.setRating(rating);
+			// TODO picture
+			productList.add(product);
+		}
+		return productList;
+	}
+
+
 }
