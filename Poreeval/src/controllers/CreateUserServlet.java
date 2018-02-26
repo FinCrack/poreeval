@@ -1,15 +1,19 @@
 package controllers;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import data.User;
+import models.UserModel;
 
 /**
  * Servlet implementation class CreateUserServlet
@@ -43,14 +47,28 @@ public class CreateUserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String username = request.getParameter("username");
+		String userName = request.getParameter("userName");
 		String email = request.getParameter("email");
-		String role = request.getParameter("role");
+		int privilege = Integer.parseInt(request.getParameter("privilege"));
 		String password = request.getParameter("password");
-		User user = new User(0, username, role, email, password);
-
-		ArrayList<User> userList = new ArrayList<User>();
-		userList.add(user);
+		String password2 = request.getParameter("password2");
+		
+		UserModel model = new UserModel();
+		HttpSession session = request.getSession();
+		String createUserMessage;
+		
+		try {
+            model.CreateUser(userName, password, password2, privilege, email);
+            createUserMessage = "Benutzer wurde erfolgreich angelegt...";
+            
+        } catch (SQLException exc) {
+            createUserMessage = "Fehler beim Erstellen des Benutzers: \n" + exc.getMessage();
+        } catch (InputMismatchException exc) {
+            createUserMessage = exc.getMessage();
+        }
+		
+		session.setAttribute("createUserMessage", createUserMessage);
+		request.getRequestDispatcher("welcome.jsp").forward(request, response);
 	}
 
 }

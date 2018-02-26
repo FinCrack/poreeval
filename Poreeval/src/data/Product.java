@@ -40,12 +40,12 @@ public class Product {
         this.ean = ean;
     }
 
-    public String getNote() {
+    public String getDescription() {
         return description;
     }
 
-    public void setNote(String note) {
-        this.description = note;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Image getPicture() {

@@ -3,17 +3,19 @@ package data;
 public class User {
 
 	private int id;
-	private String username;
+	private String userName;
 	private String email;
-	private String role;
+	private int privilege;
 	private String password;
+	
+	public User() {
+	    
+	}
 
-	public User(int id, String username, String email, String role, String password) {
-		super();
-		this.id = id;
-		this.username = username;
+	public User(String userName, String password, int privilege, String email) {
+		this.userName = userName;
 		this.email = email;
-		this.role = role;
+		this.privilege = privilege;
 		this.password = password;
 	}
 
@@ -33,22 +35,22 @@ public class User {
 		this.email = email;
 	}
 
-	public String getRole() {
-		return role;
+	public int getPrivilege() {
+		return privilege;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
-	}
-
-
-	public String getUsername() {
-		return username;
+	public void setPrivilege(int privilege) {
+		this.privilege = privilege;
 	}
 
 
-	public void setUsername(String username) {
-		this.username = username;
+	public String getUserName() {
+		return userName;
+	}
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 

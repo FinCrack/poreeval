@@ -27,6 +27,8 @@
 	</table>
 	<searchR:search></searchR:search>
 
+    ${ createUserMessage }
 	${ searchResults }
+	${ user.userName }
 </body>
 </html>

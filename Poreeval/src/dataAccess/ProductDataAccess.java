@@ -20,7 +20,7 @@ public class ProductDataAccess {
 
         psmt.setLong(1, product.getEan());
         psmt.setString(2, product.getProductname());
-        psmt.setString(3, product.getNote());
+        psmt.setString(3, product.getDescription());
         psmt.setBytes(4, null);
         // TODO image speichern recherchieren
         // psmt.setBinaryStream(parameterIndex, x);
@@ -35,7 +35,7 @@ public class ProductDataAccess {
 
         psmt.setLong(1, product.getEan());
         psmt.setString(2, product.getProductname());
-        psmt.setString(3, product.getNote());
+        psmt.setString(3, product.getDescription());
         psmt.setBytes(4, null);
         // TODO image speichern recherchieren
         // psmt.setBinaryStream(parameterIndex, x);
