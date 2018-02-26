@@ -4,6 +4,7 @@
 <%@ taglib prefix="nav" uri="/WEB-INF/navigation.tld"%>
 <%@ taglib prefix="wel" uri="/WEB-INF/welcomeContent.tld"%>
 <%@ taglib prefix="rating" uri="/WEB-INF/rating.tld"%>
+<%@ taglib prefix="searchR" uri="/WEB-INF/searchResult.tld"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -13,5 +14,19 @@
 <body>
 	<nav:navigation></nav:navigation>
 	<wel:welcome></wel:welcome>
+	<table>
+		<tr>
+			<rating:recently></rating:recently>
+		</tr>
+		<tr>
+			<rating:best></rating:best>
+		</tr>
+		<tr>
+			<rating:random></rating:random>
+		</tr>
+	</table>
+	<searchR:search></searchR:search>
+
+	${ searchResults }
 </body>
 </html>

@@ -21,9 +21,11 @@ public class CreateProductTag extends TagSupport{
 	}
 
 	private String getCreateProductForm() {
-		String createProductForm = "<div class='container'><form action='CreateProductServlet' method='post'>"
+		String createProductForm = "<div class='container'>"
+					+ "<form action='CreateProductServlet' method='post'>"
 					+ "<div class='form-group'>"
-					+ "<label>Produktname</label> <input type='text' class='form-control' placeholder='Namen hinzufügen' name='name'>"
+					+ "<label>Produktname</label> "
+					+ "<input type='text' class='form-control' placeholder='Namen hinzufügen' name='name'>"
 					+ "</div>"
 					+ "<div class='form-group'>	<label>EAN-Code</label> <input type='number' class='form-control' placeholder='EAN ist optional' name='ean'> </div>"
 					+ "<div class='form-group'> <label>Notiz</label> <textarea class='form-control' placeholder='Notiz hinzufügen' name='description'> </textarea> </div>"

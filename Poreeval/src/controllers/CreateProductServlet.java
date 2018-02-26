@@ -44,7 +44,7 @@ public class CreateProductServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		String name = request.getParameter("name");
-		long ean = Integer.parseInt(request.getParameter("ean"));
+		long ean = Long.parseLong(request.getParameter("ean"));
 		String description = request.getParameter("description");
 
 		ProductModel model = new ProductModel();
@@ -54,6 +54,8 @@ public class CreateProductServlet extends HttpServlet {
             // TODO Auto-generated catch block
             exc.printStackTrace();
         }
+		
+		request.getRequestDispatcher("welcome.jsp").forward(request, response);
 	}
 
 }

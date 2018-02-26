@@ -1,5 +1,6 @@
 package dataAccess;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,15 +10,18 @@ import java.util.List;
 import data.Product;
 
 public class ProductDataAccess {
+	
+	private Connection connection =  DatabaseConnection.getConnection();
 
     public void InsertProduct(Product product) throws SQLException {
-        PreparedStatement psmt = DatabaseConnection.instance.prepareStatement(
+        PreparedStatement psmt = connection.prepareStatement(
             "INSERT INTO PRODUCTS (EAN, NAME, DESCRIPTION, PICTURE) "
                 + "VALUES (?, ?, ?, ?)");
 
         psmt.setLong(1, product.getEan());
         psmt.setString(2, product.getProductname());
         psmt.setString(3, product.getNote());
+        psmt.setBytes(4, null);
         // TODO image speichern recherchieren
         // psmt.setBinaryStream(parameterIndex, x);
 
@@ -26,12 +30,13 @@ public class ProductDataAccess {
 
     public void UpdateProduct(Product product) throws SQLException {
         PreparedStatement psmt =
-            DatabaseConnection.getConnection().prepareStatement(
+        		connection.prepareStatement(
                 "UPDATE PRODUCTS SET EAN = ?, NAME = ?, DESCRIPTION = ?, PICTURE = ?)");
 
         psmt.setLong(1, product.getEan());
         psmt.setString(2, product.getProductname());
         psmt.setString(3, product.getNote());
+        psmt.setBytes(4, null);
         // TODO image speichern recherchieren
         // psmt.setBinaryStream(parameterIndex, x);
 
@@ -41,7 +46,7 @@ public class ProductDataAccess {
     public List<Product> GetProductByEan(long ean) throws SQLException {
 
         PreparedStatement psmt =
-            DatabaseConnection.getConnection().prepareStatement(
+        		connection.prepareStatement(
                 "SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS WHERE EAN = ?");
 
         psmt.setLong(1, ean);
@@ -55,9 +60,9 @@ public class ProductDataAccess {
 
         PreparedStatement psmt =
             DatabaseConnection.getConnection().prepareStatement(
-                "SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS WHERE NAME LIKE \'?\'");
+                "SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS WHERE NAME LIKE ?");
 
-        psmt.setString(1, name);
+        psmt.setString(1, "%" + name + "%");
 
         ResultSet rs = psmt.executeQuery();
 
@@ -77,6 +82,7 @@ public class ProductDataAccess {
             Product product = new Product(ean, name, description, null);
             product.setRating(rating);
             // TODO picture
+            productList.add(product);
         }
 
         return productList;
