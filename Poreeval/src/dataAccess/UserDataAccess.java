@@ -11,7 +11,7 @@ public class UserDataAccess {
     {
         PreparedStatement psmt = DatabaseConnection.instance.prepareStatement(
             "INSERT INTO USERS (ID, USERNAME, PRIVILEGE, PASSWORD, EMAIL) "
-            + "VALUES (?, ?, ?, ?, ?)");
+            + "VALUES (NEXTVAL('USERS'), ?, ?, ?, ?)");
         
         psmt.setInt(1, user.getId());
         psmt.setString(2, user.getUsername());

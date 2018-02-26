@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,11 +44,16 @@ public class CreateProductServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		String name = request.getParameter("name");
-		Integer ean = Integer.parseInt(request.getParameter("ean"));
+		long ean = Integer.parseInt(request.getParameter("ean"));
 		String description = request.getParameter("description");
 
 		ProductModel model = new ProductModel();
-		model.CreateProduct(ean, name, description, null);
+		try {
+            model.CreateProduct(ean, name, description, null);
+        } catch (SQLException exc) {
+            // TODO Auto-generated catch block
+            exc.printStackTrace();
+        }
 	}
 
 }

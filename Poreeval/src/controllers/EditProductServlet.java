@@ -1,12 +1,15 @@
 package controllers;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import models.ProductModel;
 
 /**
  * Servlet implementation class EditProductServlet
@@ -35,8 +38,19 @@ public class EditProductServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+	    String name = request.getParameter("name");
+        long ean = Integer.parseInt(request.getParameter("ean"));
+        String description = request.getParameter("description");
+
+        ProductModel model = new ProductModel();
+        //TODO Image einbauen
+        try {
+            model.UpdateProduct(ean, name, description, null);
+        } catch (SQLException exc) {
+            // TODO Auto-generated catch block
+            exc.printStackTrace();
+        }
 	}
 
 }

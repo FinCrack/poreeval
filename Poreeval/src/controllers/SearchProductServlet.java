@@ -1,11 +1,19 @@
 package controllers;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import data.Product;
+import models.ProductModel;
 
 /**
  * Servlet implementation class SearchProductServlet
@@ -26,16 +34,41 @@ public class SearchProductServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	    
+	    String searchStringEan = request.getParameter("searchStringEan");
+	    String searchStringName = request.getParameter("searchStringName");
+	    long ean = 0;
+	    
+	    try 
+	    {
+	        ean = Long.parseLong(searchStringEan);
+	    } catch (NumberFormatException ex) {
+	        //blah
+	    }
+	    
+	    ProductModel model = new ProductModel();
+	    
+	    List<Product> searchResults = new ArrayList<Product>();
+	    
+        try {
+            searchResults = model.SearchProducts(ean, searchStringName);
+        } catch (SQLException exc) {
+            // TODO Auto-generated catch block
+            exc.printStackTrace();
+        }
+	    
+	    HttpSession session = request.getSession();
+	    session.setAttribute("searchResults", searchResults);
+	    
+	    request.getRequestDispatcher("welcome.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
+	    
 	}
 
 }

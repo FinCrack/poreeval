@@ -2,6 +2,8 @@ package models;
 
 import java.awt.image.BufferedImage;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import data.Product;
 import dataAccess.ProductDataAccess;
@@ -10,16 +12,38 @@ public class ProductModel {
 
     private ProductDataAccess productDataAccess = new ProductDataAccess();
 
-    public void CreateProduct(int ean, String name, String description,
-        BufferedImage picture) {
+    public void CreateProduct(long ean, String name, String description,
+        BufferedImage picture) throws SQLException {
 
-        Product product = new Product(name, ean, description, picture);
+        Product product = new Product(ean, name, description, picture);
 
-        try {
-            this.productDataAccess.InsertProduct(product);
-        } catch (SQLException exc) {
+        this.productDataAccess.InsertProduct(product);
 
-            exc.printStackTrace();
+    }
+
+    public void UpdateProduct(long ean, String name, String description,
+        BufferedImage picture) throws SQLException {
+
+        Product product = new Product(ean, name, description, picture);
+
+        this.productDataAccess.UpdateProduct(product);
+
+    }
+
+    public List<Product> SearchProducts(long ean, String name)
+        throws SQLException {
+
+        List<Product> productList = new ArrayList<Product>();
+
+        if (ean > 0) {
+            
+            productList = this.productDataAccess.GetProductByEan(ean);
+        } 
+        else {
+
+            productList = this.productDataAccess.GetProductsByName(name);
         }
+
+        return productList;
     }
 }

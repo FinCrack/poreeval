@@ -4,7 +4,7 @@ import java.awt.Image;
 
 public class Product {
 
-    private int ean;
+    private long ean;
 
     private String name;
 
@@ -12,9 +12,11 @@ public class Product {
 
     private Image picture;
     
+    private int rating;
+    
     
 
-    public Product(String name, Integer ean, String description,
+    public Product(long ean, String name, String description,
         Image picture) {
         this.name = name;
         this.ean = ean;
@@ -30,11 +32,11 @@ public class Product {
         this.name = productname;
     }
 
-    public Integer getEan() {
+    public long getEan() {
         return ean;
     }
 
-    public void setEan(Integer ean) {
+    public void setEan(long ean) {
         this.ean = ean;
     }
 
@@ -52,6 +54,14 @@ public class Product {
 
     public void setPicture(Image picture) {
         this.picture = picture;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
 }

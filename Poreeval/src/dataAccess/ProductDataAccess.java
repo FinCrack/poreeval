@@ -1,26 +1,84 @@
 package dataAccess;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import data.Product;
 
 public class ProductDataAccess {
 
-    
-    
-    public void InsertProduct(Product product) throws SQLException
-    {
+    public void InsertProduct(Product product) throws SQLException {
         PreparedStatement psmt = DatabaseConnection.instance.prepareStatement(
             "INSERT INTO PRODUCTS (EAN, NAME, DESCRIPTION, PICTURE) "
-            + "VALUES (?, ?, ?, ?)");
-        
-        psmt.setInt(1, product.getEan());
+                + "VALUES (?, ?, ?, ?)");
+
+        psmt.setLong(1, product.getEan());
         psmt.setString(2, product.getProductname());
         psmt.setString(3, product.getNote());
         // TODO image speichern recherchieren
-        //psmt.setBinaryStream(parameterIndex, x);
-        
+        // psmt.setBinaryStream(parameterIndex, x);
+
         psmt.executeUpdate();
+    }
+
+    public void UpdateProduct(Product product) throws SQLException {
+        PreparedStatement psmt =
+            DatabaseConnection.getConnection().prepareStatement(
+                "UPDATE PRODUCTS SET EAN = ?, NAME = ?, DESCRIPTION = ?, PICTURE = ?)");
+
+        psmt.setLong(1, product.getEan());
+        psmt.setString(2, product.getProductname());
+        psmt.setString(3, product.getNote());
+        // TODO image speichern recherchieren
+        // psmt.setBinaryStream(parameterIndex, x);
+
+        psmt.executeUpdate();
+    }
+
+    public List<Product> GetProductByEan(long ean) throws SQLException {
+
+        PreparedStatement psmt =
+            DatabaseConnection.getConnection().prepareStatement(
+                "SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS WHERE EAN = ?");
+
+        psmt.setLong(1, ean);
+
+        ResultSet rs = psmt.executeQuery();
+
+        return this.GetProductsFromResultSet(rs);
+    }
+
+    public List<Product> GetProductsByName(String name) throws SQLException {
+
+        PreparedStatement psmt =
+            DatabaseConnection.getConnection().prepareStatement(
+                "SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS WHERE NAME LIKE \'?\'");
+
+        psmt.setString(1, name);
+
+        ResultSet rs = psmt.executeQuery();
+
+        return this.GetProductsFromResultSet(rs);
+    }
+
+    private List<Product> GetProductsFromResultSet(ResultSet rs)
+        throws SQLException {
+
+        List<Product> productList = new ArrayList<Product>();
+        
+        while (rs.next()) {
+            long ean = rs.getLong(1);
+            String name = rs.getString(2);
+            String description = rs.getString(3);
+            int rating = rs.getInt(4);
+            Product product = new Product(ean, name, description, null);
+            product.setRating(rating);
+            // TODO picture
+        }
+
+        return productList;
     }
 }
