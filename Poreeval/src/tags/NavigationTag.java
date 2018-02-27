@@ -55,7 +55,7 @@ public class NavigationTag extends TagSupport {
 				+ "<a href='createProduct.jsp'>Produkterstellung</a>"
 				+ "</li>"
 				+ "<li>"
-				+ "<a href='editProduct.jsp'>Produkte editieren</a>"
+				+ "<a href='editProduct.jsp'>Produkte bearbeiten</a>"
 				+ "</li>"
 				+ "<li>"
 				+ "<a href='giveReview.jsp'>Review abgeben</a>"
