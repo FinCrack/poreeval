@@ -8,5 +8,10 @@
 <tag>
 	<name>products</name>
 	<tag-class>tags.AllProductsTag</tag-class>
+		<attribute>
+		<name>productList</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
 </tag>
 </taglib>

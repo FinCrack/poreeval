@@ -11,6 +11,6 @@
 </head>
 <body>
 	<nav:navigation></nav:navigation>
-	<allProducts:products></allProducts:products>
+<%-- 	<allProducts:products productList="${ rs }">${ list }</allProducts:products> --%>
 </body>
 </html>
