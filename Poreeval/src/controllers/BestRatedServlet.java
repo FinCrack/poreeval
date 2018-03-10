@@ -40,7 +40,7 @@ public class BestRatedServlet extends HttpServlet {
 
 		List<Product> products;
 		try {
-			products = model.GetAllProducts();
+			products = model.GetBestRatedProducts();
 
 			HttpSession session = request.getSession();
 
@@ -50,6 +50,7 @@ public class BestRatedServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		//TODO redirect auf die welcomepage durch "Servletanbindung"
 	}
 
 	/**

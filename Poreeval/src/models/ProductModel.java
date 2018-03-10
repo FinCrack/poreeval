@@ -50,4 +50,12 @@ public class ProductModel {
     public List<Product> GetAllProducts() throws SQLException {
     	return this.productDataAccess.GetAllProducts();
     }
+    
+    public List<Product> GetBestRatedProducts() throws SQLException {
+    	return this.productDataAccess.GetBestRatedProducts();
+    }
+    
+    public List<Product> GetRecentlyRatedProducts() throws SQLException {
+    	return this.productDataAccess.GetRecentlyRatedProducts();
+    }
 }
