@@ -3,10 +3,13 @@ package helper;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.List;
+
+import data.Product;
 
 public class ResultToTable {
 
-	public String convert(ResultSet rs) {
+	public static String ToTable(ResultSet rs) {
 		String table = "<table>";
 		try {
 			ResultSetMetaData rsmd = rs.getMetaData();
@@ -26,6 +29,21 @@ public class ResultToTable {
 		} catch (SQLException e) {
 			table = "Keine Ergebnisse";
 		}
+		return table;
+	}
+	
+	
+	public static String ToTable(List<Product> products) {
+		String table = "";
+		for (Product product : products) {
+			table += "<table>";
+			table += "<td rowspan='3'>TODO Bild</td>";
+			table += "<td>" + product.getProductname() + "</td>";
+			table += "<tr> <td>" + product.getDescription() + "</td> </tr>";
+			table += "<tr> <td>" + product.getRating() + "</td> </tr>";
+			table += "</table>";
+		}
+		
 		return table;
 	}
 }

@@ -13,7 +13,7 @@ public class CreateProductTag extends TagSupport{
 
 	public int doStartTag() {
 		try {
-			pageContext.getOut().append(getCreateProductForm());
+			this.pageContext.getOut().append(getCreateProductForm());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

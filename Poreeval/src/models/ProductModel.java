@@ -46,4 +46,8 @@ public class ProductModel {
 
         return productList;
     }
+    
+    public List<Product> GetAllProducts() throws SQLException {
+    	return this.productDataAccess.GetAllProducts();
+    }
 }
