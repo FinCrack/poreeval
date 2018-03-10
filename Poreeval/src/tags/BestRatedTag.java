@@ -14,7 +14,7 @@ public class BestRatedTag extends TagSupport {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return SKIP_BODY;
+		return  EVAL_BODY_INCLUDE;
 	}
 	
 	private String getBestRatedProduct() {

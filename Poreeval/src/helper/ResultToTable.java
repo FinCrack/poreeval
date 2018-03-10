@@ -37,7 +37,7 @@ public class ResultToTable {
 		String table = "";
 		for (Product product : products) {
 			table += "<div class='container'>";
-			table += "<table class='table'>";
+			table += "<table class='table table-striped tabled-bordered table-hover table-condensed'>";
 			table += "<td rowspan='3' >TODO Bild</td>";
 			table += "<td class='success'>" + product.getProductname() + "</td>";
 			table += "<tr><td>" + product.getDescription() + "</td></tr>";
