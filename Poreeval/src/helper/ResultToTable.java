@@ -36,12 +36,14 @@ public class ResultToTable {
 	public static String ToTable(List<Product> products) {
 		String table = "";
 		for (Product product : products) {
-			table += "<table>";
-			table += "<td rowspan='3'>TODO Bild</td>";
-			table += "<td>" + product.getProductname() + "</td>";
-			table += "<tr> <td>" + product.getDescription() + "</td> </tr>";
-			table += "<tr> <td>" + product.getRating() + "</td> </tr>";
+			table += "<div class='container'>";
+			table += "<table class='table'>";
+			table += "<td rowspan='3' >TODO Bild</td>";
+			table += "<td class='success'>" + product.getProductname() + "</td>";
+			table += "<tr><td>" + product.getDescription() + "</td></tr>";
+			table += "<tr><td>" + product.getRating() + "</td></tr>";
 			table += "</table>";
+			table += "</div>";
 		}
 		
 		return table;
