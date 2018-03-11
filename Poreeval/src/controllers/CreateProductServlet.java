@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import data.User;
 import models.ProductModel;
 
 /**
@@ -46,8 +48,9 @@ public class CreateProductServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		long ean = Long.parseLong(request.getParameter("ean"));
 		String description = request.getParameter("description");
-		
 		ProductModel model = new ProductModel();
+		
+		
 		try {
             model.CreateProduct(ean, name, description, null);
         } catch (SQLException exc) {
