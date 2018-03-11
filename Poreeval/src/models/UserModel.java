@@ -13,8 +13,11 @@ public class UserModel {
     public void CreateUser(String userName, String password, String password2, int privilege,
         String email) throws SQLException {
 
+    	if(!userName.matches("^[a-zA-Z0-9]+$")){
+    		throw new InputMismatchException("Nur Buchstaben und Zahlen zulässig!");
+    	}
         if (!password.equals(password2)) {
-            throw new InputMismatchException("PasswÃ¶rter stimmen nicht Ã¼berein.");
+            throw new InputMismatchException("Passwörter stimmen nicht überein.");
         }
         
         User user = new User(userName, password, privilege, email);
