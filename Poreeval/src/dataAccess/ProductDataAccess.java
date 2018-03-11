@@ -93,8 +93,6 @@ public class ProductDataAccess {
 				+ "FROM PRODUCTS P "
 				+ "INNER JOIN REVIEWS R ON P.EAN = R.EAN  "
 				+ "ORDER BY R.REVIEW_DATE DESC");
-	
-		//TODO Datum einbauen und dar�ber selektieren 
 		
 		ResultSet rs = psmt.executeQuery();
 		
