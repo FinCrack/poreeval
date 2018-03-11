@@ -2,16 +2,11 @@
 <!DOCTYPE xml>
 
 <taglib>
-<tlib-version>1.0</tlib-version>
-<jsp-version>2.0</jsp-version>
-<short-name>AllProducts Tag</short-name>
-<tag>
-	<name>products</name>
-	<tag-class>tags.AllProductsTag</tag-class>
-		<attribute>
-		<name>productList</name>
-		<required>true</required>
-		<rtexprvalue>true</rtexprvalue>
-	</attribute>
-</tag>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>2.0</jsp-version>
+	<short-name>AllProducts Tag</short-name>
+	<tag>
+		<name>products</name>
+		<tag-class>tags.AllProductsTag</tag-class>
+	</tag>
 </taglib>
