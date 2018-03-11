@@ -51,6 +51,7 @@ public class BestRatedServlet extends HttpServlet {
 		}
 		
 		//TODO redirect auf die welcomepage durch "Servletanbindung"
+		request.getRequestDispatcher("welcome.jsp").forward(request, response);
 	}
 
 	/**
