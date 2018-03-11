@@ -11,16 +11,16 @@
 <title>Poreeval</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body onload="redirect()">
 	<nav:navigation></nav:navigation>
 	<wel:welcome></wel:welcome>
 
 	<table>
 		<tr>
-			<rating:recently></rating:recently>
+			<rating:best></rating:best> 
 		</tr>
 		<tr>
-			<rating:best></rating:best>
+			<rating:recently></rating:recently>
 		</tr>
 		<tr>
 			<rating:random></rating:random>

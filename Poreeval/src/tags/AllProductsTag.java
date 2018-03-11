@@ -1,61 +1,41 @@
 package tags;
 
 import java.io.IOException;
-import java.io.Writer;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
 
-public class AllProductsTag extends TagSupport{
+import data.Product;
+import helper.ResultToTable;
+
+public class AllProductsTag extends TagSupport {
 
 	private static final long serialVersionUID = 1L;;
+	private List<Product> products = new ArrayList<Product>();
 	
-	private ResultSet productList;
-	private String list;
-	private Writer out;
+
 	
 	@Override
 	public int doStartTag() throws JspException {
-		list = "<ul>";
+		
 		try {
-			productList.next();
-			out = pageContext.getOut();
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			this.pageContext.getOut().append(this.GetAllProducts());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
 		return EVAL_BODY_INCLUDE;
 	}
 	
-	@Override
-	public int doAfterBody() throws JspException {
-		try {
-			list += "<li>" + productList.getLong(1) + productList.getString(2) 
-			+ productList.getString(3) + "</li>";
-			if (productList.next()) {
-				return EVAL_BODY_AGAIN;
-			}
-			list += "</ul>";
-			out.append(list).flush();
-		} catch (SQLException e) {
-			try {
-				out.append(e.getMessage()).flush();
-			} catch (IOException io) {
-				io.printStackTrace();
-			};
-		} catch (IOException io) {
-			io.printStackTrace();
-		}
-		return EVAL_PAGE;
+	@SuppressWarnings("unchecked")
+	public String GetAllProducts() {
+		HttpSession session = this.pageContext.getSession();
+		products = (List<Product>) session.getAttribute("products");
+		
+		return ResultToTable.ToTable(products);
 	}
-
-	public ResultSet getProductList() {
-		return productList;
-	}
-
-	public void setProductList(ResultSet productList) {
-		this.productList = productList;
-	}
-
 }

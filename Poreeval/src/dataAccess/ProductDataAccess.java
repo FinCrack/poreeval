@@ -29,7 +29,6 @@ public class ProductDataAccess {
 		psmt.executeUpdate();
 	}
 
-
 	public void UpdateProduct(Product product) throws SQLException {
 		PreparedStatement psmt = this.connection
 				.prepareStatement("UPDATE PRODUCTS SET EAN = ?, NAME = ?, DESCRIPTION = ?, PICTURE = ?)");
@@ -77,6 +76,26 @@ public class ProductDataAccess {
 
         return this.GetProductsFromResultSet(rs);
 
+	}
+	
+	public List<Product> GetBestRatedProducts() throws SQLException {
+		PreparedStatement psmt = this.connection.prepareStatement(
+				"SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS ORDER BY RATING DESC");
+		
+		ResultSet rs = psmt.executeQuery();
+		
+		return this.GetProductsFromResultSet(rs);
+	}
+	
+	public List<Product> GetRecentlyRatedProducts() throws SQLException {
+		PreparedStatement psmt = this.connection.prepareStatement(
+				"SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS ORDER BY RATING DESC");
+	
+		//TODO Datum einbauen und darüber selektieren 
+		
+		ResultSet rs = psmt.executeQuery();
+		
+		return this.GetProductsFromResultSet(rs);
 	}
 	
 	private List<Product> GetProductsFromResultSet(ResultSet rs) throws SQLException {

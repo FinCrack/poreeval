@@ -46,7 +46,7 @@ public class CreateProductServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		long ean = Long.parseLong(request.getParameter("ean"));
 		String description = request.getParameter("description");
-
+		
 		ProductModel model = new ProductModel();
 		try {
             model.CreateProduct(ean, name, description, null);
