@@ -15,7 +15,10 @@ public class BestRatedTag extends TagSupport {
 	private List<Product> bestRatedProducts = new ArrayList<Product>();
 	
 	public int doStartTag() {
+		String bestHeader = 
+				"<h3>Am besten bewertete Produkte</h3>";
 		try {
+			pageContext.getOut().append(bestHeader);
 			pageContext.getOut().append(this.getBestRatedProduct());
 		} catch (Exception e) {
 			e.printStackTrace();

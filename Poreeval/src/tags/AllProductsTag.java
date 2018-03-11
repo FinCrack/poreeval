@@ -16,7 +16,6 @@ public class AllProductsTag extends TagSupport {
 	private List<Product> products = new ArrayList<Product>();
 	
 
-	
 	@Override
 	public int doStartTag() throws JspException {
 		

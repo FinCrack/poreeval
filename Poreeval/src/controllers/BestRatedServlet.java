@@ -46,7 +46,6 @@ public class BestRatedServlet extends HttpServlet {
 
 			session.setAttribute("bestRatedProducts", products);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

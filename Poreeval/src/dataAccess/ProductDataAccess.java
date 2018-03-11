@@ -91,7 +91,7 @@ public class ProductDataAccess {
 	
 	public List<Product> GetRecentlyRatedProducts() throws SQLException {
 		PreparedStatement psmt = this.connection.prepareStatement(
-				"SELECT P.EAN, P.NAME, P.DESCRIPTION, P.PICTURE, AVG_RATING(EAN) "
+				"SELECT P.EAN, P.NAME, P.DESCRIPTION, P.PICTURE, AVG_RATING(P.EAN) "
 				+ "FROM PRODUCTS P "
 				+ "INNER JOIN REVIEWS R ON P.EAN = R.EAN  "
 				+ "ORDER BY R.REVIEW_DATE DESC");

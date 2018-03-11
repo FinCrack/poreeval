@@ -44,13 +44,12 @@ public class RecentlyRatedServlet extends HttpServlet {
 
 			HttpSession session = request.getSession();
 
-			session.setAttribute("products", products);
+			session.setAttribute("recentlyRatedProducts", products);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		//TODO redirect auf die welcomepage durch "Servletanbindung"
+		request.getRequestDispatcher("welcome.jsp").forward(request, response);
 	}
 
 	/**
