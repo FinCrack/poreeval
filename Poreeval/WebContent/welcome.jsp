@@ -22,9 +22,6 @@
 		<tr>
 			<rating:recently></rating:recently>
 		</tr>
-		<tr>
-			<rating:random></rating:random>
-		</tr>
 	</table>
 	<searchR:search></searchR:search>
 

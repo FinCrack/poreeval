@@ -13,8 +13,4 @@
 	<name>best</name>
 	<tag-class>tags.BestRatedTag</tag-class>
 </tag>
-<tag>
-	<name>random</name>
-	<tag-class>tags.RandomRatedTag</tag-class>
-</tag>
 </taglib>
