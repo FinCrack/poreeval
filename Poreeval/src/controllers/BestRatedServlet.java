@@ -17,7 +17,7 @@ import models.ProductModel;
 /**
  * Servlet implementation class BestProductServlet
  */
-@WebServlet("/BestProductServlet")
+@WebServlet("/BestRatedServlet")
 public class BestRatedServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -44,13 +44,12 @@ public class BestRatedServlet extends HttpServlet {
 
 			HttpSession session = request.getSession();
 
-			session.setAttribute("products", products);
+			session.setAttribute("bestRatedProducts", products);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		//TODO redirect auf die welcomepage durch "Servletanbindung"
+
 		request.getRequestDispatcher("welcome.jsp").forward(request, response);
 	}
 

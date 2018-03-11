@@ -80,7 +80,9 @@ public class ProductDataAccess {
 	
 	public List<Product> GetBestRatedProducts() throws SQLException {
 		PreparedStatement psmt = this.connection.prepareStatement(
-				"SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS ORDER BY RATING DESC");
+				"SELECT P.EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(P.EAN) AS AVERAGE_RATING "
+				+ "FROM PRODUCTS P INNER JOIN REVIEWS R ON P.EAN = R.EAN "
+				+ "GROUP BY P.EAN, P.NAME, P.DESCRIPTION, P.PICTURE ORDER BY AVERAGE_RATING DESC");
 		
 		ResultSet rs = psmt.executeQuery();
 		
@@ -107,7 +109,7 @@ public class ProductDataAccess {
 			long ean = rs.getLong(1);
 			String name = rs.getString(2);
 			String description = rs.getString(3);
-			int rating = rs.getInt(4);
+			int rating = rs.getInt(5);
 			Product product = new Product(ean, name, description, null);
 			product.setRating(rating);
 			// TODO picture

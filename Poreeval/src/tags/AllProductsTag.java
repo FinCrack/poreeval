@@ -1,6 +1,5 @@
 package tags;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +22,7 @@ public class AllProductsTag extends TagSupport {
 		
 		try {
 			this.pageContext.getOut().append(this.GetAllProducts());
-		} catch (IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
