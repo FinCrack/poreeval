@@ -35,7 +35,7 @@ public class CreateProductTag extends TagSupport{
 					+ "</div>"
 					+ "<div class='form-group'>	"
 							+ "<label>EAN-Code</label> "
-							+ "<input type='number' class='form-control' placeholder='EAN ist optional' name='ean'> "
+							+ "<input type='number' class='form-control' placeholder='EAN eingeben' name='ean'> "
 					+ "</div>"
 					+ "<div class='form-group'> "
 							+ "<label>Notiz</label> "

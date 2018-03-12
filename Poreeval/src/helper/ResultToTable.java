@@ -49,7 +49,39 @@ public class ResultToTable {
 			table += "</table>";
 			table += "</div>";
 		}
-		
 		return table;
 	}
 }
+
+
+// Zu verbessernde Variante, TD in der der Produktname steht, soll oncklick die Detailansicht eines Produkts anzeigen
+// 
+//
+//
+//	public static String ToTable(List<Product> products) {
+//		String table = "";
+//		for (Product product : products) {
+//			table += "<div class='container'>";
+//			table += "<table class='table table-striped tabled-bordered table-hover table-condensed'>";
+//			table += "<td rowspan='3' >TODO Bild</td>";
+//	
+//			table += "<td class='success' onclick='showProductDetails(this)'>" + product.getProductname() + "</td>";
+//
+//			table += "<tr><td>" + product.getDescription() + "</td></tr>";
+//			table += "<tr><td>" + product.getRating() + "</td></tr>";
+//			table += "</table>";
+//			table += "</div>";
+//		}
+//		return table;
+//	}
+//	
+//	<script>
+//		function showProductDetails() {
+//			window.location.href = "showProductDetails.jsp"
+//			
+//		}
+//		
+//  </script>
+//	
+//	
+//	

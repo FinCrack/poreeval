@@ -70,7 +70,6 @@ public class LoginServlet extends HttpServlet {
 
             session.setAttribute("user", user);   
         }
-        
         request.getRequestDispatcher("welcome.jsp").forward(request,
             response);
 
