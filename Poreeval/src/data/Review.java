@@ -2,6 +2,9 @@ package data;
 
 import java.util.Date;
 
+/** @author Lennard Brunke 259315
+ * 
+ */
 public class Review {
 
     private int id;

@@ -9,6 +9,10 @@ import java.util.List;
 
 import data.Product;
 
+
+/** @author Lennard Brunke 259315
+ * 
+ */
 public class ProductDataAccess {
 
 	private Connection connection = DatabaseConnection.getConnection();

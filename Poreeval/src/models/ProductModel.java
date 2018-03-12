@@ -8,6 +8,9 @@ import java.util.List;
 import data.Product;
 import dataAccess.ProductDataAccess;
 
+/** @author Lennard Brunke 259315
+ * 
+ */
 public class ProductModel {
 
     private ProductDataAccess productDataAccess = new ProductDataAccess();

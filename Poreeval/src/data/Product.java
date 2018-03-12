@@ -2,6 +2,9 @@ package data;
 
 import java.awt.Image;
 
+/** @author Lennard Brunke 259315
+ * 
+ */
 public class Product {
 
     private long ean;

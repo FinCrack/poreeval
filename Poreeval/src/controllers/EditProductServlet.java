@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import models.ProductModel;
 
-/**
- * Servlet implementation class EditProductServlet
+/** @author Lennard Brunke 259315
+ * 
  */
 @WebServlet("/EditProductServlet")
 public class EditProductServlet extends HttpServlet {

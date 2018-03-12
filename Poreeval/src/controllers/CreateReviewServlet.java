@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class CreateReviewServlet
+/** @author Lennard Brunke 259315
+ * 
  */
 @WebServlet("/CreateReviewServlet")
 public class CreateReviewServlet extends HttpServlet {

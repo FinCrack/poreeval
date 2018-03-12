@@ -10,6 +10,9 @@ import javax.servlet.jsp.tagext.TagSupport;
 import data.Product;
 import helper.ResultToTable;
 
+/** @author Lennard Brunke 259315
+ * 
+ */
 public class SearchResultTag extends TagSupport{
 
 	private static final long serialVersionUID = 1L;
