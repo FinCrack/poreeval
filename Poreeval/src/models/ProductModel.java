@@ -38,9 +38,8 @@ public class ProductModel {
         if (ean > 0) {
             
             productList = this.productDataAccess.GetProductByEan(ean);
-        } 
-        else {
-
+        } else {
+            
             productList = this.productDataAccess.GetProductsByName(name);
         }
 

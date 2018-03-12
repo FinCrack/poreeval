@@ -35,15 +35,14 @@ public class SearchProductServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    
-	    String searchStringEan = request.getParameter("searchStringEan");
 	    String searchStringName = request.getParameter("searchStringName");
 	    long ean = 0;
 	    
 	    try 
 	    {
-	        ean = Long.parseLong(searchStringEan);
+	        ean = Long.parseUnsignedLong(searchStringName);
 	    } catch (NumberFormatException ex) {
-	        //blah
+	        //nix
 	    }
 	    
 	    ProductModel model = new ProductModel();

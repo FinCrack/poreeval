@@ -58,7 +58,7 @@ public class ProductDataAccess {
 	public List<Product> GetProductsByName(String name) throws SQLException {
 
 		PreparedStatement psmt = this.connection.prepareStatement(
-				"SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS WHERE NAME LIKE ?");
+				"SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS WHERE NAME ILIKE ?");
 
 		psmt.setString(1, "%" + name + "%");
 

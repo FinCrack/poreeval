@@ -22,6 +22,8 @@
 	<nav:navigation></nav:navigation>
 	<wel:welcome></wel:welcome>
 
+    ${ createUserMessage } ${ errorMessage }
+
 	<table>
 		<tr>
 			<rating:best></rating:best>
@@ -31,8 +33,6 @@
 		</tr>
 	</table>
 	<searchR:search></searchR:search>
-
-	${ createUserMessage } ${ searchResults } ${ user.userName }
 
 </body>
 </html>

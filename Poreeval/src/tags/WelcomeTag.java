@@ -18,13 +18,13 @@ public class WelcomeTag extends TagSupport{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return SKIP_BODY;
+		return EVAL_BODY_INCLUDE;
 	}
 
 	private String getWelcomeContent() {
 		String welcomeContent = 
 			   	  "<div class='text-center h1'>"
-			   		  + "<h1> Poreeval - Ihr Portal für Lebensmittelevaluation </h1>"
+			   		  + "<h1> Poreeval - Ihr Portal fï¿½r Lebensmittelevaluation </h1>"
 				+ "</div>";
 		return welcomeContent;
 	}
