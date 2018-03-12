@@ -1,5 +1,7 @@
 package dataAccess;
-
+/**
+ * @author Christian Lindenberg, 235372
+ */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

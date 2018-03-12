@@ -1,5 +1,7 @@
 package data;
-
+/**
+ * @author Christian Lindenberg, 235372
+ */
 public class User {
 
 	private int id;

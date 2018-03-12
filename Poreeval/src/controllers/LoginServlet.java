@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import data.User;
 import models.UserModel;
-
+/**
+ * @author Christian Lindenberg, 235372
+ */
 /**
  * Servlet implementation class LoginServlet
  */
