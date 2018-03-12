@@ -45,9 +45,14 @@ public class CheckUserPrivilegeServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
+		String target = request.getParameter("target");
+		int requiredPrivilege = Integer.parseInt(request.getParameter("requiredPrivilege"));
 		User user = (User) session.getAttribute("user");
 		boolean allowEdit;
 		boolean allowDelete;
+		
+		
+		if(user.getPrivilege() == requiredPrivilege)
 		
 		switch (user.getPrivilege()) {
 		case 1: allowEdit = true;
