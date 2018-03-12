@@ -22,7 +22,8 @@ public class CreateUserTag extends TagSupport {
 	}
 
 	private String getCreateUserForm() {
-		String createUserForm = "<h1 style='text-align: center'>Bitte geben Sie ihre Daten an!</h1>"
+		String createUserForm = 
+					"<h1 style='text-align: center'>Bitte geben Sie ihre Daten an!</h1>"
 					+ "<div class='container'>"
 					+ "<form action='CreateUserServlet' method='post'>"
 					+ "<div class='form-group'>"

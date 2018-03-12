@@ -19,7 +19,6 @@
  	<c:if test="${ recentlyRatedProducts == null }">
 		<jsp:forward page="/RecentlyRatedServlet" />
 	</c:if> 
-	
 	<nav:navigation></nav:navigation>
 	<wel:welcome></wel:welcome>
 
