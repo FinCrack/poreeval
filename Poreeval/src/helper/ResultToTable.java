@@ -7,6 +7,10 @@ import java.util.List;
 
 import data.Product;
 
+/*
+ * @author Jannik Bukowski, 235502
+ */
+
 public class ResultToTable {
 
 	public static String ToTable(ResultSet rs) {

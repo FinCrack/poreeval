@@ -4,6 +4,10 @@ import java.io.IOException;
 
 import javax.servlet.jsp.tagext.TagSupport;
 
+/*
+ * @author Jannik Bukowski, 235502
+ */
+
 public class NavigationTag extends TagSupport {
 	private static final long serialVersionUID = 1L;
 

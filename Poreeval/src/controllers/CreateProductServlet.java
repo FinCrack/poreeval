@@ -8,13 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import data.User;
 import models.ProductModel;
 
-/**
- * Servlet implementation class CreateProductServlet
+/*
+ * @author Jannik Bukowski, 235502
  */
 @WebServlet("/CreateProductServlet")
 public class CreateProductServlet extends HttpServlet {

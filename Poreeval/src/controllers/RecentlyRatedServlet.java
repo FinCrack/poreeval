@@ -14,8 +14,8 @@ import javax.servlet.http.HttpSession;
 import data.Product;
 import models.ProductModel;
 
-/**
- * Servlet implementation class RecentlyRatedServlet
+/*
+ * @author Jannik Bukowski, 235502
  */
 @WebServlet("/RecentlyRatedServlet")
 public class RecentlyRatedServlet extends HttpServlet {

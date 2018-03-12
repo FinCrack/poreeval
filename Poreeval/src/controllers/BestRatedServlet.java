@@ -14,8 +14,8 @@ import javax.servlet.http.HttpSession;
 import data.Product;
 import models.ProductModel;
 
-/**
- * Servlet implementation class BestProductServlet
+/*
+ * @author Jannik Bukowski, 235502
  */
 @WebServlet("/BestRatedServlet")
 public class BestRatedServlet extends HttpServlet {

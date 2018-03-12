@@ -14,9 +14,8 @@ import javax.servlet.http.HttpSession;
 import data.Product;
 import models.ProductModel;
 
-
-/**
- * Servlet implementation class AllProductServlet
+/*
+ * @author Jannik Bukowski, 235502
  */
 @WebServlet("/AllProductsServlet")
 public class AllProductsServlet extends HttpServlet {

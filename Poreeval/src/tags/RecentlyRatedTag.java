@@ -9,11 +9,13 @@ import javax.servlet.jsp.tagext.TagSupport;
 import data.Product;
 import helper.ResultToTable;
 
+/*
+ * @author Jannik Bukowski, 235502
+ */
+
 public class RecentlyRatedTag extends TagSupport {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private List<Product> recentlyRatedProducts = new ArrayList<Product>();
 	
