@@ -51,9 +51,11 @@ public class CheckUserPrivilegeServlet extends HttpServlet {
 
 		
 		if(user.getPrivilege() == requiredPrivilege) {
-		    //forward to dispatchTarget
+			request.getRequestDispatcher(dispatchTarget).forward(request, response);
 		} else {
-		    //errormessage + forward zu welcome
+			String errormsg = "Nicht ausreichende Privilegien!";
+			request.setAttribute("errormsg", errormsg);
+			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		}
 		
 	}
