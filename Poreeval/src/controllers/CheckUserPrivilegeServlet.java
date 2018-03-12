@@ -46,13 +46,19 @@ public class CheckUserPrivilegeServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-
+		boolean allowEdit;
+		boolean allowDelete;
+		
 		switch (user.getPrivilege()) {
-		case 1:
+		case 1: allowEdit = true;
+				allowDelete = true;
 			break;
-		case 2:
+		case 2:	allowEdit = true;
+				allowDelete = true;
 			break;
-		case 3:
+		case 3:	allowEdit = false;
+				allowDelete = false;
+			break;
 		default:
 			break;
 		}
