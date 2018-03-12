@@ -12,6 +12,7 @@ import helper.ResultToTable;
 
 /** @author Lennard Brunke 259315
  * 
+ * 
  */
 public class SearchResultTag extends TagSupport{
 
