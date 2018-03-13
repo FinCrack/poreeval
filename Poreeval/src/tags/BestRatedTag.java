@@ -20,7 +20,7 @@ public class BestRatedTag extends TagSupport {
 	
 	public int doStartTag() {
 		String bestHeader = 
-				"<h3>Am besten bewertete Produkte</h3>";
+				"<h3 style='text-align: center;'>Am besten bewertete Produkte</h3>";
 		try {
 			pageContext.getOut().append(bestHeader);
 			pageContext.getOut().append(this.getBestRatedProduct());

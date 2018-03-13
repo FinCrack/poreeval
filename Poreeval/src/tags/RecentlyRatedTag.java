@@ -21,7 +21,7 @@ public class RecentlyRatedTag extends TagSupport {
 	
 	public int doStartTag() {
 		String recentlyHeader = 
-				"<h3>Zuletzt bewertete Produkte</h3>";
+				"<h3 style='text-align: center;'>Zuletzt bewertete Produkte</h3>";
 		try {
 			pageContext.getOut().append(recentlyHeader);
 			pageContext.getOut().append(this.getRecentlyRatedProduct());

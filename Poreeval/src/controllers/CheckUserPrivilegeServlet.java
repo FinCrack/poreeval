@@ -50,7 +50,7 @@ public class CheckUserPrivilegeServlet extends HttpServlet {
 		User user = (User) session.getAttribute("user");
 
 		
-		if(user.getPrivilege() <= requiredPrivilege) {
+		if(user.getPrivilege() >= requiredPrivilege) {
 			request.getRequestDispatcher(dispatchTarget).forward(request, response);
 		} else {
 			String errormsg = "Nicht ausreichende Privilegien!";
