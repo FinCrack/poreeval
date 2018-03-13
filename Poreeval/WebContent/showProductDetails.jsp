@@ -10,5 +10,6 @@
 </head>
 <body>
 	<nav:navigation></nav:navigation>
+	<h3>Detailansicht Ihres gewählten Produkts</h3>
 </body>
 </html>
