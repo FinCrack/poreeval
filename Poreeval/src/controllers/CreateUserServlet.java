@@ -63,10 +63,10 @@ public class CreateUserServlet extends HttpServlet {
 
 		} catch (SQLException exc) {
 			createUserMessage = "Fehler beim Erstellen des Benutzers: \n" + exc.getMessage();
-		} catch (InputMismatchException exc) {
-			createUserMessage = "Passwoerter stimmen nicht ueberein. \n" + exc.getMessage();
 		} catch (StringIndexOutOfBoundsException exc) {
 			createUserMessage = "Passwoerter zu kurz, mindestens 6 Zeichen: \n" + exc.getMessage();
+		} catch (InputMismatchException exc) {
+			createUserMessage = "Passwoerter stimmen nicht ueberein. \n" + exc.getMessage();
 		}
 
 		session.setAttribute("createUserMessage", createUserMessage);
