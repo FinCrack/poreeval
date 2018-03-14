@@ -14,10 +14,10 @@ public class ResultToTable {
 		String table = "";
 		for (Product product : products) {
 			table += "<table class='table table-striped tabled-bordered table-hover table-condensed'>";
-			table += "<td rowspan='3'><img src='https://www.spirulina.pl/wp-content/uploads/2015/07/naturalny-produkt.jpg'/></td>";
+			table += "<td rowspan='3' style='width: 25%'><img src='https://www.spirulina.pl/wp-content/uploads/2015/07/naturalny-produkt.jpg'/></td>";
 			table += "<td><a href='showProductDetails.jsp' class='list-group-item active'>" + product.getProductname() + "</a></td>";
-			table += "<tr><td style='position: relative;'>" + product.getDescription() + "</td></tr>";
-			table += "<tr><td style='position: relative;'>" + product.getRating() + "</td></tr>";
+			table += "<tr><td style='width: 75%'>" + product.getDescription() + "</td></tr>";
+			table += "<tr><td style='width: 75%'>" + product.getRating() + "</td></tr>";
 			table += "</table>";
 		}
 		return table;
