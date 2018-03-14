@@ -3,8 +3,6 @@ package models;
  * @author Christian Lindenberg, 235372
  */
 import java.sql.SQLException;
-import java.util.InputMismatchException;
-
 import data.User;
 import dataAccess.UserDataAccess;
 

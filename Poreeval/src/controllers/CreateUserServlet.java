@@ -2,14 +2,14 @@ package controllers;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.InputMismatchException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import data.User;
 import models.UserModel;
 
 /**
@@ -60,15 +60,22 @@ public class CreateUserServlet extends HttpServlet {
 		try {
 			model.CreateUser(userName, password, password2, privilege, email);
 			createUserMessage = "Benutzer wurde erfolgreich angelegt...";
+			User user = model.LoginUser(userName, password);
+			session.setAttribute("user", user);
+			session.setAttribute("message", createUserMessage);
+			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 
 		} catch (SQLException exc) {
-		    createUserMessage = "Fehler beim Erstellen des Benutzers: \n" + exc.getMessage();
+			createUserMessage = "Fehler beim Erstellen des Benutzers: \n" + exc.getMessage();
+			session.setAttribute("message", createUserMessage);
+			request.getRequestDispatcher("createUser.jsp").forward(request, response);
 		} catch (Exception exc) {
 			createUserMessage = exc.getMessage();
-		} 
+			session.setAttribute("message", createUserMessage);
+			request.getRequestDispatcher("createUser.jsp").forward(request, response);
+		}
 
-		session.setAttribute("message", createUserMessage);
-		request.getRequestDispatcher("createUser.jsp").forward(request, response);
+		
 	}
 
 }
