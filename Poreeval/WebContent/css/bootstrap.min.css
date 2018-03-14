@@ -187,8 +187,10 @@ optgroup {
 
 table {
 	border-spacing: 0;
-	border-collapse: collapse
+	border-collapse: separate;
 }
+
+
 
 td, th {
 	padding: 0
@@ -1433,7 +1435,8 @@ hr {
 	height: auto;
 	margin: 0;
 	overflow: visible;
-	clip: auto
+	clip: auto;
+	
 }
 
 [role=button] {
@@ -1827,10 +1830,10 @@ pre code {
 }
 
 .container {
-	padding-right: 15px;
-	padding-left: 15px;
-	margin-right: auto;
-	margin-left: auto;
+ 	padding-right: 0px;
+	padding-left: 30px;
+	margin-right: 30px;
+	margin-left: 30px; 
 }
 
 @media ( min-width :768px) {
@@ -2589,10 +2592,10 @@ th {
 
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th,
 	.table>thead>tr>td, .table>thead>tr>th {
-	padding: 8px;
+	padding: 8px; 
 	line-height: 1.42857143;
 	vertical-align: top;
-	border-top: 1px solid #ddd
+	border-top: 1px solid #ddd 
 }
 
 .table>thead>tr>th {
@@ -2618,7 +2621,7 @@ th {
 .table-condensed>tbody>tr>td, .table-condensed>tbody>tr>th,
 	.table-condensed>tfoot>tr>td, .table-condensed>tfoot>tr>th,
 	.table-condensed>thead>tr>td, .table-condensed>thead>tr>th {
-	padding: 5px
+	padding: 0px
 }
 
 .table-bordered {
@@ -4526,7 +4529,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 }
 
 .navbar {
-	position: relativ;
+	position: relative;
 	min-height: 50px;
 	margin-bottom: 20px;
 	border: 1px solid transparent
@@ -4603,7 +4606,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	.container-fluid>.navbar-collapse, .container-fluid>.navbar-header,
 		.container>.navbar-collapse, .container>.navbar-header {
 		margin-right: 0;
-		margin-left: 0
+		margin-left: 0;
 	}
 }
 
@@ -5431,10 +5434,10 @@ a.badge:focus, a.badge:hover {
 	}
 	.container .jumbotron, .container-fluid .jumbotron {
 		padding-right: 60px;
-		padding-left: 60px
+		padding-left: 60px;
 	}
 	.jumbotron .h1, .jumbotron h1 {
-		font-size: 63px
+		font-size: 20px;
 	}
 }
 
