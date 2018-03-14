@@ -68,7 +68,7 @@ public class CreateUserServlet extends HttpServlet {
 		} 
 
 		session.setAttribute("message", createUserMessage);
-		request.getRequestDispatcher("welcome.jsp").forward(request, response);
+		request.getRequestDispatcher("createUser.jsp").forward(request, response);
 	}
 
 }
