@@ -10,7 +10,9 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+
 	<nav:navigation></nav:navigation>
+	${ message }
 	<user:user></user:user>
 </body>
 </html>
