@@ -59,6 +59,7 @@ public class CheckUserPrivilegeServlet extends HttpServlet {
         } else if (user.getPrivilege() <= requiredPrivilege) {
             request.getRequestDispatcher(dispatchTarget).forward(request,
                 response);
+            return;
         } else {
             request.setAttribute("message", "Nicht genügend Rechte!");
         }
