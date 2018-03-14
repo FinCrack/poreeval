@@ -18,53 +18,50 @@ import data.User;
  */
 @WebServlet("/CheckUserPrivilegeServlet")
 public class CheckUserPrivilegeServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CheckUserPrivilegeServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public CheckUserPrivilegeServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-     *      response)
-     */
-    protected void doGet(HttpServletRequest request,
-        HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        response.getWriter().append("Served at: ")
-            .append(request.getContextPath());
-    }
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
 
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-     *      response)
-     */
-    protected void doPost(HttpServletRequest request,
-        HttpServletResponse response) throws ServletException, IOException {
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-        HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 
-        String dispatchTarget = request.getParameter("dispatchTarget");
-        int requiredPrivilege =
-            Integer.parseInt(request.getParameter("requiredPrivilege"));
-        User user = (User) session.getAttribute("user");
+		String dispatchTarget = request.getParameter("dispatchTarget");
+		int requiredPrivilege = Integer.parseInt(request.getParameter("requiredPrivilege"));
+		User user = (User) session.getAttribute("user");
 
-        if (user == null) {
-            request.setAttribute("message", "Bitte einloggen!");
+		if (user == null) {
+			request.setAttribute("message", "Bitte einloggen!");
 
-        } else if (user.getPrivilege() <= requiredPrivilege) {
-            request.getRequestDispatcher(dispatchTarget).forward(request,
-                response);
-            return;
-        } else {
-            request.setAttribute("message", "Nicht genügend Rechte!");
-        }
+		} else if (user.getPrivilege() <= requiredPrivilege) {
+			request.getRequestDispatcher(dispatchTarget).forward(request, response);
+			return;
+		} else {
+			request.setAttribute("message", "Nicht genügend Rechte!");
+		}
 
-        request.getRequestDispatcher("welcome.jsp").forward(request, response);
-    }
+		request.getRequestDispatcher("welcome.jsp").forward(request, response);
+	}
 
 }

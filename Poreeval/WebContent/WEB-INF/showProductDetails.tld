@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<taglib>
+<tlib-version>1.0</tlib-version>
+<jsp-version>2.0</jsp-version>
+<short-name>ShowProductDetails Tag</short-name>
+<tag>
+	<name>detail</name>
+	<tag-class>tags.ShowProductDetailsTag</tag-class>
+</tag>
+</taglib>
