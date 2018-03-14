@@ -13,16 +13,16 @@ public class UserModel {
     private UserDataAccess userDataAccess = new UserDataAccess();
 
     public void CreateUser(String userName, String password, String password2, int privilege,
-        String email) throws SQLException {
+        String email) throws Exception {
 
     	if(!userName.matches("^[a-zA-Z0-9]+$")){
-    		throw new InputMismatchException("Nur Buchstaben und Zahlen bei dem Usernamen zul‰ssig!");
+    		throw new Exception("Nur Buchstaben und Zahlen bei dem Usernamen zul√§ssig!");
     	}
     	if (password.length() < 6) {
-        	throw new StringIndexOutOfBoundsException("Passwort zu kurz.");
+        	throw new Exception("Passwort zu kurz.");
         }
         if (!password.equals(password2)) {
-            throw new InputMismatchException("Passwˆrter stimmen nicht ¸berein.");
+            throw new Exception("Passw√∂rter stimmen nicht √ºberein.");
         }
         
         

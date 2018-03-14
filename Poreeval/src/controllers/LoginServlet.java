@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
         HttpServletResponse response) throws ServletException, IOException {
 
-        String errormsg = null;
+        String message = "";
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
         HttpSession session = request.getSession();
@@ -65,12 +65,15 @@ public class LoginServlet extends HttpServlet {
 
         if (user == null) {
             
-            session.setAttribute("Name oder Passwort falsch", errormsg);
+            message = "Name oder Password falsch";
             
         } else {
 
-            session.setAttribute("user", user);   
+            session.setAttribute("user", user);
+            message = "Hallo " + user.getUserName();
         }
+        
+        session.setAttribute("message", message);
         request.getRequestDispatcher("welcome.jsp").forward(request,
             response);
 

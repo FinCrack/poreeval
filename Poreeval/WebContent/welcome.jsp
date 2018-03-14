@@ -21,7 +21,7 @@
 	</c:if> 
 	<nav:navigation></nav:navigation>
 	<wel:welcome></wel:welcome>
-   ${ createUserMessage } ${ errorMessage } ${ errormsg }
+    ${ message }
 	<table>
 		<tr>
 			<rating:best></rating:best>

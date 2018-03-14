@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import javax.servlet.jsp.tagext.TagSupport;
 
+import data.User;
+
 /*
  * @author Jannik Bukowski, 235502
  */
@@ -20,7 +22,45 @@ public class NavigationTag extends TagSupport {
 		return SKIP_BODY;
 	}
 	
+	
+	private String getLoginControl() {
+	    
+	    User user = (User) this.pageContext.getSession().getAttribute("user");
+        
+        String loginControl = "";
+        
+        if (user != null) {
+            
+            loginControl = "<li class='dropdown'>"
+                + "<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>" + user.getUserName()  + "<span class='caret'></span></a>"
+                + "<ul class='dropdown-menu'>"
+                    + "<li>"
+                        + "<form class='navbar-form navbar-left' action='LogoutServlet' method='post'>"
+                            + "<button type='submit' class='btn btn-default'>Logout</button>"
+                        + "</form>"
+                    + "</li>";
+            
+        } else {
+            loginControl = "<li class='dropdown'>"
+                + "<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Login<span class='caret'></span></a>"
+                + "<ul class='dropdown-menu'>"
+                    + "<li>"
+                        + "<form class='navbar-form navbar-left' action='LoginServlet' method='post'>"
+                            + "<label>Username:</label><input type='text' name='userName'>"
+                            + "<label>Password:</label><input type='password' name='password'><br>"
+                            + "<button type='submit' class='btn btn-default'>Login</button>"
+                            + "<a href='createUser.jsp' role='button' type='button' class='btn btn-default'>Registrieren</a>"
+                        + "</form>"
+                    + "</li>";
+        }
+        
+        return loginControl;
+	}
+	
 	private String getNavbarHtml() {
+	    
+	    String loginControl = this.getLoginControl();
+	    
 		String navbar = 
 				"<nav class='navbar navbar-default'>" 
 						+ "<div class='container'>"
@@ -39,19 +79,8 @@ public class NavigationTag extends TagSupport {
 						+ "</div>"
 						+ "<div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>"
 							+ "<ul class='nav navbar-nav'>"
-								+ "<li class='dropdown'>"
-								+ "<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>${ user.userName ?? 'Login'}<span class='caret'></span></a>"
-								+ "<ul class='dropdown-menu'>"
-									+ "<li>"
-										+ "<form class='navbar-form navbar-left' action='LoginServlet' method='post'>"
-											+ "<label>Username:</label><input type='text' name='userName'>"
-											+ "<label>Password:</label><input type='password' name='password'><br>"
-											+ "<button type='submit' class='btn btn-default'>Login</button>"
-											+ "<a href='createUser.jsp' role='button' type='button' class='btn btn-default'>Registrieren</a>"
-										+ "</form>"
-									+ "</li>"
-								+ "</ul>"
-								+ "</li>"
+							+ loginControl
+						    + "</ul>"
 								+ "<li>"
 									+ "<form class='navbar-form navbar-left'>"
 										+ "<a href='http://localhost:8080/Poreeval/AllProductsServlet' role='button' class='btn btn-default'>Alle Produkte</a>"
@@ -60,7 +89,7 @@ public class NavigationTag extends TagSupport {
 								+ "<li>"
 									+ "<form class='navbar-form navbar-left' action='CheckUserPrivilegeServlet' method='post'>"
 										+ "<input type='hidden' name='dispatchTarget' value='createProduct.jsp'/>"
-										+ "<input type='hidden' name='requiredPrivilege' value='1'/>"
+										+ "<input type='hidden' name='requiredPrivilege' value='2'/>"
 										+ "<button type='submit' class='btn btn-default'>Produkterstellung</button>"
 									+ "</form>"
 								+ "</li>"
