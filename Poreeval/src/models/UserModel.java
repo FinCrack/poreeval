@@ -16,11 +16,15 @@ public class UserModel {
         String email) throws SQLException {
 
     	if(!userName.matches("^[a-zA-Z0-9]+$")){
-    		throw new InputMismatchException("Nur Buchstaben und Zahlen zulässig!");
+    		throw new InputMismatchException("Nur Buchstaben und Zahlen bei dem Usernamen zulässig!");
     	}
+    	if (password.length() < 6) {
+        	throw new StringIndexOutOfBoundsException("Passwort zu kurz.");
+        }
         if (!password.equals(password2)) {
             throw new InputMismatchException("Passwörter stimmen nicht überein.");
         }
+        
         
         User user = new User(userName, password, privilege, email);
 

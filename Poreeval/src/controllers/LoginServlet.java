@@ -66,6 +66,7 @@ public class LoginServlet extends HttpServlet {
         if (user == null) {
             
             session.setAttribute("Name oder Passwort falsch", errormsg);
+            
         } else {
 
             session.setAttribute("user", user);   
