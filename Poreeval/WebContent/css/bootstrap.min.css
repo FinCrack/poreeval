@@ -5381,10 +5381,12 @@ a.badge:focus, a.badge:hover {
 .list-group-item.active>.badge, .nav-pills>.active>a>.badge {
 	color: #337ab7;
 	background-color: #fff
+	float: none;
+	
 }
 
 .list-group-item>.badge {
-	float: right
+	float: none;
 }
 
 .list-group-item>.badge+.badge {
@@ -5761,12 +5763,13 @@ to {
 }
 
 .list-group-item {
-	position: relative;
+	position: relativ;
 	display: block;
 	padding: 10px 15px;
 	margin-bottom: -1px;
 	background-color: #fff;
-	border: 1px solid #ddd
+	border: 1px solid #ddd;
+	float: none;
 }
 
 .list-group-item:first-child {
