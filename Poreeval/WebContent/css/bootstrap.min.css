@@ -194,7 +194,7 @@ table {
 
 td, th {
 	padding: 0;
-	float: none;
+	float: left;
 	
 }
 	/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
@@ -2589,7 +2589,9 @@ th {
 .table {
 	width: 100%;
 	max-width: 100%;
-/* 	margin-bottom: 20px */
+	float: none;
+	margin-bottom: 20px;
+	vertical-align: left;
 }
 
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th,
@@ -5385,21 +5387,21 @@ a.badge:focus, a.badge:hover {
 
 .list-group-item.active>.badge, .nav-pills>.active>a>.badge {
 	color: #337ab7;
-	background-color: #fff
-	float: none;
+	background-color: #fff;
+	float: left;
 	
 }
 
 .list-group-item>.badge {
-	float: none;
+	float: left;
 }
 
 .list-group-item>.badge+.badge {
-	margin-right: 5px
+/* 	margin-right: 5px */
 }
 
 .nav-pills>li>a>.badge {
-	margin-left: 3px
+/* 	margin-left: 3px */
 }
 
 .jumbotron {
