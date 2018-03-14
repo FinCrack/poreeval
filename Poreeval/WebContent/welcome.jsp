@@ -22,9 +22,9 @@
 	<nav:navigation></nav:navigation>
 	<wel:welcome></wel:welcome>
     ${ message }
-	<table class="text-center">
+	<table class="table text-center table-striped tabled-bordered table-hover table-condensed">
 		<tr>
-			<td><rating:best></rating:best></td><td><rating:recently></rating:recently></td>
+			<td><rating:best></rating:best></td><td>		</td><td><rating:recently></rating:recently></td>
 		</tr>
 	</table>
 	<searchR:search></searchR:search>
