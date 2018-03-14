@@ -193,7 +193,9 @@ table {
 
 
 td, th {
-	padding: 0
+	padding: 0;
+	float: none;
+	
 }
 	/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
@@ -2595,19 +2597,22 @@ th {
 /* 	padding: 8px;  */
 	line-height: 1.42857143;
 	vertical-align: top;
-	border-top: 1px solid #ddd 
+	border-top: 1px solid #ddd;
+	float: none;
 }
 
 .table>thead>tr>th {
 	vertical-align: bottom;
 	border-bottom: 2px solid #ddd
+		float: none;
 }
 
 .table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th,
 	.table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th,
 	.table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th
 	{
-	border-top: 0
+	border-top: 0;
+	float: none;
 }
 
 .table>tbody+tbody {

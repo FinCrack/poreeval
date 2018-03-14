@@ -25,7 +25,7 @@ public class SearchResultTag extends TagSupport{
 	        return EVAL_BODY_AGAIN;
 	    }
 	    String searchHeader =
-				"<h3>Suchergebniss:</h3>";
+				"<h3 style='text-align: center;'>Suchergebniss:</h3>";
 		try {
 			pageContext.getOut().append(searchHeader);
 			pageContext.getOut().append(this.getSearchResult());
