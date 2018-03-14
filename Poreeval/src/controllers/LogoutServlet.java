@@ -36,6 +36,7 @@ public class LogoutServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	    request.getSession().removeAttribute("user");
+	    request.setAttribute("message", "Ausgeloggt");
 	    
 	    request.getRequestDispatcher("welcome.jsp").forward(request, response);
 	}
