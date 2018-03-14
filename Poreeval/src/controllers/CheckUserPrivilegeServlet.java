@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import data.User;
+
 /**
  * @author Christian Lindenberg, 235372
  */
@@ -45,19 +46,26 @@ public class CheckUserPrivilegeServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
+		
 		String dispatchTarget = request.getParameter("dispatchTarget");
 		int requiredPrivilege = Integer.parseInt(request.getParameter("requiredPrivilege"));
-		User user = (User) session.getAttribute("user");
+		User user = (User) session.getAttribute("user");	
 
+		try {
+			
 		
-		if(user.getPrivilege() >= requiredPrivilege) {
+		if(user.getPrivilege() >= requiredPrivilege) 
 			request.getRequestDispatcher(dispatchTarget).forward(request, response);
-		} else {
+//		} else {
+//			String errormsg = "Nicht ausreichende Privilegien!";
+//			request.setAttribute("errormsg", errormsg);
+//			request.getRequestDispatcher("welcome.jsp").forward(request, response);
+//		}
+		} catch (Exception e) {
 			String errormsg = "Nicht ausreichende Privilegien!";
 			request.setAttribute("errormsg", errormsg);
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		}
-		
 	}
 
 }
