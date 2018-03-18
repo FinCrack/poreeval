@@ -1,9 +1,91 @@
 package dataAccess;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import data.Product;
+import data.Review;
 
 /** @author Lennard Brunke 259315
  * 
  */
 public class ReviewDataAccess {
+    
+    private Connection connection = DatabaseConnection.getConnection();
+    
+    public void InsertReview(Review review) throws SQLException {
+        
+        PreparedStatement psmt = this.connection.prepareStatement(
+            "INSERT INTO REVIEWS (ID, RATING, TEXT, EAN, USER_ID)"
+            + " VALUES (NEXTVAL('SEQ_REVIEWS'), ?, ?, ?, ?)");
+        
+        psmt.setInt(1, review.getRating());
+        psmt.setString(2, review.getText());
+        psmt.setLong(3, review.getEan());
+        psmt.setInt(4, review.getUser_id());
+        
+        psmt.executeUpdate();
+    }
+    
+    public void UpdateReview(Review review) throws SQLException {
+        
+        PreparedStatement psmt = this.connection.prepareStatement(
+            "UPDATE REVIEWS"
+            + " SET RATING = ?, TEXT = ?, EAN = ?"
+            + " WHERE ID = ?) ");
+        
+        psmt.setInt(1, review.getRating());
+        psmt.setString(2, review.getText());
+        psmt.setLong(3, review.getEan());
+        psmt.setInt(4, review.getId());
+        
+        psmt.executeUpdate();
+    }
+    
+    
+    public List<Review> GetReview(int id) throws SQLException {
+        
+        PreparedStatement psmt = this.connection.prepareStatement(
+            "SELECT * FROM REVIEWS WHERE ID = ?");
+        
+        psmt.setInt(1, id);
+        ResultSet rs = psmt.executeQuery();
+        
+        return this.ResultSetToReviewList(rs);
+    }
+    
+    public List<Review> GetReviewsForEan(long ean) throws SQLException {
+        
+        PreparedStatement psmt = this.connection.prepareStatement(
+            "SELECT * FROM REVIEWS WHERE EAN = ?");
+        
+        psmt.setLong(1, ean);
+        ResultSet rs = psmt.executeQuery();
+        
+        return this.ResultSetToReviewList(rs);
+    }
 
+    private List<Review> ResultSetToReviewList(ResultSet rs) throws SQLException {
+        List<Review> reviewList = new ArrayList<Review>();
+
+        while (rs.next()) {
+            
+            int id = rs.getInt(1);
+            int rating = rs.getInt(2);
+            String text = rs.getString(3);
+            long ean = rs.getLong(4);
+            int user_id = rs.getInt(5);
+            Date review_date = rs.getDate(6);
+            Review review = new Review(id, rating, text, ean, user_id, review_date);
+
+            reviewList.add(review);
+        }
+        
+        return reviewList;
+    }
 }

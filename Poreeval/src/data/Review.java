@@ -1,6 +1,6 @@
 package data;
 
-import java.util.Date;
+import java.sql.Date;
 
 /** @author Lennard Brunke 259315
  * 
@@ -13,13 +13,13 @@ public class Review {
 
     private String text;
 
-    private int ean;
+    private long ean;
 
     private int user_id;
 
     private Date review_date;
 
-    public Review(int id, int rating, String text, int ean, int user_id,
+    public Review(int id, int rating, String text, long ean, int user_id,
         Date review_date) {
         this.id = id;
         this.rating = rating;
@@ -69,11 +69,11 @@ public class Review {
         this.text = text;
     }
 
-    public int getEan() {
+    public long getEan() {
         return ean;
     }
 
-    public void setEan(int ean) {
+    public void setEan(long ean) {
         this.ean = ean;
     }
 }
