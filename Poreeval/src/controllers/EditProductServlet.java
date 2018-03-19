@@ -55,7 +55,7 @@ public class EditProductServlet extends HttpServlet {
             
             if(!CheckUserPrivilege.CheckPrivilege(request, 2)) {
                 
-                throw new Exception("Nicht genügend Rechte!");
+                throw new Exception("Nicht genuegend Rechte!");
             }
             
             model.UpdateProduct(ean, name, description, null);

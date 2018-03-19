@@ -14,13 +14,13 @@ public class UserModel {
         String email) throws Exception {
 
     	if(!userName.matches("^[a-zA-Z0-9]+$")){
-    		throw new Exception("Nur Buchstaben und Zahlen bei dem Usernamen zulässig!");
+    		throw new Exception("Nur Buchstaben und Zahlen bei dem Usernamen zulaessig!");
     	}
     	if (password.length() < 6) {
         	throw new Exception("Passwort zu kurz.");
         }
         if (!password.equals(password2)) {
-            throw new Exception("Passwörter stimmen nicht überein.");
+            throw new Exception("Passwoerter stimmen nicht ueberein.");
         }
         
         
