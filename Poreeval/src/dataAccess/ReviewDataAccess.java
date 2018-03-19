@@ -64,7 +64,10 @@ public class ReviewDataAccess {
     public Review GetReview(int id) throws SQLException {
         
         PreparedStatement psmt = this.connection.prepareStatement(
-            "SELECT * FROM REVIEWS WHERE ID = ?");
+            "SELECT ID, RATING, TITLE, TEXT, EAN, REVIEWS.USER_ID, USER_NAME, REVIEW_DATE"
+            + " FROM REVIEWS"
+            + " JOIN USERS ON REVIEWS.USER_ID = USERS.ID"
+            + " WHERE REVIEWS.ID = ?");
         
         psmt.setInt(1, id);
         ResultSet rs = psmt.executeQuery();
@@ -75,7 +78,10 @@ public class ReviewDataAccess {
     public List<Review> GetReviewsForEan(long ean) throws SQLException {
         
         PreparedStatement psmt = this.connection.prepareStatement(
-            "SELECT * FROM REVIEWS WHERE EAN = ?");
+            "SELECT ID, RATING, TITLE, TEXT, EAN, REVIEWS.USER_ID, USER_NAME, REVIEW_DATE"
+                + " FROM REVIEWS"
+                + " JOIN USERS ON REVIEWS.USER_ID = USERS.ID"
+                + " WHERE REVIEWS.EAN = ?");
         
         psmt.setLong(1, ean);
         ResultSet rs = psmt.executeQuery();
@@ -90,13 +96,16 @@ public class ReviewDataAccess {
             
             int id = rs.getInt(1);
             int rating = rs.getInt(2);
-            String text = rs.getString(3);
-            long ean = rs.getLong(4);
-            int user_id = rs.getInt(5);
-            Date review_date = rs.getDate(6);
-            String title = rs.getString(7);
+            String title = rs.getString(3);
+            String text = rs.getString(4);
+            long ean = rs.getLong(5);
+            int user_id = rs.getInt(6);
+            Date review_date = rs.getDate(7);
+            String user_name = rs.getString(8);
+            
             Review review = new Review(id, rating, title, text, ean, user_id, review_date);
 
+            review.setUser_name(user_name);
             reviewList.add(review);
         }
         
