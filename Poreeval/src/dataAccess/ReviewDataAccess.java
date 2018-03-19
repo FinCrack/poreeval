@@ -48,7 +48,18 @@ public class ReviewDataAccess {
     }
     
     
-    public List<Review> GetReview(int id) throws SQLException {
+    public void DeleteReview(int id) throws SQLException {
+        
+        PreparedStatement psmt = this.connection.prepareStatement(
+            "DELETE FROM REVIEWS WHERE ID = ?");
+        
+        psmt.setInt(1, id);
+        
+        psmt.executeUpdate();
+    }
+    
+    
+    public Review GetReview(int id) throws SQLException {
         
         PreparedStatement psmt = this.connection.prepareStatement(
             "SELECT * FROM REVIEWS WHERE ID = ?");
@@ -56,7 +67,7 @@ public class ReviewDataAccess {
         psmt.setInt(1, id);
         ResultSet rs = psmt.executeQuery();
         
-        return this.ResultSetToReviewList(rs);
+        return this.ResultSetToReviewList(rs).get(0);
     }
     
     public List<Review> GetReviewsForEan(long ean) throws SQLException {
