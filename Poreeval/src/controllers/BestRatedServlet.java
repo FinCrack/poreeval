@@ -46,7 +46,7 @@ public class BestRatedServlet extends HttpServlet {
 
 			session.setAttribute("bestRatedProducts", products);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			request.setAttribute("message", e.getMessage());
 		}
 
 		request.getRequestDispatcher("welcome.jsp").forward(request, response);

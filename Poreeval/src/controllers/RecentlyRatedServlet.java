@@ -46,7 +46,7 @@ public class RecentlyRatedServlet extends HttpServlet {
 
 			session.setAttribute("recentlyRatedProducts", products);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			request.setAttribute("message", e.getMessage());
 		}
 		
 		request.getRequestDispatcher("welcome.jsp").forward(request, response);

@@ -44,14 +44,13 @@ public class EditProductServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	    String name = request.getParameter("name");
-        long ean = Integer.parseInt(request.getParameter("ean"));
-        String description = request.getParameter("description");
-
-        ProductModel model = new ProductModel();
-        
-        //TODO Image einbauen
         try {
+            
+            String name = request.getParameter("name");
+            long ean = Long.parseUnsignedLong(request.getParameter("ean"));
+            String description = request.getParameter("description");
+
+            ProductModel model = new ProductModel();
             
             if(!CheckUserPrivilege.CheckPrivilege(request, 2)) {
                 

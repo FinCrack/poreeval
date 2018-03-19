@@ -47,7 +47,7 @@ public class AllProductsServlet extends HttpServlet {
 			session.setAttribute("products", products);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			request.setAttribute("message", e.getMessage());;
 		}
 		
 		request.getRequestDispatcher("allProducts.jsp").forward(request, response);
