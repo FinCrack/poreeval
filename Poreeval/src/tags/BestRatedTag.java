@@ -35,6 +35,6 @@ public class BestRatedTag extends TagSupport {
 		HttpSession session = this.pageContext.getSession();
 		bestRatedProducts = (List<Product>) session.getAttribute("bestRatedProducts");
 		
-		return ResultToTable.ToTable(bestRatedProducts);
+		return ResultToTable.ProductsToTable(bestRatedProducts);
 	}
 }

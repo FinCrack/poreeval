@@ -41,6 +41,6 @@ public class SearchResultTag extends TagSupport{
 		HttpSession session = this.pageContext.getSession();
 		searchResults = (List<Product>) session.getAttribute("searchResults");
 		
-		return ResultToTable.ToTable(searchResults);
+		return ResultToTable.ProductsToTable(searchResults);
 	}
 }

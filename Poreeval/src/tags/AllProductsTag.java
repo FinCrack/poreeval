@@ -38,6 +38,6 @@ public class AllProductsTag extends TagSupport {
 		HttpSession session = this.pageContext.getSession();
 		products = (List<Product>) session.getAttribute("products");
 		
-		return ResultToTable.ToTable(products);
+		return ResultToTable.ProductsToTable(products);
 	}
 }

@@ -47,7 +47,7 @@ public class ProductDataAccess {
 		psmt.executeUpdate();
 	}
 
-	public List<Product> GetProductByEan(long ean) throws SQLException {
+	public Product GetProductByEan(long ean) throws SQLException {
 
 		PreparedStatement psmt = this.connection.prepareStatement(
 				"SELECT EAN, NAME, DESCRIPTION, PICTURE, AVG_RATING(EAN) FROM PRODUCTS WHERE EAN = ?");
@@ -56,7 +56,7 @@ public class ProductDataAccess {
 
 		ResultSet rs = psmt.executeQuery();
 
-		return this.GetProductsFromResultSet(rs);
+		return this.GetProductsFromResultSet(rs).get(0);
 	}
 
 	public List<Product> GetProductsByName(String name) throws SQLException {

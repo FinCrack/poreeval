@@ -1,7 +1,6 @@
 package controllers;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import data.Product;
 import models.ProductModel;
 
 /**
@@ -32,13 +32,22 @@ public class ShowProductDetailsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		String ean = request.getParameter("ean");
 		
-		ProductModel model = new ProductModel();
 		
-//		List<Reviews> reviews;
-		
-		request.setAttribute("ean", ean);
+		try {
+			
+			
+			ProductModel model = new ProductModel();
+			long ean = Long.parseLong(request.getParameter("ean"));
+			Product product = model.GetProductWithReviews(ean);
+			
+			request.setAttribute("product", product);
+			
+		} catch (Exception e) {
+			request.setAttribute("message", e.getMessage());	
+			request.getRequestDispatcher("welcome.jsp").forward(request, response);
+		}
+
 		request.getRequestDispatcher("showProductDetails.jsp").forward(request, response);
 		
 	}

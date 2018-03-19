@@ -11,6 +11,7 @@
 </head>
 <body>
 	<nav:navigation></nav:navigation>
+	${ message }
 	<h1>Erstellen und bewerten Sie ein neues Produkt</h1>
 	<cprod:product></cprod:product>
 </body>

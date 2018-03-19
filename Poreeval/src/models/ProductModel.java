@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import data.Product;
+import data.Review;
 import dataAccess.ProductDataAccess;
+import dataAccess.ReviewDataAccess;
 
 /** @author Lennard Brunke 259315
  * 
@@ -14,7 +16,7 @@ import dataAccess.ProductDataAccess;
 public class ProductModel {
 
     private ProductDataAccess productDataAccess = new ProductDataAccess();
-
+    private ReviewDataAccess reviewDataAccess = new ReviewDataAccess();
     public void CreateProduct(long ean, String name, String description,
         BufferedImage picture) throws SQLException {
 
@@ -40,13 +42,21 @@ public class ProductModel {
 
         if (ean > 0) {
             
-            productList = this.productDataAccess.GetProductByEan(ean);
+            productList.add(this.productDataAccess.GetProductByEan(ean));
         } else {
             
             productList = this.productDataAccess.GetProductsByName(name);
         }
 
         return productList;
+    }
+    
+    public Product GetProductWithReviews(long ean) throws SQLException {
+    	Product product = this.productDataAccess.GetProductByEan(ean);
+    	List<Review> reviews = this.reviewDataAccess.GetReviewsForEan(ean);
+    	product.setReviews(reviews);
+    	
+    	return product;
     }
     
     public List<Product> GetAllProducts() throws SQLException {

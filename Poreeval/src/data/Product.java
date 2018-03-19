@@ -1,6 +1,7 @@
 package data;
 
 import java.awt.Image;
+import java.util.List;
 
 /** @author Lennard Brunke 259315
  * 
@@ -16,6 +17,8 @@ public class Product {
     private Image picture;
     
     private int rating;
+    
+    private List<Review> reviews;
     
     
 
@@ -66,5 +69,13 @@ public class Product {
     public void setRating(int rating) {
         this.rating = rating;
     }
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
 
 }

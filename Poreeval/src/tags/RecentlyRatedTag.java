@@ -36,6 +36,6 @@ public class RecentlyRatedTag extends TagSupport {
 		HttpSession session = this.pageContext.getSession();
 		recentlyRatedProducts = (List<Product>) session.getAttribute("recentlyRatedProducts");
 		
-		return ResultToTable.ToTable(recentlyRatedProducts);
+		return ResultToTable.ProductsToTable(recentlyRatedProducts);
 	}
 }
