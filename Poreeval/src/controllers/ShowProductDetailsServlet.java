@@ -31,21 +31,18 @@ public class ShowProductDetailsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		
-		
 		try {
-			
 			
 			ProductModel model = new ProductModel();
 			long ean = Long.parseLong(request.getParameter("ean"));
 			Product product = model.GetProductWithReviews(ean);
 			
-			request.setAttribute("product", product);
+			request.getSession().setAttribute("product", product);
 			
 		} catch (Exception e) {
 			request.setAttribute("message", e.getMessage());	
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
+			return;
 		}
 
 		request.getRequestDispatcher("showProductDetails.jsp").forward(request, response);

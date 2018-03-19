@@ -64,7 +64,7 @@ public class ReviewDataAccess {
     public Review GetReview(int id) throws SQLException {
         
         PreparedStatement psmt = this.connection.prepareStatement(
-            "SELECT ID, RATING, TITLE, TEXT, EAN, REVIEWS.USER_ID, USER_NAME, REVIEW_DATE"
+            "SELECT REVIEWS.ID, RATING, TITLE, TEXT, EAN, USER_ID, USERNAME, REVIEW_DATE"
             + " FROM REVIEWS"
             + " JOIN USERS ON REVIEWS.USER_ID = USERS.ID"
             + " WHERE REVIEWS.ID = ?");
@@ -78,7 +78,7 @@ public class ReviewDataAccess {
     public List<Review> GetReviewsForEan(long ean) throws SQLException {
         
         PreparedStatement psmt = this.connection.prepareStatement(
-            "SELECT ID, RATING, TITLE, TEXT, EAN, REVIEWS.USER_ID, USER_NAME, REVIEW_DATE"
+            "SELECT REVIEWS.ID, RATING, TITLE, TEXT, EAN, USER_ID, USERNAME, REVIEW_DATE"
                 + " FROM REVIEWS"
                 + " JOIN USERS ON REVIEWS.USER_ID = USERS.ID"
                 + " WHERE REVIEWS.EAN = ?");
@@ -100,8 +100,9 @@ public class ReviewDataAccess {
             String text = rs.getString(4);
             long ean = rs.getLong(5);
             int user_id = rs.getInt(6);
-            Date review_date = rs.getDate(7);
-            String user_name = rs.getString(8);
+            String user_name = rs.getString(7); 
+            Date review_date = rs.getDate(8);
+          
             
             Review review = new Review(id, rating, title, text, ean, user_id, review_date);
 

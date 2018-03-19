@@ -3,6 +3,7 @@ package helper;
 import java.util.List;
 
 import data.Product;
+import data.Review;
 
 /*
  * @author Jannik Bukowski, 235502
@@ -28,6 +29,8 @@ public class ResultToTable {
 	
 	public static String ProductWithReviewsToTable(Product product){
 		String table= "";
+		
+		//Table der das Produkt anzeigt
 			table += "<p><img src='https://www.spirulina.pl/wp-content/uploads/2015/07/naturalny-produkt.jpg' width='200' height='200' /></p>";
 			table += "<table class='table table-striped tabled-bordered table-hover table-condensed'>";
 				table += "<tr>";
@@ -38,14 +41,17 @@ public class ResultToTable {
 				table += "</tr>";
 			table += "</table>";
 			
+			//Table der die Reviews zu einem Produkt anzeigt
+			for(Review review : product.getReviews()){
 			table += "<table>";
 				table += "<tr>";
-					table += "<td>Rating</td><td>Ueberschrift</td>";
+					table += "<td>" + review.getRating() +  "</td><td>" + review.getTitle() + "</td>";
 				table += "</tr>";
-					table += "<td>Username</td><td>Date</td>";
+					table += "<td>" + review.getUser_name() + "</td><td>" + review.getReview_date() + "</td>";
 				table += "</tr>";
 			table += "</table>";
 			table += "<p>text</p>";
+			}
 		return table;
 	}
 	

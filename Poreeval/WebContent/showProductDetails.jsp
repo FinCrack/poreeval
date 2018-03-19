@@ -12,8 +12,6 @@
 </head>
 <body>
 	<nav:navigation></nav:navigation>
-	<h3>Detailansicht Ihres gewählten Produkts</h3>
-	${ ean }
 	<det:detail></det:detail>
 </body>
 </html>
