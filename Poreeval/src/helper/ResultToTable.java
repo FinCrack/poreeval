@@ -53,7 +53,7 @@ public class ResultToTable {
 					table += "<td>" + review.getUser_name() + "</td><td>" + review.getReview_date() + "</td>";
 				table += "</tr>";
 			table += "</table>";
-			table += "<p>text</p>";
+			table += "<p>" + review.getText() + "</p>";
 			}
 		return table;
 	}
