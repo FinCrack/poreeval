@@ -44,10 +44,14 @@ public class CreateProductServlet extends HttpServlet {
         HttpServletResponse response) throws ServletException, IOException {
 
         try {
+        	
             String name = request.getParameter("name");
+            if(name.isEmpty()) throw new Exception("Bitte Namen eingeben.");
+
             long ean = Long.parseUnsignedLong(request.getParameter("ean"));
+            if(request.getParameter("ean").isEmpty()) throw new Exception("Bitte EAN eingeben.");
             String description = request.getParameter("description");
-            
+            if(description.isEmpty()) throw new Exception("Bitte Beschreibung eingeben.");
             ProductModel model = new ProductModel();
             
             if (!CheckUserPrivilege.CheckPrivilege(request, 3)) {

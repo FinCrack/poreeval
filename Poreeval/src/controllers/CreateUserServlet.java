@@ -52,10 +52,14 @@ public class CreateUserServlet extends HttpServlet {
         
         try {
             String userName = request.getParameter("userName");
+            if(userName.isEmpty()) throw new Exception("Bitte Usernamen eingeben.");
             String email = request.getParameter("email");
+            if(email.isEmpty()) throw new Exception("Bitte Email eingeben.");
             int privilege = Integer.parseInt(request.getParameter("privilege"));
             String password = request.getParameter("password");
+            if(password.isEmpty()) throw new Exception("Bitte Passwort eingeben.");
             String password2 = request.getParameter("password2");
+            if(password2.isEmpty()) throw new Exception("Bitte Passwort bestaetigen.");
 
             UserModel model = new UserModel();
             HttpSession session = request.getSession();
