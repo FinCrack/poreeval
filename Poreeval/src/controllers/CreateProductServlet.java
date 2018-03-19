@@ -64,6 +64,7 @@ public class CreateProductServlet extends HttpServlet {
             request.setAttribute("message", ex.toString());
             request.getRequestDispatcher("createProduct.jsp").forward(request,
                 response);
+            return;
         }
 
         request.getRequestDispatcher("welcome.jsp").forward(request, response);

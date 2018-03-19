@@ -37,7 +37,7 @@ public class ResultToTable {
 					table += "<td>" + product.getProductname() + "</td>";
 				table += "</tr>";
 				table += "<tr>";
-					table += "<td>" + product.getRating() + "</td>";
+					table += "<td>" + GetStars(product) + "</td>";
 				table += "</tr>";
 			table += "</table>";
 			
@@ -53,6 +53,29 @@ public class ResultToTable {
 			table += "<p>text</p>";
 			}
 		return table;
+	}
+	
+	public static String GetStars(Product product){
+		String starRating = "";
+		
+		switch(product.getRating()){
+			case 0: starRating = "resources/0 Sterne.png";
+				break;
+			case 1: starRating = "resources/1 Stern.png";
+				break;
+			case 2: starRating = "resources/2 Sterne.png";
+				break;
+			case 3: starRating = "resources/3 Sterne.png";
+				break;
+			case 4: starRating = "resources/4 Sterne.png";
+				break;
+			case 5: starRating = "resources/5 Sterne.png";
+				break;
+			default: starRating = "resources/0 Sterne.png";
+				break;
+		}
+		String imageCont = "<img src='" + starRating + "' style='max-height: 35px;'></img>";
+		return imageCont;
 	}
 	
 	/*
