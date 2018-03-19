@@ -46,12 +46,21 @@ public class CreateProductServlet extends HttpServlet {
         try {
         	
             String name = request.getParameter("name");
-            if(name.isEmpty()) throw new Exception("Bitte Namen eingeben.");
+            if(name.isEmpty()) {
+            	throw new Exception("Bitte Namen eingeben.");
+            }
 
             long ean = Long.parseUnsignedLong(request.getParameter("ean"));
-            if(request.getParameter("ean").isEmpty()) throw new Exception("Bitte EAN eingeben.");
+            if(!request.getParameter("ean").matches("[0-9]+")) {
+            	throw new Exception("Nur Ziffern erlaubt");
+            }
+            if(request.getParameter("ean").isEmpty()) {
+            	throw new Exception("Bitte EAN eingeben.");
+            }
             String description = request.getParameter("description");
-            if(description.isEmpty()) throw new Exception("Bitte Beschreibung eingeben.");
+            if(description.isEmpty()) {
+            	throw new Exception("Bitte Beschreibung eingeben.");
+            }
             ProductModel model = new ProductModel();
             
             if (!CheckUserPrivilege.CheckPrivilege(request, 3)) {
