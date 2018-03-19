@@ -27,6 +27,7 @@ public class ResultToTable {
 		return table;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static String ProductWithReviewsToTable(Product product){
 		String table = "";
 		
@@ -43,14 +44,15 @@ public class ResultToTable {
 				table += "</tr>";
 			table += "</table>";
 			
+			
 			//Table der die Reviews zu einem Produkt anzeigt
-			table += "<h4>Kundenrezensionen:</h4>";
+			table += "<h3 style='font-weight: bold;'>Kundenrezensionen:</h3>";
 			for(Review review : product.getReviews()){
 			table += "<table class='table table-striped tabled-bordered table-condensed'>";
 				table += "<tr>";
-					table += "<td>" + GetStars(product) +  "</td><td>" + review.getTitle() + "</td>";
+					table += "<td style='font-weight: bold;'>" + GetStars(product) +  " " + review.getTitle() + "</td>";
 				table += "</tr>";
-					table += "<td>" + review.getUser_name() + "</td><td>" + review.getReview_date() + "</td>";
+					table += "<td style='font-size: 18px; font-weight: bold;'>Von " + review.getUser_name() + " am " + review.getReview_date().toGMTString() + "</td>";
 				table += "</tr>";
 			table += "</table>";
 			table += "<p>" + review.getText() + "</p>";
