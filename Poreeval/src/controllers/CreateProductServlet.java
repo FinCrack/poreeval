@@ -1,14 +1,13 @@
 package controllers;
 
 import java.io.IOException;
-import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import helper.CheckUserPrivilege;
 import models.ProductModel;
 
 /*
@@ -50,11 +49,16 @@ public class CreateProductServlet extends HttpServlet {
 		
 		
 		try {
+			
+			 if(!CheckUserPrivilege.CheckPrivilege(request, 3)) {
+	                
+	                throw new Exception("Nicht genuegend Rechte!");
+	            }
             model.CreateProduct(ean, name, description, null);
-        } catch (SQLException exc) {
-            // TODO Auto-generated catch block
-            exc.printStackTrace();
-        }
+		 } catch (Exception ex) {
+	            request.setAttribute("message", ex.toString());
+	            request.getRequestDispatcher("createProduct.jsp").forward(request, response);
+	        }
 		
 		request.getRequestDispatcher("welcome.jsp").forward(request, response);
 	}

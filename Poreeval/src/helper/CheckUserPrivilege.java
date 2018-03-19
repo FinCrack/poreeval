@@ -1,10 +1,11 @@
 package helper;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import data.User;
 
+/*
+ *  @author Christian Lindenberg, 235372
+ */
 public class CheckUserPrivilege {
 
     public static boolean CheckPrivilege(HttpServletRequest request,

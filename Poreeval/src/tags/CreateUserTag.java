@@ -48,7 +48,7 @@ public class CreateUserTag extends TagSupport {
 					+ "</div>"
 					+ "<div class='form-group'>"
 					+ "<label>Passwort bestätigen</label> "
-					+ "<input type='password' class='form-control' placeholder='Passwort bestätigen' name='password2'>"
+					+ "<input type='password' class='form-control' placeholder='Passwort bestaetigen' name='password2'>"
 					+ "</div>"
 					+ "<button class='btn-default' type='submit'>Registrieren</button>"
 					+ "</form>"
