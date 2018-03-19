@@ -21,13 +21,14 @@ public class ReviewDataAccess {
     public void InsertReview(Review review) throws SQLException {
         
         PreparedStatement psmt = this.connection.prepareStatement(
-            "INSERT INTO REVIEWS (ID, RATING, TEXT, EAN, USER_ID)"
+            "INSERT INTO REVIEWS (ID, RATING, TITLE, TEXT, EAN, USER_ID)"
             + " VALUES (NEXTVAL('SEQ_REVIEWS'), ?, ?, ?, ?)");
         
         psmt.setInt(1, review.getRating());
-        psmt.setString(2, review.getText());
-        psmt.setLong(3, review.getEan());
-        psmt.setInt(4, review.getUser_id());
+        psmt.setString(2, review.getTitle());
+        psmt.setString(3, review.getText());
+        psmt.setLong(4, review.getEan());
+        psmt.setInt(5, review.getUser_id());
         
         psmt.executeUpdate();
     }
@@ -36,13 +37,14 @@ public class ReviewDataAccess {
         
         PreparedStatement psmt = this.connection.prepareStatement(
             "UPDATE REVIEWS"
-            + " SET RATING = ?, TEXT = ?, EAN = ?"
+            + " SET RATING = ?, TITLE = ?, TEXT = ?, EAN = ?"
             + " WHERE ID = ?) ");
         
         psmt.setInt(1, review.getRating());
-        psmt.setString(2, review.getText());
-        psmt.setLong(3, review.getEan());
-        psmt.setInt(4, review.getId());
+        psmt.setString(2, review.getTitle());
+        psmt.setString(3, review.getText());
+        psmt.setLong(4, review.getEan());
+        psmt.setInt(5, review.getId());
         
         psmt.executeUpdate();
     }
@@ -92,7 +94,8 @@ public class ReviewDataAccess {
             long ean = rs.getLong(4);
             int user_id = rs.getInt(5);
             Date review_date = rs.getDate(6);
-            Review review = new Review(id, rating, text, ean, user_id, review_date);
+            String title = rs.getString(7);
+            Review review = new Review(id, rating, title, text, ean, user_id, review_date);
 
             reviewList.add(review);
         }

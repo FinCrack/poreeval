@@ -10,9 +10,9 @@ public class ReviewModel {
     
     private ReviewDataAccess reviewDataAccess = new ReviewDataAccess();
     
-    public void CreateReview(int rating, String text, long ean, int user_Id) throws SQLException {
+    public void CreateReview(int rating, String title, String text, long ean, int user_Id) throws SQLException {
         
-        this.reviewDataAccess.InsertReview(new Review(rating, text, ean, user_Id));
+        this.reviewDataAccess.InsertReview(new Review(rating, title, text, ean, user_Id));
     }
     
     

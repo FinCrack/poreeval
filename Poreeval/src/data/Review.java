@@ -10,6 +10,8 @@ public class Review {
     private int id;
 
     private int rating;
+    
+    private String title;
 
     private String text;
 
@@ -19,18 +21,20 @@ public class Review {
 
     private Date review_date;
 
-    public Review(int id, int rating, String text, long ean, int user_id,
+    public Review(int id, int rating, String title, String text, long ean, int user_id,
         Date review_date) {
         this.id = id;
         this.rating = rating;
+        this.title = title;
         this.text = text;
         this.ean = ean;
         this.user_id = user_id;
         this.review_date = new Date();
     }
     
-    public Review(int rating, String text, long ean, int user_id) {
+    public Review(int rating, String title, String text, long ean, int user_id) {
         this.rating = rating;
+        this.title = title;
         this.text = text;
         this.ean = ean;
         this.user_id = user_id;
@@ -82,5 +86,13 @@ public class Review {
 
     public void setEan(long ean) {
         this.ean = ean;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
