@@ -63,7 +63,7 @@ public class EditProductServlet extends HttpServlet {
             model.UpdateProduct(ean, name, description, null);
              
         } catch (Exception ex) {
-            request.setAttribute("message", ex.toString());
+            request.setAttribute("message", ex.getMessage());
             request.getRequestDispatcher("editProduct.jsp").forward(request, response);
         }
 	}

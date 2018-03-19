@@ -61,7 +61,7 @@ public class CreateProductServlet extends HttpServlet {
 
             model.CreateProduct(ean, name, description, null);
         } catch (Exception ex) {
-            request.setAttribute("message", ex.toString());
+            request.setAttribute("message", ex.getMessage());
             request.getRequestDispatcher("createProduct.jsp").forward(request,
                 response);
             return;
