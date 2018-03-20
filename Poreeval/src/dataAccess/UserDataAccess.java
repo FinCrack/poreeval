@@ -15,22 +15,26 @@ public class UserDataAccess {
 
     public void InsertUser(User user) throws SQLException {
         PreparedStatement psmt = this.connection.prepareStatement(
-            "INSERT INTO USERS (ID, USERNAME, PRIVILEGE, PASSWORD, EMAIL) "
-                + "VALUES (NEXTVAL('SEQ_USERS'), ?, ?, ?, ?)");
+            "INSERT INTO USERS (ID, USERNAME, PRIVILEGE, EMAIL) "
+                + "VALUES (NEXTVAL('SEQ_USERS'), ?, ?, ?)");
 
         psmt.setString(1, user.getUserName());
         psmt.setInt(2, user.getPrivilege());
-        psmt.setString(3, user.getPassword());
-        psmt.setString(4, user.getEmail());
+        psmt.setString(3, user.getEmail());
 
+        PreparedStatement psmtPW = this.connection.prepareStatement(
+        		"INSERT INTO PASSWOERTER SELECT CURRVAL('SEQ_USERS'), ? FROM USERS WHERE ID = CURRVAL('SEQ_USERS')");
+        psmtPW.setString(1, user.getPassword());
+        
         psmt.executeUpdate();
+        psmtPW.executeUpdate();
     }
 
     public User GetUser(String userName, String password) throws SQLException {
 
         PreparedStatement psmt = this.connection.prepareStatement(
-            "SELECT ID, USERNAME, PRIVILEGE, PASSWORD, EMAIL FROM USERS WHERE USERNAME = ? AND PASSWORD = ?");
-        
+            "SELECT U.ID, USERNAME, PRIVILEGE, PASSWORD, EMAIL FROM USERS U INNER JOIN PASSWOERTER P ON U.ID = P.ID WHERE USERNAME = ? AND PASSWORD = ?");
+    
         psmt.setString(1, userName);
         psmt.setString(2, password);
         
