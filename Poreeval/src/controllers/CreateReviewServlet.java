@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import data.User;
+import helper.CheckUserPrivilege;
+import models.ReviewModel;
+
 /** @author Lennard Brunke 259315
  * 
  */
@@ -32,8 +36,36 @@ public class CreateReviewServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+	    try {
+	        
+	        int rating = Integer.parseInt(request.getParameter("rating"));
+	        
+	        String title = request.getParameter("title");
+	        if (title.isEmpty()) {
+	            throw new Exception("Bitte einen Titel angeben.");
+	        }
+	        
+	        String text = request.getParameter("text");
+	        
+	        long ean = Long.parseUnsignedLong(request.getParameter("ean"));
+	        
+	        User user = (User) request.getSession().getAttribute("user");
+	        
+	        if(!CheckUserPrivilege.CheckPrivilege(user, 3)) {
+	            throw new Exception("Bitte einloggen, um ein Review zu erstellen.");
+	        }
+	        
+	        ReviewModel model = new ReviewModel();
+	        
+	        model.CreateReview(rating, title, text, ean, user.getId());
+	        request.setAttribute("message", "Review erfolgreich erstellt!");
+	        request.getRequestDispatcher("showProductDetails.jsp").forward(request, response);
+	        
+        } catch (Exception exc) {
+            request.setAttribute("message", exc.getMessage());
+        }
+	    
 	}
 
 }
