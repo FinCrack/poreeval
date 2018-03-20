@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import data.User;
 import helper.CheckUserPrivilege;
@@ -38,7 +39,7 @@ public class CreateReviewServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	    try {
-	        
+	        HttpSession session = request.getSession();
 	        int rating = Integer.parseInt(request.getParameter("rating"));
 	        
 	        String title = request.getParameter("title");
@@ -48,7 +49,7 @@ public class CreateReviewServlet extends HttpServlet {
 	        
 	        String text = request.getParameter("text");
 	        
-	        long ean = Long.parseUnsignedLong(request.getParameter("ean"));
+	        long ean = (long) session.getAttribute("ean");
 	        
 	        User user = (User) request.getSession().getAttribute("user");
 	        
@@ -64,6 +65,7 @@ public class CreateReviewServlet extends HttpServlet {
 	        
         } catch (Exception exc) {
             request.setAttribute("message", exc.getMessage());
+            request.getRequestDispatcher("giveReview.jsp").forward(request, response);
         }
 	    
 	}

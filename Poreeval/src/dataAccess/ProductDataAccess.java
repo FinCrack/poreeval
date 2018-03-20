@@ -35,7 +35,7 @@ public class ProductDataAccess {
 
 	public void UpdateProduct(Product product) throws SQLException {
 		PreparedStatement psmt = this.connection
-				.prepareStatement("UPDATE PRODUCTS SET EAN = ?, NAME = ?, DESCRIPTION = ?, PICTURE = ?)");
+				.prepareStatement("UPDATE PRODUCTS SET EAN = ?, NAME = ?, DESCRIPTION = ?, PICTURE = ?");
 
 		psmt.setLong(1, product.getEan());
 		psmt.setString(2, product.getProductname());

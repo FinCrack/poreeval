@@ -11,6 +11,7 @@
 </head>
 <body>
 	<nav:navigation></nav:navigation>
+	${ message }
 	<rew:review></rew:review>
 </body>
 </html>

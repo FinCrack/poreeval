@@ -21,7 +21,7 @@ public class ReviewDataAccess {
         
         PreparedStatement psmt = this.connection.prepareStatement(
             "INSERT INTO REVIEWS (ID, RATING, TITLE, TEXT, EAN, USER_ID)"
-            + " VALUES (NEXTVAL('SEQ_REVIEWS'), ?, ?, ?, ?)");
+            + " VALUES (NEXTVAL('SEQ_REVIEWS'), ?, ?, ?, ?, ?)");
         
         psmt.setInt(1, review.getRating());
         psmt.setString(2, review.getTitle());

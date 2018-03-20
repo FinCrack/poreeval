@@ -30,7 +30,7 @@ public class Review {
         this.text = text;
         this.ean = ean;
         this.user_id = user_id;
-        this.review_date = new Date();
+        this.review_date = review_date;
     }
     
     public Review(int rating, String title, String text, long ean, int user_id) {
@@ -39,6 +39,7 @@ public class Review {
         this.text = text;
         this.ean = ean;
         this.user_id = user_id;
+        this.review_date = new Date();
     }
 
     public int getUser_id() {

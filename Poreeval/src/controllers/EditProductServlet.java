@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import data.Product;
 import helper.CheckUserPrivilege;
 import models.ProductModel;
 
@@ -17,61 +18,73 @@ import models.ProductModel;
  */
 @WebServlet("/EditProductServlet")
 public class EditProductServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public EditProductServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-     *      response)
-     */
-    protected void doGet(HttpServletRequest request,
-        HttpServletResponse response) throws ServletException, IOException {
-        
-    	Long ean = Long.parseLong(request.getParameter("ean"));
-        request.getSession().setAttribute("ean", ean);
-        request.getRequestDispatcher("editProduct.jsp").forward(request, response);;
-    }
-
-    /**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	/**
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-        try {
-            
-            String name = request.getParameter("name");
-            if(name.isEmpty()) {
-            	throw new Exception("Bitte Namen eingeben.");
-            }
-            long ean = Long.parseUnsignedLong(request.getParameter("ean"));
-            if(request.getParameter("ean").isEmpty()) {
-            	throw new Exception("Bitte EAN eingeben.");
-            }
-            String description = request.getParameter("description");
-            if(description.isEmpty()) {
-            	throw new Exception("Bitte Beschreibung eingeben.");
-            }
+	public EditProductServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-            ProductModel model = new ProductModel();
-            
-            if(!CheckUserPrivilege.CheckPrivilege(request, 2)) {
-                
-                throw new Exception("Nicht genuegend Rechte!");
-            }
-            
-            model.UpdateProduct(ean, name, description, null);
-             
-        } catch (Exception ex) {
-            request.setAttribute("message", ex.getMessage());
-            request.getRequestDispatcher("editProduct.jsp").forward(request, response);
-        }
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		try {
+
+			ProductModel model = new ProductModel();
+			long ean = Long.parseUnsignedLong(request.getParameter("ean"));
+			Product product = model.GetProductWithReviews(ean);
+
+			request.getSession().setAttribute("product", product);
+
+		} catch (Exception e) {
+			request.setAttribute("message", e.getMessage());
+			request.getRequestDispatcher("showProductDetails.jsp").forward(request, response);
+			return;
+		}
+
+		request.getRequestDispatcher("editProduct.jsp").forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		try {
+
+			String name = request.getParameter("name");
+			if (name.isEmpty()) {
+				throw new Exception("Bitte Namen eingeben.");
+			}
+			long ean = Long.parseUnsignedLong(request.getParameter("ean"));
+			if (request.getParameter("ean").isEmpty()) {
+				throw new Exception("Bitte EAN eingeben.");
+			}
+			String description = "";
+			ProductModel model = new ProductModel();
+
+			if (!CheckUserPrivilege.CheckPrivilege(request, 2)) {
+
+				throw new Exception("Nicht genuegend Rechte!");
+			}
+
+			model.UpdateProduct(ean, name, description, null);
+			request.setAttribute("message", "Produkt erfolgreich editiert");
+			request.getRequestDispatcher("showProductDetails.jsp").forward(request, response);
+
+		} catch (Exception ex) {
+			request.setAttribute("message", ex.getMessage());
+			request.getRequestDispatcher("editProduct.jsp").forward(request, response);
+		}
 	}
 
 }

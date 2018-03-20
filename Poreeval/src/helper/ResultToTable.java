@@ -21,13 +21,12 @@ public class ResultToTable {
 			table += "<button type='submit' class='btn btn-primary'>" + product.getProductname()+ "</button>";
 			table += "</form>";
 			table += "<tr><td style='width: 75%'>" + product.getDescription() + "</td></tr>";
-			table += "<tr><td style='width: 75%'; text-align: center;>" + GetStars(product) + "</td></tr>";
+			table += "<tr><td style='width: 75%'; text-align: center;>" + GetStars(product.getRating()) + "</td></tr>";
 			table += "</table>";
 		}
 		return table;
 	}
 	
-	@SuppressWarnings("deprecation")
 	public static String ProductWithReviewsToTable(Product product){
 		String table = "";
 		
@@ -40,7 +39,7 @@ public class ResultToTable {
 				table += "</tr>";
 
 				table += "<tr>";
-					table += "<td>" + GetStars(product) + "</td>";
+					table += "<td>" + GetStars(product.getRating()) + "</td>";
 				table += "</tr>";
 			table += "</table>";
 			
@@ -50,9 +49,9 @@ public class ResultToTable {
 			for(Review review : product.getReviews()){
 			table += "<table class='table table-striped tabled-bordered table-condensed'>";
 				table += "<tr>";
-					table += "<td style='font-weight: bold;'>" + GetStars(product) +  " " + review.getTitle() + "</td>";
+					table += "<td style='font-weight: bold;'>" + GetStars(review.getRating()) +  " " + review.getTitle() + "</td>";
 				table += "</tr>";
-					table += "<td style='font-size: 18px; font-weight: bold;'>Von " + review.getUser_name() + " am " + review.getReview_date().toGMTString() + "</td>";
+					table += "<td style='font-size: 18px; font-weight: bold;'>Von " + review.getUser_name() + " am " + review.getReview_date().toString() + "</td>";
 				table += "</tr>";
 			table += "</table>";
 			table += "<p>" + review.getText() + "</p>";
@@ -60,10 +59,10 @@ public class ResultToTable {
 		return table;
 	}
 
-	public static String GetStars(Product product){
+	public static String GetStars(int rating){
 		String starRating = "";
 		
-		switch(product.getRating()){
+		switch(rating){
 			case 0: starRating = "resources/0 Sterne.png";
 				break;
 			case 1: starRating = "resources/1 Stern.png";
@@ -94,10 +93,9 @@ public class ResultToTable {
 	
 	private static String GiveReviewForm(Product product) {
 		String reviewForm = 
-				"<form>"
+				"<form action='GiveReviewServlet' method='get'>"
 						+ "<input type='hidden' name='ean' value='" + product.getEan() + "'>"
-						+ "<a class='btn btn-primary' role='button' type='submit' href='giveReview.jsp'>Review abgeben</a>"
-//						+ "<button type='submit' class='btn btn-primary' onclick='window.location.href='giveReview.jsp'>Review erstellen</button>"
+						+ "<button type='submit' class='btn btn-primary' >Review erstellen</button>"
 				+ "</form>";
 		return reviewForm;
 	}

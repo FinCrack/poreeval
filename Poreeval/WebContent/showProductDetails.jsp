@@ -12,6 +12,7 @@
 </head>
 <body>
 	<nav:navigation></nav:navigation>
+	${ message }
 	<det:detail></det:detail>
 </body>
 </html>
