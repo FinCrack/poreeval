@@ -21,7 +21,7 @@ public class ResultToTable {
 			table += "<button type='submit' class='btn btn-primary'>" + product.getProductname()+ "</button>";
 			table += "</form>";
 			table += "<tr><td style='width: 75%'>" + product.getDescription() + "</td></tr>";
-			table += "<tr><td style='width: 75%'; text-align: center;>" + product.getRating() + "</td></tr>";
+			table += "<tr><td style='width: 75%'; text-align: center;>" + GetStars(product) + "</td></tr>";
 			table += "</table>";
 		}
 		return table;

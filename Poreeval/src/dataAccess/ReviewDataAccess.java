@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import data.Product;
 import data.Review;
 
 /** @author Lennard Brunke 259315
