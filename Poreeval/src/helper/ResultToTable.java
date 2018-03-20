@@ -84,7 +84,7 @@ public class ResultToTable {
 	}
 	
 	public static String GetEditForm(Product product){
-		String editForm = "<form action='EditProductServlet' method='post'>"
+		String editForm = "<form action='EditProductServlet' method='get'>"
 				+ "<input type='hidden' name='ean' value='" + product.getEan() + "'>"
 				+ "<button type='submit' class='btn btn-primary'>Produckt bearbeiten</button>"
 				+ "</form>";

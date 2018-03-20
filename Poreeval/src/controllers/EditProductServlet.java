@@ -33,9 +33,10 @@ public class EditProductServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request,
         HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        response.getWriter().append("Served at: ")
-            .append(request.getContextPath());
+        
+    	Long ean = Long.parseLong(request.getParameter("ean"));
+        request.getSession().setAttribute("ean", ean);
+        request.getRequestDispatcher("editProduct.jsp").forward(request, response);;
     }
 
     /**

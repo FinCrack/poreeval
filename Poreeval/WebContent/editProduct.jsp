@@ -11,5 +11,6 @@
 <body>
 	<nav:navigation></nav:navigation>
 	<h1>Bearbeitung von Produkten</h1>
+	${ ean }
 </body>
 </html>
