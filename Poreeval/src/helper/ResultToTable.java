@@ -34,7 +34,7 @@ public class ResultToTable {
 		//Table der das Produkt anzeigt
 			table += "<p><img src='https://www.spirulina.pl/wp-content/uploads/2015/07/naturalny-produkt.jpg' width='200' height='200' /></p>";
 			table += "<table class='table table-striped tabled-bordered table-condensed' style='margin-bottom: 100px;'>";
-			table += GetEditForm(product);
+			table += GetEditForm(product) + GiveReviewForm(product);
 			table += "<tr>";
 					table += "<td>" + product.getProductname() + "</td>";
 				table += "</tr>";
@@ -59,7 +59,7 @@ public class ResultToTable {
 			}
 		return table;
 	}
-	
+
 	public static String GetStars(Product product){
 		String starRating = "";
 		
@@ -84,11 +84,22 @@ public class ResultToTable {
 	}
 	
 	public static String GetEditForm(Product product){
-		String editForm = "<form action='EditProductServlet' method='get'>"
-				+ "<input type='hidden' name='ean' value='" + product.getEan() + "'>"
-				+ "<button type='submit' class='btn btn-primary'>Produckt bearbeiten</button>"
+		String editForm = 
+				"<form action='EditProductServlet' method='get'>"
+						+ "<input type='hidden' name='ean' value='" + product.getEan() + "'>"
+						+ "<button type='submit' class='btn btn-primary'>Produkt bearbeiten</button>"
 				+ "</form>";
 		return editForm;
+	}
+	
+	private static String GiveReviewForm(Product product) {
+		String reviewForm = 
+				"<form>"
+						+ "<input type='hidden' name='ean' value='" + product.getEan() + "'>"
+						+ "<a class='btn btn-primary' role='button' type='submit' href='giveReview.jsp'>Review abgeben</a>"
+//						+ "<button type='submit' class='btn btn-primary' onclick='window.location.href='giveReview.jsp'>Review erstellen</button>"
+				+ "</form>";
+		return reviewForm;
 	}
 }
 
