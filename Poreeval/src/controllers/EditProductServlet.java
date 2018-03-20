@@ -65,10 +65,11 @@ public class EditProductServlet extends HttpServlet {
 			if (name.isEmpty()) {
 				throw new Exception("Bitte Namen eingeben.");
 			}
-			long ean = Long.parseUnsignedLong(request.getParameter("ean"));
+			
 			if (request.getParameter("ean").isEmpty()) {
 				throw new Exception("Bitte EAN eingeben.");
 			}
+			long ean = Long.parseUnsignedLong(request.getParameter("ean"));
 			String description = "";
 			ProductModel model = new ProductModel();
 
