@@ -49,7 +49,7 @@ public class ResultToTable {
 			for(Review review : product.getReviews()){
 			table += "<table class='table table-striped tabled-bordered table-condensed'>";
 				table += "<tr>";
-					table += "<td style='font-weight: bold;'>" + GetStars(review.getRating()) +  " " + review.getTitle() + "</td>";
+					table += "<td style='font-weight: bold; font-size: 24px;'>" + GetStars(review.getRating()) +  " " + review.getTitle() + "</td><td>" + DeleteReview(review) + "</td>";
 				table += "</tr>";
 					table += "<td style='font-size: 18px; font-weight: bold;'>Von " + review.getUser_name() + " am " + review.getReview_date().toString() + "</td>";
 				table += "</tr>";
@@ -101,12 +101,22 @@ public class ResultToTable {
 	}
 	
 	private static String GiveDeleteForm(Product product){
-		String deleteForm = 
+		String deleteProductForm = 
 				"<form action='DeleteProductServlet' method='post'>"
 						+ "<input type='hidden' name='ean' value='" + product.getEan() + "'>"
 						+ "<button type='submit' class='btn btn-primary' >Produkt löschen</button>"
 				+ "</form>";
-		return deleteForm;
+		return deleteProductForm;
+	}
+	
+	private static String DeleteReview(Review review) {
+		String deleteReviewForm = 
+				"<form action='DeleteReviewServlet' method='post'>"
+						+ "<input type='hidden' name='id' value='" + review.getId() + "'>"
+						+ "<button type='submit' class='btn btn-primary' >Review löschen</button>"
+				+ "</form>";
+		
+		return deleteReviewForm;
 	}
 }
 
