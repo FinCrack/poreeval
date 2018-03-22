@@ -17,6 +17,15 @@ public class ProductModel {
 
     private ProductDataAccess productDataAccess = new ProductDataAccess();
     private ReviewDataAccess reviewDataAccess = new ReviewDataAccess();
+ 
+    public void DeleteProductByEan(long ean) throws SQLException {
+    	
+    	
+    	
+    	this.productDataAccess.DeleteProductByEan(ean);
+    }
+    
+    
     public void CreateProduct(long ean, String name, String description,
         BufferedImage picture) throws SQLException {
 
@@ -25,7 +34,7 @@ public class ProductModel {
         this.productDataAccess.InsertProduct(product);
 
     }
-
+    
     public void UpdateProduct(long ean, String name, String description,
         BufferedImage picture) throws SQLException {
 
@@ -70,4 +79,5 @@ public class ProductModel {
     public List<Product> GetRecentlyRatedProducts() throws SQLException {
     	return this.productDataAccess.GetRecentlyRatedProducts();
     }
+    
 }

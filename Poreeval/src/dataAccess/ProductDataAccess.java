@@ -58,6 +58,15 @@ public class ProductDataAccess {
 
 		return this.GetProductsFromResultSet(rs).get(0);
 	}
+	
+	public void DeleteProductByEan(long ean) throws SQLException {
+		
+		PreparedStatement psmt = this.connection.prepareStatement(
+				"DELETE FROM REVIEWS WHERE EAN = " + ean + "; DELETE FROM PRODUCTS WHERE EAN = " + ean + ";");
+		
+		psmt.executeUpdate();
+
+	}
 
 	public List<Product> GetProductsByName(String name) throws SQLException {
 

@@ -33,7 +33,7 @@ public class ResultToTable {
 		//Table der das Produkt anzeigt
 			table += "<p><img src='https://www.spirulina.pl/wp-content/uploads/2015/07/naturalny-produkt.jpg' width='200' height='200' /></p>";
 			table += "<table class='table table-striped tabled-bordered table-condensed' style='margin-bottom: 100px;'>";
-			table += GetEditForm(product) + GiveReviewForm(product);
+			table += GetEditForm(product) + GiveReviewForm(product) + GiveDeleteForm(product);
 			table += "<tr>";
 					table += "<td>" + product.getProductname() + "</td>";
 				table += "</tr>";
@@ -98,6 +98,15 @@ public class ResultToTable {
 						+ "<button type='submit' class='btn btn-primary' >Review erstellen</button>"
 				+ "</form>";
 		return reviewForm;
+	}
+	
+	private static String GiveDeleteForm(Product product){
+		String deleteForm = 
+				"<form action='DeleteProductServlet' method='post'>"
+						+ "<input type='hidden' name='ean' value='" + product.getEan() + "'>"
+						+ "<button type='submit' class='btn btn-primary' >Produkt löschen</button>"
+				+ "</form>";
+		return deleteForm;
 	}
 }
 
