@@ -70,7 +70,7 @@ public class EditProductServlet extends HttpServlet {
 				throw new Exception("Bitte EAN eingeben.");
 			}
 			long ean = Long.parseUnsignedLong(request.getParameter("ean"));
-			String description = "";
+
 			ProductModel model = new ProductModel();
 
 			if (!CheckUserPrivilege.CheckPrivilege(request, 2)) {
@@ -78,7 +78,7 @@ public class EditProductServlet extends HttpServlet {
 				throw new Exception("Nicht genuegend Rechte!");
 			}
 
-			model.UpdateProduct(ean, name, description, null);
+			model.UpdateProduct(ean, name, null);
 			request.setAttribute("message", "Produkt erfolgreich editiert");
 			request.getRequestDispatcher("showProductDetails.jsp").forward(request, response);
 

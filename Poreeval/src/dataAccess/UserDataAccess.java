@@ -19,7 +19,7 @@ public class UserDataAccess {
                 + "VALUES (NEXTVAL('SEQ_USERS'), ?, ?, ?)");
 
         psmt.setString(1, user.getUserName());
-        psmt.setInt(2, user.getPrivilege());
+        psmt.setInt(2, 3);
         psmt.setString(3, user.getEmail());
 
         PreparedStatement psmtPW = this.connection.prepareStatement(

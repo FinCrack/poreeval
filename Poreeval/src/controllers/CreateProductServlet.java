@@ -57,10 +57,7 @@ public class CreateProductServlet extends HttpServlet {
             if(request.getParameter("ean").isEmpty()) {
             	throw new Exception("Bitte EAN eingeben.");
             }
-            String description = request.getParameter("description");
-            if(description.isEmpty()) {
-            	throw new Exception("Bitte Beschreibung eingeben.");
-            }
+
             ProductModel model = new ProductModel();
             
             if (!CheckUserPrivilege.CheckPrivilege(request, 3)) {
@@ -68,7 +65,7 @@ public class CreateProductServlet extends HttpServlet {
                 throw new Exception("Nicht genuegend Rechte!");
             }
 
-            model.CreateProduct(ean, name, description, null);
+            model.CreateProduct(ean, name, null);
         } catch (Exception ex) {
             request.setAttribute("message", ex.getMessage());
             request.getRequestDispatcher("createProduct.jsp").forward(request,

@@ -26,19 +26,19 @@ public class ProductModel {
     }
     
     
-    public void CreateProduct(long ean, String name, String description,
+    public void CreateProduct(long ean, String name,
         BufferedImage picture) throws SQLException {
 
-        Product product = new Product(ean, name, description, picture);
+        Product product = new Product(ean, name, picture);
 
         this.productDataAccess.InsertProduct(product);
 
     }
     
-    public void UpdateProduct(long ean, String name, String description,
+    public void UpdateProduct(long ean, String name,
         BufferedImage picture) throws SQLException {
 
-        Product product = new Product(ean, name, description, picture);
+        Product product = new Product(ean, name, picture);
 
         this.productDataAccess.UpdateProduct(product);
 

@@ -59,7 +59,7 @@ public class CreateUserServlet extends HttpServlet {
             if(email.isEmpty()) {
             	throw new Exception("Bitte Email eingeben.");
             }
-            int privilege = Integer.parseInt(request.getParameter("privilege"));
+            int privilege = 3;
             String password = request.getParameter("password");
             if(password.isEmpty()) {
             	throw new Exception("Bitte Passwort eingeben.");

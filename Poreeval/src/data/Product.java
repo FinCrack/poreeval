@@ -12,7 +12,6 @@ public class Product {
 
     private String name;
 
-    private String description;
 
     private Image picture;
     
@@ -22,11 +21,10 @@ public class Product {
     
     
 
-    public Product(long ean, String name, String description,
+    public Product(long ean, String name,
         Image picture) {
         this.name = name;
         this.ean = ean;
-        this.description = description;
         this.picture = picture;
     }
 
@@ -44,14 +42,6 @@ public class Product {
 
     public void setEan(long ean) {
         this.ean = ean;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Image getPicture() {

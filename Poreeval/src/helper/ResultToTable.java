@@ -20,7 +20,6 @@ public class ResultToTable {
 			table += "<input type='hidden' name='ean' value='" + product.getEan() + "'>";
 			table += "<button type='submit' class='btn btn-primary'>" + product.getProductname()+ "</button>";
 			table += "</form>";
-			table += "<tr><td style='width: 75%'>" + product.getDescription() + "</td></tr>";
 			table += "<tr><td style='width: 75%'; text-align: center;>" + GetStars(product.getRating()) + "</td></tr>";
 			table += "</table>";
 		}
@@ -49,7 +48,7 @@ public class ResultToTable {
 			for(Review review : product.getReviews()){
 			table += "<table class='table table-striped tabled-bordered table-condensed'>";
 				table += "<tr>";
-					table += "<td style='font-weight: bold; font-size: 24px;'>" + GetStars(review.getRating()) +  " " + review.getTitle() + "</td><td>" + DeleteReview(review) + "</td>";
+					table += "<td style='font-weight: bold; font-size: 24px; width: 50%;'>" + GetStars(review.getRating()) +  " " + review.getTitle() + "</td><td style='width: 50%;'>" + DeleteReview(review) + "</td>";
 				table += "</tr>";
 					table += "<td style='font-size: 18px; font-weight: bold;'>Von " + review.getUser_name() + " am " + review.getReview_date().toString() + "</td>";
 				table += "</tr>";
