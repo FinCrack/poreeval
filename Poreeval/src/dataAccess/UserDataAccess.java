@@ -12,7 +12,9 @@ import data.User;
 public class UserDataAccess {
 
     private Connection connection = DatabaseConnection.getConnection();
-
+/*
+ * Methode, um einen neuen Benutzer in die Tabellen Users & Passwoerter einzutragen
+ */
     public void InsertUser(User user) throws SQLException {
         PreparedStatement psmt = this.connection.prepareStatement(
             "INSERT INTO USERS (ID, USERNAME, PRIVILEGE, EMAIL) "
@@ -29,7 +31,9 @@ public class UserDataAccess {
         psmt.executeUpdate();
         psmtPW.executeUpdate();
     }
-
+/*
+ * Methode, um die User & Passwoerter Datenbanken nach den eingegebenen Strings zu durchsuchen und diesen dann als neuen User zu setzen.
+ */
     public User GetUser(String userName, String password) throws SQLException {
 
         PreparedStatement psmt = this.connection.prepareStatement(

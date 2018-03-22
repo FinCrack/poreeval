@@ -9,7 +9,9 @@ import dataAccess.UserDataAccess;
 public class UserModel {
 
     private UserDataAccess userDataAccess = new UserDataAccess();
-
+/*
+ * Methode, um einen User zu erstellen und den dann an die userDataAccess-Klasse zu schicken, um ihn dort in die Datenbanken einzutragen.
+ */
     public void CreateUser(String userName, String password, String password2, int privilege,
         String email) throws Exception {
 
@@ -28,7 +30,9 @@ public class UserModel {
 
         this.userDataAccess.InsertUser(user);
     }
-
+/*
+ * Methode, um einen User einzuloggen
+ */
     public User LoginUser(String userName, String password) throws SQLException {
 
         return this.userDataAccess.GetUser(userName, password);

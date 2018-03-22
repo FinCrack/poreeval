@@ -7,7 +7,10 @@ import data.User;
  *  @author Christian Lindenberg, 235372
  */
 public class CheckUserPrivilege {
-
+/*
+ * Methode, um einen User aus der Session zu holen und dann dessen Privilegien fuer den Zugriff auf die 
+ * einzelnen Seiten zu ueberpruefen
+ */
     public static boolean CheckPrivilege(HttpServletRequest request,
         int requiredPrivilege) {
 
@@ -24,7 +27,9 @@ public class CheckUserPrivilege {
 
         return false;
     }
-
+/*
+ * Methode, fuer die Ueberpruefung der Privilegien eines sich bereits in der Session befindlichen Users. 
+ */
     public static boolean CheckPrivilege(User user, int requiredPrivilege) {
 
         try {

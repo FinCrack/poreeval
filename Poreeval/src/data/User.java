@@ -14,6 +14,9 @@ public class User {
 	    
 	}
 
+/*
+ * Konstruktor fuer User.
+ */
 	public User(String userName, String password, int privilege, String email) {
 		this.userName = userName;
 		this.email = email;
