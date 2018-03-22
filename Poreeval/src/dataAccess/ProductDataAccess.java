@@ -21,7 +21,7 @@ public class ProductDataAccess {
 
 	public void InsertProduct(Product product) throws SQLException {
 		PreparedStatement psmt = this.connection
-				.prepareStatement("INSERT INTO PRODUCTS (EAN, NAME, DESCRIPTION, PICTURE) " + "VALUES (?, ?, ?)");
+				.prepareStatement("INSERT INTO PRODUCTS (EAN, NAME, PICTURE) " + "VALUES (?, ?, ?)");
 
 		psmt.setLong(1, product.getEan());
 		psmt.setString(2, product.getProductname());
