@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import helper.CheckUserPrivilege;
 import models.ProductModel;
+import models.ReviewModel;
 
 /*
  * @author Jannik Bukowski, 235502
@@ -58,14 +59,21 @@ public class CreateProductServlet extends HttpServlet {
             	throw new Exception("Bitte EAN eingeben.");
             }
 
-            ProductModel model = new ProductModel();
+            String title = request.getParameter("title");
+            if(title.isEmpty()) {
+                throw new Exception("Bitte Titel für die Bewertung eingeben.");
+            }
+           
+
+            ProductModel productModel = new ProductModel();
+
             
             if (!CheckUserPrivilege.CheckPrivilege(request, 3)) {
 
                 throw new Exception("Nicht genuegend Rechte!");
             }
 
-            model.CreateProduct(ean, name, null);
+            productModel.CreateProduct(ean, name, null);
         } catch (Exception ex) {
             request.setAttribute("message", ex.getMessage());
             request.getRequestDispatcher("createProduct.jsp").forward(request,
