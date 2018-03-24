@@ -49,7 +49,7 @@ public class CreateReviewServlet extends HttpServlet {
 	        
 	        String text = request.getParameter("text");
 	        
-	        long ean = (long) session.getAttribute("ean");
+	        int product_id = (int) session.getAttribute("id");
 	        
 	        User user = (User) request.getSession().getAttribute("user");
 	        
@@ -59,7 +59,7 @@ public class CreateReviewServlet extends HttpServlet {
 	        
 	        ReviewModel model = new ReviewModel();
 	        
-	        model.CreateReview(rating, title, text, ean, user.getId());
+	        model.CreateReview(rating, title, text, product_id, user.getId());
 	        request.setAttribute("message", "Review erfolgreich erstellt!");
 	        request.getRequestDispatcher("showProductDetails.jsp").forward(request, response);
 	        

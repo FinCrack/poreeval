@@ -17,7 +17,7 @@ public class ResultToTable {
 			table += "<table class='table table-striped tabled-bordered table-hover table-condensed'>";
 			table += "<td rowspan='3' style='width: 25%'><img src='https://www.spirulina.pl/wp-content/uploads/2015/07/naturalny-produkt.jpg'/></td>";
 			table += "<form action='ShowProductDetailsServlet' method='get'>";
-			table += "<input type='hidden' name='ean' value='" + product.getEan() + "'>";
+			table += "<input type='hidden' name='id' value='" + product.getId() + "'>";
 			table += "<button type='submit' class='btn btn-primary'>" + product.getProductname()+ "</button>";
 			table += "</form>";
 			table += "<tr><td style='width: 75%'; text-align: center;>" + GetStars(product.getRating()) + "</td></tr>";
@@ -32,7 +32,7 @@ public class ResultToTable {
 		//Table der das Produkt anzeigt
 			table += "<p><img src='https://www.spirulina.pl/wp-content/uploads/2015/07/naturalny-produkt.jpg' width='200' height='200' /></p>";
 			table += "<table class='table table-striped tabled-bordered table-condensed' style='margin-bottom: 100px;'>";
-			table += GetEditForm(product) + GiveReviewForm(product) + GiveDeleteForm(product);
+			table += GetEditForm(product) + GetReviewForm(product) + GetDeleteForm(product);
 			table += "<tr>";
 					table += "<td>" + product.getProductname() + "</td>";
 				table += "</tr>";
@@ -84,26 +84,26 @@ public class ResultToTable {
 	public static String GetEditForm(Product product){
 		String editForm = 
 				"<form action='EditProductServlet' method='get'>"
-						+ "<input type='hidden' name='ean' value='" + product.getEan() + "'>"
+						+ "<input type='hidden' name='id' value='" + product.getId() + "'>"
 						+ "<button type='submit' class='btn btn-primary'>Produkt bearbeiten</button>"
 				+ "</form>";
 		return editForm;
 	}
 	
-	private static String GiveReviewForm(Product product) {
+	private static String GetReviewForm(Product product) {
 		String reviewForm = 
 				"<form action='GiveReviewServlet' method='get'>"
-						+ "<input type='hidden' name='ean' value='" + product.getEan() + "'>"
+						+ "<input type='hidden' name='id' value='" + product.getId() + "'>"
 						+ "<button type='submit' class='btn btn-primary' >Review erstellen</button>"
 				+ "</form>";
 		return reviewForm;
 	}
 	
-	private static String GiveDeleteForm(Product product){
+	private static String GetDeleteForm(Product product){
 		String deleteProductForm = 
 				"<form action='DeleteProductServlet' method='post'>"
-						+ "<input type='hidden' name='ean' value='" + product.getEan() + "'>"
-						+ "<button type='submit' class='btn btn-primary' >Produkt löschen</button>"
+						+ "<input type='hidden' name='id' value='" + product.getId() + "'>"
+						+ "<button type='submit' class='btn btn-primary' >Produkt lï¿½schen</button>"
 				+ "</form>";
 		return deleteProductForm;
 	}
@@ -112,7 +112,7 @@ public class ResultToTable {
 		String deleteReviewForm = 
 				"<form action='DeleteReviewServlet' method='post'>"
 						+ "<input type='hidden' name='id' value='" + review.getId() + "'>"
-						+ "<button type='submit' class='btn btn-primary' >Review löschen</button>"
+						+ "<button type='submit' class='btn btn-primary' >Review lï¿½schen</button>"
 				+ "</form>";
 		
 		return deleteReviewForm;

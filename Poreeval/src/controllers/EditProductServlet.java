@@ -37,9 +37,13 @@ public class EditProductServlet extends HttpServlet {
 
 		try {
 
+		    if (!CheckUserPrivilege.CheckPrivilege(request, 2)) {
+
+                throw new Exception("Nicht genuegend Rechte!");
+            }
 			ProductModel model = new ProductModel();
-			long ean = Long.parseUnsignedLong(request.getParameter("ean"));
-			Product product = model.GetProductWithReviews(ean);
+			int id = Integer.parseInt(request.getParameter("id"));
+			Product product = model.GetProductWithReviews(id);
 
 			request.getSession().setAttribute("product", product);
 
@@ -70,6 +74,9 @@ public class EditProductServlet extends HttpServlet {
 				throw new Exception("Bitte EAN eingeben.");
 			}
 			long ean = Long.parseUnsignedLong(request.getParameter("ean"));
+			
+			
+			int id = ((Product)request.getSession().getAttribute("product")).getId();
 
 			ProductModel model = new ProductModel();
 
@@ -78,7 +85,7 @@ public class EditProductServlet extends HttpServlet {
 				throw new Exception("Nicht genuegend Rechte!");
 			}
 
-			model.UpdateProduct(ean, name, null);
+			model.UpdateProduct(id, ean, name, null);
 			request.setAttribute("message", "Produkt erfolgreich editiert");
 			request.getRequestDispatcher("showProductDetails.jsp").forward(request, response);
 

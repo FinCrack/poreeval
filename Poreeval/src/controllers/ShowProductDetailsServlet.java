@@ -34,8 +34,8 @@ public class ShowProductDetailsServlet extends HttpServlet {
 		try {
 			
 			ProductModel model = new ProductModel();
-			long ean = Long.parseLong(request.getParameter("ean"));
-			Product product = model.GetProductWithReviews(ean);
+			int id = Integer.parseInt(request.getParameter("id"));
+			Product product = model.GetProductWithReviews(id);
 			
 			request.getSession().setAttribute("product", product);
 			

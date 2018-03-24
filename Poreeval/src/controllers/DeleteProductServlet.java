@@ -43,7 +43,7 @@ public class DeleteProductServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		try {
-			long ean = Long.parseUnsignedLong(request.getParameter("ean"));
+			int id = Integer.parseInt(request.getParameter("id"));
 
 			ProductModel model = new ProductModel();
 
@@ -52,8 +52,8 @@ public class DeleteProductServlet extends HttpServlet {
 				throw new Exception("Nicht genuegend Rechte!");
 			}
 			
-			model.DeleteProductByEan(ean);
-			request.setAttribute("message", "Produkt erfolgreich gelöscht!");
+			model.DeleteProductById(id);
+			request.setAttribute("message", "Produkt erfolgreich gelï¿½scht!");
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		} catch (Exception ex) {
 			request.setAttribute("message", ex.getMessage());

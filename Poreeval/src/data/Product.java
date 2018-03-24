@@ -7,6 +7,8 @@ import java.util.List;
  * 
  */
 public class Product {
+    
+    private int id;
 
     private long ean;
 
@@ -23,6 +25,14 @@ public class Product {
 
     public Product(long ean, String name,
         Image picture) {
+        this.name = name;
+        this.ean = ean;
+        this.picture = picture;
+    }
+    
+    public Product(int id, long ean, String name,
+        Image picture) {
+        this.setId(id);
         this.name = name;
         this.ean = ean;
         this.picture = picture;
@@ -67,5 +77,13 @@ public class Product {
 	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
 	}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
 }

@@ -10,9 +10,9 @@ public class ReviewModel {
     
     private ReviewDataAccess reviewDataAccess = new ReviewDataAccess();
     
-    public void CreateReview(int rating, String title, String text, long ean, int user_Id) throws SQLException {
+    public void CreateReview(int rating, String title, String text, int product_id, int user_Id) throws SQLException {
         
-        this.reviewDataAccess.InsertReview(new Review(rating, title, text, ean, user_Id));
+        this.reviewDataAccess.InsertReview(new Review(rating, title, text, product_id, user_Id));
     }
     
     
@@ -33,9 +33,9 @@ public class ReviewModel {
     }
     
     
-    public List<Review> GetReviewList(long ean) throws SQLException {
+    public List<Review> GetReviewList(int id) throws SQLException {
         
-        return this.reviewDataAccess.GetReviewsForEan(ean);
+        return this.reviewDataAccess.GetReviewsForProductId(id);
     }
     
 }

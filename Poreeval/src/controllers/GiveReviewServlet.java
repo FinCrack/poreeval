@@ -33,14 +33,14 @@ public class GiveReviewServlet extends HttpServlet {
 	
 		try {
 		    HttpSession session = request.getSession();
-		    long ean = Long.parseUnsignedLong(request.getParameter("ean"));
+		    int id = Integer.parseInt(request.getParameter("id"));
 		    User user = (User) session.getAttribute("user");
 		    
 		    if(!CheckUserPrivilege.CheckPrivilege(user, 3)) {
 	            throw new Exception("Bitte einloggen, um ein Review zu erstellen.");
 	        }
 		    
-		    session.setAttribute("ean", ean);
+		    session.setAttribute("id", id);
 	        
 		    request.getRequestDispatcher("giveReview.jsp").forward(request, response);
 		} catch (Exception e) {

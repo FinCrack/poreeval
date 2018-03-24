@@ -15,29 +15,29 @@ public class Review {
 
     private String text;
 
-    private long ean;
+    private int product_id;
 
     private int user_id;
     private String user_name;
 
     private Date review_date;
 
-    public Review(int id, int rating, String title, String text, long ean, int user_id,
+    public Review(int id, int rating, String title, String text, int product_id, int user_id,
         Date review_date) {
         this.id = id;
         this.rating = rating;
         this.title = title;
         this.text = text;
-        this.ean = ean;
+        this.product_id = product_id;
         this.user_id = user_id;
         this.review_date = review_date;
     }
     
-    public Review(int rating, String title, String text, long ean, int user_id) {
+    public Review(int rating, String title, String text, int product_id, int user_id) {
         this.rating = rating;
         this.title = title;
         this.text = text;
-        this.ean = ean;
+        this.product_id = product_id;
         this.user_id = user_id;
         this.review_date = new Date();
     }
@@ -82,14 +82,6 @@ public class Review {
         this.text = text;
     }
 
-    public long getEan() {
-        return ean;
-    }
-
-    public void setEan(long ean) {
-        this.ean = ean;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -104,5 +96,13 @@ public class Review {
 
     public void setUser_name(String user_name) {
         this.user_name = user_name;
+    }
+
+    public int getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(int product_id) {
+        this.product_id = product_id;
     }
 }

@@ -20,13 +20,13 @@ public class ReviewDataAccess {
     public void InsertReview(Review review) throws SQLException {
         
         PreparedStatement psmt = this.connection.prepareStatement(
-            "INSERT INTO REVIEWS (ID, RATING, TITLE, TEXT, EAN, USER_ID)"
+            "INSERT INTO REVIEWS (ID, RATING, TITLE, TEXT, PRODUCT_ID, USER_ID)"
             + " VALUES (NEXTVAL('SEQ_REVIEWS'), ?, ?, ?, ?, ?)");
         
         psmt.setInt(1, review.getRating());
         psmt.setString(2, review.getTitle());
         psmt.setString(3, review.getText());
-        psmt.setLong(4, review.getEan());
+        psmt.setInt(4, review.getProduct_id());
         psmt.setInt(5, review.getUser_id());
         
         psmt.executeUpdate();
@@ -36,14 +36,13 @@ public class ReviewDataAccess {
         
         PreparedStatement psmt = this.connection.prepareStatement(
             "UPDATE REVIEWS"
-            + " SET RATING = ?, TITLE = ?, TEXT = ?, EAN = ?"
-            + " WHERE ID = ?) ");
+            + " SET RATING = ?, TITLE = ?, TEXT = ?"
+            + " WHERE ID = ?");
         
         psmt.setInt(1, review.getRating());
         psmt.setString(2, review.getTitle());
         psmt.setString(3, review.getText());
-        psmt.setLong(4, review.getEan());
-        psmt.setInt(5, review.getId());
+        psmt.setInt(4, review.getId());
         
         psmt.executeUpdate();
     }
@@ -63,7 +62,7 @@ public class ReviewDataAccess {
     public Review GetReview(int id) throws SQLException {
         
         PreparedStatement psmt = this.connection.prepareStatement(
-            "SELECT REVIEWS.ID, RATING, TITLE, TEXT, EAN, USER_ID, USERNAME, REVIEW_DATE"
+            "SELECT REVIEWS.ID, RATING, TITLE, TEXT, PRODUCT_ID, USER_ID, USERNAME, REVIEW_DATE"
             + " FROM REVIEWS"
             + " JOIN USERS ON REVIEWS.USER_ID = USERS.ID"
             + " WHERE REVIEWS.ID = ?");
@@ -74,15 +73,15 @@ public class ReviewDataAccess {
         return this.ResultSetToReviewList(rs).get(0);
     }
     
-    public List<Review> GetReviewsForEan(long ean) throws SQLException {
+    public List<Review> GetReviewsForProductId(int id) throws SQLException {
         
         PreparedStatement psmt = this.connection.prepareStatement(
-            "SELECT REVIEWS.ID, RATING, TITLE, TEXT, EAN, USER_ID, USERNAME, REVIEW_DATE"
+            "SELECT REVIEWS.ID, RATING, TITLE, TEXT, PRODUCT_ID, USER_ID, USERNAME, REVIEW_DATE"
                 + " FROM REVIEWS"
                 + " JOIN USERS ON REVIEWS.USER_ID = USERS.ID"
-                + " WHERE REVIEWS.EAN = ?");
+                + " WHERE REVIEWS.PRODUCT_ID = ?");
         
-        psmt.setLong(1, ean);
+        psmt.setInt(1, id);
         ResultSet rs = psmt.executeQuery();
         
         return this.ResultSetToReviewList(rs);
@@ -97,13 +96,13 @@ public class ReviewDataAccess {
             int rating = rs.getInt(2);
             String title = rs.getString(3);
             String text = rs.getString(4);
-            long ean = rs.getLong(5);
+            int product_id = rs.getInt(5);
             int user_id = rs.getInt(6);
             String user_name = rs.getString(7); 
             Date review_date = rs.getDate(8);
           
             
-            Review review = new Review(id, rating, title, text, ean, user_id, review_date);
+            Review review = new Review(id, rating, title, text, product_id, user_id, review_date);
 
             review.setUser_name(user_name);
             reviewList.add(review);

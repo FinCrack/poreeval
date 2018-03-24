@@ -11,18 +11,21 @@ import dataAccess.ProductDataAccess;
 import dataAccess.ReviewDataAccess;
 
 /** @author Lennard Brunke 259315
- * 
+ * Model Klasse für Produkte
  */
 public class ProductModel {
 
     private ProductDataAccess productDataAccess = new ProductDataAccess();
     private ReviewDataAccess reviewDataAccess = new ReviewDataAccess();
  
-    public void DeleteProductByEan(long ean) throws SQLException {
+    /**
+     * Löscht ein Produkt anhand der EAN.
+     */
+    public void DeleteProductById(int id) throws SQLException {
     	
     	
     	
-    	this.productDataAccess.DeleteProductByEan(ean);
+    	this.productDataAccess.DeleteProductById(id);
     }
     
     
@@ -35,10 +38,10 @@ public class ProductModel {
 
     }
     
-    public void UpdateProduct(long ean, String name,
+    public void UpdateProduct(int id, long ean, String name,
         BufferedImage picture) throws SQLException {
 
-        Product product = new Product(ean, name, picture);
+        Product product = new Product(id, ean, name, picture);
 
         this.productDataAccess.UpdateProduct(product);
 
@@ -60,13 +63,14 @@ public class ProductModel {
         return productList;
     }
     
-    public Product GetProductWithReviews(long ean) throws SQLException {
-    	Product product = this.productDataAccess.GetProductByEan(ean);
-    	List<Review> reviews = this.reviewDataAccess.GetReviewsForEan(ean);
+    public Product GetProductWithReviews(int id) throws SQLException {
+    	Product product = this.productDataAccess.GetProductById(id);
+    	List<Review> reviews = this.reviewDataAccess.GetReviewsForProductId(id);
     	product.setReviews(reviews);
     	
     	return product;
     }
+   
     
     public List<Product> GetAllProducts() throws SQLException {
     	return this.productDataAccess.GetAllProducts();
