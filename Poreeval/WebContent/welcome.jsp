@@ -4,7 +4,6 @@
 <%@ taglib prefix="nav" uri="/WEB-INF/navigation.tld"%>
 <%@ taglib prefix="wel" uri="/WEB-INF/welcomeContent.tld"%>
 <%@ taglib prefix="rating" uri="/WEB-INF/rating.tld"%>
-<%@ taglib prefix="searchR" uri="/WEB-INF/searchResult.tld"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
@@ -27,6 +26,6 @@
 			<td><rating:best></rating:best></td><td><rating:recently></rating:recently></td>
 		</tr>
 	</table>
-	<searchR:search></searchR:search>
+
 </body>
 </html>

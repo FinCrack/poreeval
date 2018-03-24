@@ -21,18 +21,12 @@ import models.ProductModel;
 public class AllProductsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
+
 	public AllProductsServlet() {
 		super();
-		// TODO Auto-generated constructor stub
-	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	}
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -46,17 +40,13 @@ public class AllProductsServlet extends HttpServlet {
 			
 			session.setAttribute("products", products);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			request.setAttribute("message", e.getMessage());;
 		}
 		
 		request.getRequestDispatcher("allProducts.jsp").forward(request, response);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {	
 	}

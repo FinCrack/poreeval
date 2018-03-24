@@ -59,7 +59,7 @@ public class SearchProductServlet extends HttpServlet {
 	    HttpSession session = request.getSession();
 	    session.setAttribute("searchResults", searchResults);
 	    
-	    request.getRequestDispatcher("welcome.jsp").forward(request, response);
+	    request.getRequestDispatcher("showSearchResult.jsp").forward(request, response);
 	}
 
 	/**

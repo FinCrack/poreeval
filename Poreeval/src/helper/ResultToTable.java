@@ -18,7 +18,7 @@ public class ResultToTable {
 			table += "<td rowspan='3' style='width: 25%'><img src='https://www.spirulina.pl/wp-content/uploads/2015/07/naturalny-produkt.jpg'/></td>";
 			table += "<form action='ShowProductDetailsServlet' method='get'>";
 			table += "<input type='hidden' name='id' value='" + product.getId() + "'>";
-			table += "<button type='submit' class='btn btn-primary'>" + product.getProductname()+ "</button>";
+			table += "<button type='submit' class='btn btn-primary' style='width: 90%;'>" + product.getProductname()+ "</button>";
 			table += "</form>";
 			table += "<tr><td style='width: 75%'; text-align: center;>" + GetStars(product.getRating()) + "</td></tr>";
 			table += "</table>";
@@ -103,7 +103,7 @@ public class ResultToTable {
 		String deleteProductForm = 
 				"<form action='DeleteProductServlet' method='post'>"
 						+ "<input type='hidden' name='id' value='" + product.getId() + "'>"
-						+ "<button type='submit' class='btn btn-primary' >Produkt l�schen</button>"
+						+ "<button type='submit' class='btn btn-primary' >Produkt loeschen</button>"
 				+ "</form>";
 		return deleteProductForm;
 	}
@@ -112,7 +112,7 @@ public class ResultToTable {
 		String deleteReviewForm = 
 				"<form action='DeleteReviewServlet' method='post'>"
 						+ "<input type='hidden' name='id' value='" + review.getId() + "'>"
-						+ "<button type='submit' class='btn btn-primary' >Review l�schen</button>"
+						+ "<button type='submit' class='btn btn-primary' >Review loeschen</button>"
 				+ "</form>";
 		
 		return deleteReviewForm;
