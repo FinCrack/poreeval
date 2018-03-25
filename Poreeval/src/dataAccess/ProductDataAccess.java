@@ -25,9 +25,7 @@ public class ProductDataAccess {
 
 		psmt.setLong(1, product.getEan());
 		psmt.setString(2, product.getProductname());
-		psmt.setBytes(3, null);
-		// TODO image speichern recherchieren
-		// psmt.setBinaryStream(parameterIndex, x);
+		psmt.setString(3, product.getPicture());
 
 		psmt.executeUpdate();
 	}
@@ -38,7 +36,7 @@ public class ProductDataAccess {
 
 		psmt.setLong(1, product.getEan());
 		psmt.setString(2, product.getProductname());
-		psmt.setBytes(3, null);
+		psmt.setString(3, product.getPicture());
 		psmt.setInt(4, product.getId());
 
 		psmt.executeUpdate();
@@ -134,9 +132,10 @@ public class ProductDataAccess {
 		while (rs.next()) {
 			long ean = rs.getLong(1);
 			String name = rs.getString(2);
+			String picture = rs.getString(3);
 			int rating = rs.getInt(4);
 			int id = rs.getInt(5);
-			Product product = new Product(id, ean, name, null);
+			Product product = new Product(id, ean, name, picture);
 			product.setRating(rating);
 			// TODO picture
 			productList.add(product);

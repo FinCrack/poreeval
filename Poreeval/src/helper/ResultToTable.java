@@ -15,12 +15,12 @@ public class ResultToTable {
 		String table = "";
 		for (Product product : products) {
 			table += "<table class='table table-striped tabled-bordered table-hover table-condensed'>";
-			table += "<td rowspan='3' style='width: 25%'><img src='https://www.spirulina.pl/wp-content/uploads/2015/07/naturalny-produkt.jpg'/></td>";
+			table += "<td rowspan='3' style='width: 15%' ><img src='" + product.getPicture() + "' style='max-width: 70px; max-height: 100px;'/></td>";
 			table += "<form action='ShowProductDetailsServlet' method='get'>";
 			table += "<input type='hidden' name='id' value='" + product.getId() + "'>";
 			table += "<button type='submit' class='btn btn-primary' style='width: 90%;'>" + product.getProductname()+ "</button>";
 			table += "</form>";
-			table += "<tr><td style='width: 75%'; text-align: center;>" + GetStars(product.getRating()) + "</td></tr>";
+			table += "<tr><td style='width: 75%'>" + GetStars(product.getRating()) + "</td></tr>";
 			table += "</table>";
 		}
 		return table;
@@ -30,7 +30,7 @@ public class ResultToTable {
 		String table = "";
 		
 		//Table der das Produkt anzeigt
-			table += "<p><img src='https://www.spirulina.pl/wp-content/uploads/2015/07/naturalny-produkt.jpg' width='200' height='200' /></p>";
+			table += "<p><img src='" + product.getPicture() + "' width='200' height='200' /></p>";
 			table += "<table class='table table-striped tabled-bordered table-condensed' style='margin-bottom: 100px;'>";
 			table += GetEditForm(product) + GetReviewForm(product) + GetDeleteForm(product);
 			table += "<tr>";
@@ -77,8 +77,8 @@ public class ResultToTable {
 			default: starRating = "resources/0 Sterne.png";
 				break;
 		}
-		String imageCont = "<img src='" + starRating + "' style='max-height: 35px;'></img>";
-		return imageCont;
+		String imageCont = "<img src='" + starRating + "' style='max-height: 35px; align: center;'></img>";
+		return imageCont; 
 	}
 	
 	public static String GetEditForm(Product product){

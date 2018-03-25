@@ -30,7 +30,7 @@ public class ProductModel {
     
     
     public void CreateProduct(long ean, String name,
-        BufferedImage picture) throws SQLException {
+        String picture) throws SQLException {
 
         Product product = new Product(ean, name, picture);
 
@@ -39,7 +39,7 @@ public class ProductModel {
     }
     
     public void UpdateProduct(int id, long ean, String name,
-        BufferedImage picture) throws SQLException {
+        String picture) throws SQLException {
 
         Product product = new Product(id, ean, name, picture);
 

@@ -41,6 +41,8 @@ public class EditProductServlet extends HttpServlet {
 
                 throw new Exception("Nicht genuegend Rechte!");
             }
+		   
+		    
 			ProductModel model = new ProductModel();
 			int id = Integer.parseInt(request.getParameter("id"));
 			Product product = model.GetProductWithReviews(id);
@@ -75,6 +77,8 @@ public class EditProductServlet extends HttpServlet {
 			}
 			long ean = Long.parseUnsignedLong(request.getParameter("ean"));
 			
+			String picture = request.getParameter("picture");
+			
 			
 			int id = ((Product)request.getSession().getAttribute("product")).getId();
 
@@ -85,7 +89,7 @@ public class EditProductServlet extends HttpServlet {
 				throw new Exception("Nicht genuegend Rechte!");
 			}
 
-			model.UpdateProduct(id, ean, name, null);
+			model.UpdateProduct(id, ean, name, picture);
 			request.setAttribute("message", "Produkt erfolgreich editiert");
 			request.getRequestDispatcher("showProductDetails.jsp").forward(request, response);
 

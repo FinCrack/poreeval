@@ -63,6 +63,8 @@ public class CreateProductServlet extends HttpServlet {
             if(title.isEmpty()) {
                 throw new Exception("Bitte Titel für die Bewertung eingeben.");
             }
+            
+            String picture = request.getParameter("picture");
            
 
             ProductModel productModel = new ProductModel();
@@ -73,7 +75,7 @@ public class CreateProductServlet extends HttpServlet {
                 throw new Exception("Nicht genuegend Rechte!");
             }
 
-            productModel.CreateProduct(ean, name, null);
+            productModel.CreateProduct(ean, name, picture);
         } catch (Exception ex) {
             request.setAttribute("message", ex.getMessage());
             request.getRequestDispatcher("createProduct.jsp").forward(request,

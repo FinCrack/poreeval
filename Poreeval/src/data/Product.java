@@ -15,7 +15,7 @@ public class Product {
     private String name;
 
 
-    private Image picture;
+    private String picture;
     
     private int rating;
     
@@ -24,14 +24,14 @@ public class Product {
     
 
     public Product(long ean, String name,
-        Image picture) {
+        String picture) {
         this.name = name;
         this.ean = ean;
         this.picture = picture;
     }
     
     public Product(int id, long ean, String name,
-        Image picture) {
+        String picture) {
         this.setId(id);
         this.name = name;
         this.ean = ean;
@@ -54,11 +54,11 @@ public class Product {
         this.ean = ean;
     }
 
-    public Image getPicture() {
+    public String getPicture() {
         return picture;
     }
 
-    public void setPicture(Image picture) {
+    public void setPicture(String picture) {
         this.picture = picture;
     }
 
