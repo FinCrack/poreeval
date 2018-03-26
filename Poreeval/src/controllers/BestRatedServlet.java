@@ -15,7 +15,7 @@ import data.Product;
 import models.ProductModel;
 
 /**
- * @author Jannik Bukowski, 235502
+ * @author Christian Lindenberg
  */
 @WebServlet("/BestRatedServlet")
 public class BestRatedServlet extends HttpServlet {

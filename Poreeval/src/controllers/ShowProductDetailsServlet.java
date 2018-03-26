@@ -12,7 +12,7 @@ import data.Product;
 import models.ProductModel;
 
 /**
- * Servlet implementation class ShowProductDetailsServlet
+ * @author Lennard Brunke
  */
 @WebServlet("/ShowProductDetailsServlet")
 public class ShowProductDetailsServlet extends HttpServlet {
