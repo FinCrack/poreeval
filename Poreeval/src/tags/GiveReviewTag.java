@@ -4,6 +4,9 @@ import java.io.IOException;
 
 import javax.servlet.jsp.tagext.TagSupport;
 
+/**
+ * @author Lennard Brunke
+ */
 public class GiveReviewTag extends TagSupport {
 
 	private static final long serialVersionUID = 1L;
@@ -20,16 +23,16 @@ public class GiveReviewTag extends TagSupport {
 	private String getCreateReviewForm() {
 		
 		String createReviewForm = 
-				"<h1>Hier können Sie Reviews abgeben</h1>"
+				"<h1>Hier kï¿½nnen Sie Reviews abgeben</h1>"
 				+ "<form action='CreateReviewServlet' method='post'  style='text-align: center;'>"
 					+ "<div class='form-group'>"
-						+ "<label>Überschrift</label>"
-						+ "<input type='text' class='form-control' placeholder='Titel hinzufügen' name='title'></textarea>"
+						+ "<label>ï¿½berschrift</label>"
+						+ "<input type='text' class='form-control' placeholder='Titel hinzufï¿½gen' name='title'></textarea>"
 					+ "</div>"
 					+ "</div>"
 					+ "<div class='form-group'>"
 						+ "<label>Beschreibung</label>"
-						+ "<textarea rows='10' type='text' class='form-control' placeholder='Bewertungstext hinzufügen' name='text'></textarea>"
+						+ "<textarea rows='10' type='text' class='form-control' placeholder='Bewertungstext hinzufï¿½gen' name='text'></textarea>"
 					+ "</div>"
 					+ "<div class='checkbox'>"
 						+ "<input type='radio' name='rating' value='0'><img src='resources/0 Sterne.png' style='max-height: 35px;'/><br>"

@@ -5,7 +5,7 @@ import java.io.IOException;
 import javax.servlet.jsp.tagext.TagSupport;
 
 /**
- * @author Jannik Bukowski, 235502
+ * @author Christian Lindenberg
  */
 
 public class CreateUserTag extends TagSupport {
@@ -39,7 +39,7 @@ public class CreateUserTag extends TagSupport {
 					+ "<input type='password' class='form-control' placeholder='Passwort eingeben (mindestens 6 zeichen)' name='password'>"
 					+ "</div>"
 					+ "<div class='form-group'>"
-					+ "<label>Passwort bestätigen</label> "
+					+ "<label>Passwort bestï¿½tigen</label> "
 					+ "<input type='password' class='form-control' placeholder='Passwort bestaetigen' name='password2'>"
 					+ "</div>"
 					+ "<button class='btn-default' type='submit'>Registrieren</button>"
