@@ -15,11 +15,11 @@ import data.Review;
  */
 public class ReviewDataAccess {
     
-    private Connection connection = DatabaseConnection.getConnection();
     
     public void InsertReview(Review review) throws SQLException {
         
-        PreparedStatement psmt = this.connection.prepareStatement(
+        Connection connection = DatabaseConnection.getConnection();
+        PreparedStatement psmt = connection.prepareStatement(
             "INSERT INTO REVIEWS (ID, RATING, TITLE, TEXT, PRODUCT_ID, USER_ID)"
             + " VALUES (NEXTVAL('SEQ_REVIEWS'), ?, ?, ?, ?, ?)");
         
@@ -30,11 +30,15 @@ public class ReviewDataAccess {
         psmt.setInt(5, review.getUser_id());
         
         psmt.executeUpdate();
+        
+        connection.close();
     }
     
     public void UpdateReview(Review review) throws SQLException {
         
-        PreparedStatement psmt = this.connection.prepareStatement(
+        Connection connection = DatabaseConnection.getConnection();
+        
+        PreparedStatement psmt = connection.prepareStatement(
             "UPDATE REVIEWS"
             + " SET RATING = ?, TITLE = ?, TEXT = ?"
             + " WHERE ID = ?");
@@ -45,23 +49,27 @@ public class ReviewDataAccess {
         psmt.setInt(4, review.getId());
         
         psmt.executeUpdate();
+        
+        connection.close();
     }
     
     
     public void DeleteReview(int id) throws SQLException {
-        
-        PreparedStatement psmt = this.connection.prepareStatement(
+        Connection connection = DatabaseConnection.getConnection();
+        PreparedStatement psmt = connection.prepareStatement(
             "DELETE FROM REVIEWS WHERE ID = ?");
         
         psmt.setInt(1, id);
         
         psmt.executeUpdate();
+        connection.close();
     }
     
     
     public Review GetReview(int id) throws SQLException {
         
-        PreparedStatement psmt = this.connection.prepareStatement(
+        Connection connection = DatabaseConnection.getConnection();
+        PreparedStatement psmt = connection.prepareStatement(
             "SELECT REVIEWS.ID, RATING, TITLE, TEXT, PRODUCT_ID, USER_ID, USERNAME, REVIEW_DATE"
             + " FROM REVIEWS"
             + " JOIN USERS ON REVIEWS.USER_ID = USERS.ID"
@@ -70,12 +78,17 @@ public class ReviewDataAccess {
         psmt.setInt(1, id);
         ResultSet rs = psmt.executeQuery();
         
-        return this.ResultSetToReviewList(rs).get(0);
+        Review review = this.ResultSetToReviewList(rs).get(0);
+        
+        connection.close();
+        
+        return review;
     }
     
     public List<Review> GetReviewsForProductId(int id) throws SQLException {
         
-        PreparedStatement psmt = this.connection.prepareStatement(
+        Connection connection = DatabaseConnection.getConnection();
+        PreparedStatement psmt = connection.prepareStatement(
             "SELECT REVIEWS.ID, RATING, TITLE, TEXT, PRODUCT_ID, USER_ID, USERNAME, REVIEW_DATE"
                 + " FROM REVIEWS"
                 + " JOIN USERS ON REVIEWS.USER_ID = USERS.ID"
@@ -84,7 +97,11 @@ public class ReviewDataAccess {
         psmt.setInt(1, id);
         ResultSet rs = psmt.executeQuery();
         
-        return this.ResultSetToReviewList(rs);
+        List<Review> reviews = this.ResultSetToReviewList(rs);
+        
+        connection.close();
+        
+        return reviews;
     }
 
     private List<Review> ResultSetToReviewList(ResultSet rs) throws SQLException {

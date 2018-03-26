@@ -15,12 +15,13 @@ import data.Product;
  */
 public class ProductDataAccess {
 
-	private Connection connection = DatabaseConnection.getConnection();
+	
 
 
 
 	public void InsertProduct(Product product) throws SQLException {
-		PreparedStatement psmt = this.connection
+	    Connection connection = DatabaseConnection.getConnection();
+		PreparedStatement psmt = connection
 				.prepareStatement("INSERT INTO PRODUCTS (EAN, NAME, PICTURE) " + "VALUES (?, ?, ?)");
 
 		psmt.setLong(1, product.getEan());
@@ -28,10 +29,13 @@ public class ProductDataAccess {
 		psmt.setString(3, product.getPicture());
 
 		psmt.executeUpdate();
+		
+		connection.close();
 	}
 
 	public void UpdateProduct(Product product) throws SQLException {
-		PreparedStatement psmt = this.connection
+	    Connection connection = DatabaseConnection.getConnection();
+		PreparedStatement psmt = connection
 				.prepareStatement("UPDATE PRODUCTS SET EAN = ?, NAME = ?, PICTURE = ? WHERE ID = ?;");
 
 		psmt.setLong(1, product.getEan());
@@ -40,81 +44,112 @@ public class ProductDataAccess {
 		psmt.setInt(4, product.getId());
 
 		psmt.executeUpdate();
+		connection.close();
 	}
 
 	public Product GetProductById(int id) throws SQLException {
 
-		PreparedStatement psmt = this.connection.prepareStatement(
+	    Connection connection = DatabaseConnection.getConnection();
+		PreparedStatement psmt = connection.prepareStatement(
 				"SELECT EAN, NAME, PICTURE, AVG_RATING(ID), ID FROM PRODUCTS WHERE ID = ?;");
 
 		psmt.setLong(1, id);
 
 		ResultSet rs = psmt.executeQuery();
 
-		return this.GetProductsFromResultSet(rs).get(0);
+		Product product = this.GetProductsFromResultSet(rs).get(0);
+		connection.close();
+		
+		return product;
 	}
 	
 	
 	public Product GetProductByEan(long ean) throws SQLException {
 
-        PreparedStatement psmt = this.connection.prepareStatement(
+	    Connection connection = DatabaseConnection.getConnection();
+	    
+        PreparedStatement psmt = connection.prepareStatement(
                 "SELECT EAN, NAME, PICTURE, AVG_RATING(ID), ID FROM PRODUCTS WHERE EAN = ?");
 
         psmt.setLong(1, ean);
 
         ResultSet rs = psmt.executeQuery();
 
-        return this.GetProductsFromResultSet(rs).get(0);
+        Product product = this.GetProductsFromResultSet(rs).get(0);
+        
+        connection.close();
+        
+        return product;
     }
 	
 	public void DeleteProductById(int id) throws SQLException {
 		
-		PreparedStatement psmt = this.connection.prepareStatement(
+	    Connection connection = DatabaseConnection.getConnection();
+	    
+		PreparedStatement psmt = connection.prepareStatement(
 				"DELETE FROM REVIEWS WHERE PRODUCT_ID = ?; DELETE FROM PRODUCTS WHERE ID = ?;");
 		
 		psmt.setInt(1, id);
 		psmt.setInt(2, id);
 		
 		psmt.executeUpdate();
+		
+		connection.close();
 
 	}
 
 	public List<Product> GetProductsByName(String name) throws SQLException {
 
-		PreparedStatement psmt = this.connection.prepareStatement(
+	    Connection connection = DatabaseConnection.getConnection();
+		PreparedStatement psmt = connection.prepareStatement(
 				"SELECT EAN, NAME, PICTURE, AVG_RATING(ID), ID FROM PRODUCTS WHERE NAME ILIKE ?");
 
 		psmt.setString(1, "%" + name + "%");
 
 		ResultSet rs = psmt.executeQuery();
 
-		return this.GetProductsFromResultSet(rs);
+		List<Product> products = this.GetProductsFromResultSet(rs);
+		connection.close();
+		
+		return products;
 	}
 
 	public List<Product> GetAllProducts() throws SQLException {
+	    
+	    Connection connection = DatabaseConnection.getConnection();
         PreparedStatement psmt =
-            this.connection.prepareStatement(
+            connection.prepareStatement(
                 "SELECT EAN, NAME, PICTURE, AVG_RATING(ID), ID FROM PRODUCTS");
 
         ResultSet rs = psmt.executeQuery();
 
-        return this.GetProductsFromResultSet(rs);
+        List<Product> products = this.GetProductsFromResultSet(rs);
+        
+        connection.close();
+        
+        return products;
 
 	}
 	
 	public List<Product> GetBestRatedProducts() throws SQLException {
-		PreparedStatement psmt = this.connection.prepareStatement(
+	    Connection connection = DatabaseConnection.getConnection();
+		PreparedStatement psmt = connection.prepareStatement(
 				"SELECT P.EAN, NAME, PICTURE, AVG_RATING(P.ID) AS AVERAGE_RATING, P.ID "
 				+ "FROM PRODUCTS P INNER JOIN REVIEWS R ON P.ID = R.PRODUCT_ID "
 				+ "GROUP BY P.EAN, P.NAME, P.PICTURE, P.ID ORDER BY AVERAGE_RATING DESC");
 		
 		ResultSet rs = psmt.executeQuery();
 		
-		return this.GetProductsFromResultSet(rs);
+		List<Product> products = this.GetProductsFromResultSet(rs);
+		
+		connection.close();
+		
+		return products;
 	}
 	
 	public List<Product> GetRecentlyRatedProducts() throws SQLException {
-		PreparedStatement psmt = this.connection.prepareStatement(
+	    Connection connection = DatabaseConnection.getConnection();
+		PreparedStatement psmt = connection.prepareStatement(
 				"SELECT P.EAN, P.NAME, P.PICTURE, AVG_RATING(P.ID), P.ID "
 				+ "FROM PRODUCTS P "
 				+ "INNER JOIN REVIEWS R ON P.ID = R.PRODUCT_ID  "
@@ -122,7 +157,11 @@ public class ProductDataAccess {
 		
 		ResultSet rs = psmt.executeQuery();
 		
-		return this.GetProductsFromResultSet(rs);
+		List<Product> products = this.GetProductsFromResultSet(rs);
+		
+		connection.close();
+		
+		return products;
 	}
 	
 	private List<Product> GetProductsFromResultSet(ResultSet rs) throws SQLException {

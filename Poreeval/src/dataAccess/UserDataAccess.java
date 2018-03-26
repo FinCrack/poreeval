@@ -11,12 +11,12 @@ import data.User;
 
 public class UserDataAccess {
 
-    private Connection connection = DatabaseConnection.getConnection();
 /*
  * Methode, um einen neuen Benutzer in die Tabellen Users & Passwoerter einzutragen
  */
     public void InsertUser(User user) throws SQLException {
-        PreparedStatement psmt = this.connection.prepareStatement(
+        Connection connection = DatabaseConnection.getConnection();
+        PreparedStatement psmt = connection.prepareStatement(
             "INSERT INTO USERS (ID, USERNAME, PRIVILEGE, EMAIL) "
                 + "VALUES (NEXTVAL('SEQ_USERS'), ?, ?, ?)");
 
@@ -24,19 +24,22 @@ public class UserDataAccess {
         psmt.setInt(2, 3);
         psmt.setString(3, user.getEmail());
 
-        PreparedStatement psmtPW = this.connection.prepareStatement(
+        PreparedStatement psmtPW = connection.prepareStatement(
         		"INSERT INTO PASSWOERTER SELECT CURRVAL('SEQ_USERS'), ? FROM USERS WHERE ID = CURRVAL('SEQ_USERS')");
         psmtPW.setString(1, user.getPassword());
         
         psmt.executeUpdate();
         psmtPW.executeUpdate();
+        
+        connection.close();
     }
 /*
  * Methode, um die User & Passwoerter Datenbanken nach den eingegebenen Strings zu durchsuchen und diesen dann als neuen User zu setzen.
  */
     public User GetUser(String userName, String password) throws SQLException {
 
-        PreparedStatement psmt = this.connection.prepareStatement(
+        Connection connection = DatabaseConnection.getConnection();
+        PreparedStatement psmt = connection.prepareStatement(
             "SELECT U.ID, USERNAME, PRIVILEGE, PASSWORD, EMAIL FROM USERS U INNER JOIN PASSWOERTER P ON U.ID = P.ID WHERE USERNAME = ? AND PASSWORD = ?");
     
         psmt.setString(1, userName);
@@ -51,9 +54,11 @@ public class UserDataAccess {
             user.setPassword(rs.getString(4));
             user.setEmail(rs.getString(5));
             
+            connection.close();
             return user;
         }
         
+        connection.close();
         return null;
     }
 }
