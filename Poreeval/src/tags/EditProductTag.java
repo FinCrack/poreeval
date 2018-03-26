@@ -41,7 +41,7 @@ public class EditProductTag extends TagSupport{
 					+ "<div class='form-group'>"
                         + "<label>Bild</label> "
                         + "<label>Bitte eine gueltige URL zu jpg oder img angeben</label> "
-                        + "<input type='text' name='picture'>"
+                        + "<input type='text' name='picture' value='" + product.getPicture() + "'>"
                         + "<p class='help-block'>Nur .png und .jpg erlaubt</p>"
                     + "</div>"
 						+ "<button class='btn-default' type='submit'>Produkt editieren</button>"
