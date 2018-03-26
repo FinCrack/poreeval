@@ -12,6 +12,7 @@ import data.User;
 import helper.CheckUserPrivilege;
 
 /**
+ * @author janni
  * Servlet implementation class GiveReviewServlet
  */
 @WebServlet("/GiveReviewServlet")

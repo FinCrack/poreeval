@@ -6,6 +6,9 @@ import javax.servlet.jsp.tagext.TagSupport;
 
 import data.Product;
 
+/**
+ *@author Jannik Bukowski, 235502
+ */
 public class EditProductTag extends TagSupport{
 
 	private static final long serialVersionUID = 1L;

@@ -12,7 +12,8 @@ import data.User;
 import helper.CheckUserPrivilege;
 import models.ReviewModel;
 
-/** @author Lennard Brunke 259315
+/** 
+ * @author Lennard Brunke 259315
  * 
  */
 @WebServlet("/CreateReviewServlet")

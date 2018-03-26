@@ -12,11 +12,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
-/*
- * @author Jannik Bukowski, 235502
- */
 /**
- * Servlet Filter implementation class XSSFilter
+ * @author Jannik Bukowski, 235502
  */
 @WebFilter(urlPatterns = { "/*" })
 public class XSSFilter extends BaseFilter implements Filter {

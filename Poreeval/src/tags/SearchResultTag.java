@@ -10,7 +10,9 @@ import javax.servlet.jsp.tagext.TagSupport;
 import data.Product;
 import helper.ResultToTable;
 
-/** @author Lennard Brunke 259315
+/** 
+ * 
+ * @author Lennard Brunke 259315
  * 
  * 
  */

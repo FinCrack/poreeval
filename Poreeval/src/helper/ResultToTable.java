@@ -5,12 +5,15 @@ import java.util.List;
 import data.Product;
 import data.Review;
 
-/*
+/**
  * @author Jannik Bukowski, 235502
  */
 
 public class ResultToTable {
 
+	/*
+	 * Zeigt Produkte auf welcome.jsp und allProducts.jsp in Tabellenform an
+	 */
 	public static String ProductsToTable(List<Product> products) {
 		String table = "";
 		for (Product product : products) {
@@ -26,6 +29,9 @@ public class ResultToTable {
 		return table;
 	}
 	
+	/*
+	 * Zeigt Produkte mit den dazugehörigen Reviews in Tabellenform an
+	 */
 	public static String ProductWithReviewsToTable(Product product){
 		String table = "";
 		
@@ -58,6 +64,10 @@ public class ResultToTable {
 		return table;
 	}
 
+	
+	/*
+	 * Holt für das jeweilige Produkt das Rating und erstellt damit einen Link zu dem jeweiligen Bild
+	 */
 	public static String GetStars(int rating){
 		String starRating = "";
 		
@@ -81,6 +91,9 @@ public class ResultToTable {
 		return imageCont; 
 	}
 	
+	/*
+	 * Erstellt ein Formular zum editieren eines Produkts, dem dem die ProduktID an das EditProductServlet übergeben wird
+	 */
 	public static String GetEditForm(Product product){
 		String editForm = 
 				"<form action='EditProductServlet' method='get'>"
@@ -90,6 +103,9 @@ public class ResultToTable {
 		return editForm;
 	}
 	
+	/*
+	 * Erstellt ein Formular zum Review erstellen, dem dem die ProduktID an das GiveReviewServlet übergeben wird
+	 */
 	private static String GetReviewForm(Product product) {
 		String reviewForm = 
 				"<form action='GiveReviewServlet' method='get'>"
@@ -99,6 +115,10 @@ public class ResultToTable {
 		return reviewForm;
 	}
 	
+	
+	/*
+	 * Erstellt ein Formular zum Löschen eines Produkts, dem dem die ProduktID an das DeleteProductServlet übergeben wird
+	 */
 	private static String GetDeleteForm(Product product){
 		String deleteProductForm = 
 				"<form action='DeleteProductServlet' method='post'>"
@@ -108,6 +128,9 @@ public class ResultToTable {
 		return deleteProductForm;
 	}
 	
+	/*
+	 * Erstellt ein Formular zum Löschen eines Produkts, dem dem die ReviewID an das DeleteReviewServlet übergeben wird
+	 */
 	private static String DeleteReview(Review review) {
 		String deleteReviewForm = 
 				"<form action='DeleteReviewServlet' method='post'>"

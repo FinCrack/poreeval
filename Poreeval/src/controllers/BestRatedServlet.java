@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import data.Product;
 import models.ProductModel;
 
-/*
+/**
  * @author Jannik Bukowski, 235502
  */
 @WebServlet("/BestRatedServlet")

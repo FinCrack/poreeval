@@ -6,7 +6,7 @@ import javax.servlet.jsp.tagext.TagSupport;
 
 import data.User;
 
-/*
+/**
  * @author Jannik Bukowski, 235502
  */
 

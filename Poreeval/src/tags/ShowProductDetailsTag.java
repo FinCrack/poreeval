@@ -6,6 +6,12 @@ import javax.servlet.jsp.tagext.TagSupport;
 import data.Product;
 import helper.ResultToTable;
 
+/**
+ * 
+ * @author Jannik Bukowski, 235502
+ *
+ */
+
 public class ShowProductDetailsTag extends TagSupport {
 
 	/**

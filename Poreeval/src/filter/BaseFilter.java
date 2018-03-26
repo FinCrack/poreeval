@@ -9,7 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-/*
+/**
  * @author Jannik Bukowski, 235502
  */
 public class BaseFilter implements Filter {
