@@ -9,7 +9,6 @@ import data.User;
 /**
  * @author Jannik Bukowski, 235502
  */
-
 public class NavigationTag extends TagSupport {
 	private static final long serialVersionUID = 1L;
 
@@ -22,7 +21,10 @@ public class NavigationTag extends TagSupport {
 		return SKIP_BODY;
 	}
 	
-	
+	/**
+	 * 
+	 *  Ist ein Benutzer noch nioht eingeloggt, wird Ihm das Loginformular angezeigt, sobald er sich eingeloggt hat wird ihm sein Benutzname angezeigt
+	 */
 	private String getLoginControl() {
 	    
 	    User user = (User) this.pageContext.getSession().getAttribute("user");

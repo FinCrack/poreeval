@@ -14,9 +14,6 @@ import helper.ResultToTable;
 
 public class ShowProductDetailsTag extends TagSupport {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private Product product;
 
