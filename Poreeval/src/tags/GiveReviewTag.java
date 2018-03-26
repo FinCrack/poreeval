@@ -23,16 +23,16 @@ public class GiveReviewTag extends TagSupport {
 	private String getCreateReviewForm() {
 		
 		String createReviewForm = 
-				"<h1>Hier k�nnen Sie Reviews abgeben</h1>"
+				"<h1>Hier koennen Sie Reviews abgeben</h1>"
 				+ "<form action='CreateReviewServlet' method='post'  style='text-align: center;'>"
 					+ "<div class='form-group'>"
-						+ "<label>�berschrift</label>"
-						+ "<input type='text' class='form-control' placeholder='Titel hinzuf�gen' name='title'></textarea>"
+						+ "<label>Ueberschrift</label>"
+						+ "<input type='text' class='form-control' placeholder='Titel hinzufuegen' name='title'></textarea>"
 					+ "</div>"
 					+ "</div>"
 					+ "<div class='form-group'>"
 						+ "<label>Beschreibung</label>"
-						+ "<textarea rows='10' type='text' class='form-control' placeholder='Bewertungstext hinzuf�gen' name='text'></textarea>"
+						+ "<textarea rows='10' type='text' class='form-control' placeholder='Bewertungstext hinzufuegen' name='text'></textarea>"
 					+ "</div>"
 					+ "<div class='checkbox'>"
 						+ "<input type='radio' name='rating' value='0'><img src='resources/0 Sterne.png' style='max-height: 35px;'/><br>"
