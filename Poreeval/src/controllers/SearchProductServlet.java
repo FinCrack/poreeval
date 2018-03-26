@@ -16,7 +16,7 @@ import data.Product;
 import models.ProductModel;
 
 /**
- * @author Christian Lindenberg
+ * @author Christian Lindenberg, 235372
  */
 @WebServlet("/SearchProductServlet")
 public class SearchProductServlet extends HttpServlet {
