@@ -3,7 +3,7 @@ package data;
 import java.util.Date;
 
 /** @author Lennard Brunke 259315
- * 
+ * Datenklasse für Reviews.
  */
 public class Review {
 

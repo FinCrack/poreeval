@@ -1,11 +1,12 @@
 package models;
-/**
- * @author Christian Lindenberg, 235372
- */
+
 import java.sql.SQLException;
 import data.User;
 import dataAccess.UserDataAccess;
 
+/**
+ * @author Christian Lindenberg, 235372
+ */
 public class UserModel {
 
     private UserDataAccess userDataAccess = new UserDataAccess();

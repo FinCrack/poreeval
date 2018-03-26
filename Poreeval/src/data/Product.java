@@ -4,7 +4,7 @@ import java.awt.Image;
 import java.util.List;
 
 /** @author Lennard Brunke 259315
- * 
+ * Datenklasse für Produkte.
  */
 public class Product {
     

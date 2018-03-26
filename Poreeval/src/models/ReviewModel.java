@@ -30,19 +30,24 @@ public class ReviewModel {
     }
     
     /**
-     * 
+     * Löscht ein Review anhand der ID.
      */
     public void DeleteReview(int id) throws SQLException {
         
         this.reviewDataAccess.DeleteReview(id);
     }
     
+    /**
+     * Holt ein Review anhand der ID.
+     */
     public Review GetReview(int id) throws SQLException {
         
         return this.reviewDataAccess.GetReview(id);
     }
     
-    
+    /**
+     * Holt alle Reviews zu einer Produkt ID.
+     */
     public List<Review> GetReviewList(int id) throws SQLException {
         
         return this.reviewDataAccess.GetReviewsForProductId(id);
