@@ -7,7 +7,7 @@ import javax.servlet.jsp.tagext.TagSupport;
 import data.Product;
 
 /**
- *@author Lennard Brunke
+ *@author Lennard Brunke 259315
  */
 public class EditProductTag extends TagSupport{
 
