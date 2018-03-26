@@ -119,8 +119,7 @@ public class ProductDataAccess {
 	    Connection connection = DatabaseConnection.getConnection();
         PreparedStatement psmt =
             connection.prepareStatement(
-                "SELECT EAN, NAME, PICTURE, AVG_RATING(ID), ID FROM PRODUCTS");
-
+                "SELECT EAN, NAME, PICTURE, AVG_RATING(ID), ID FROM PRODUCTS ORDER BY NAME ASC");
         ResultSet rs = psmt.executeQuery();
 
         List<Product> products = this.GetProductsFromResultSet(rs);
@@ -136,7 +135,7 @@ public class ProductDataAccess {
 		PreparedStatement psmt = connection.prepareStatement(
 				"SELECT P.EAN, NAME, PICTURE, AVG_RATING(P.ID) AS AVERAGE_RATING, P.ID "
 				+ "FROM PRODUCTS P INNER JOIN REVIEWS R ON P.ID = R.PRODUCT_ID "
-				+ "GROUP BY P.EAN, P.NAME, P.PICTURE, P.ID ORDER BY AVERAGE_RATING DESC");
+				+ "GROUP BY P.EAN, P.NAME, P.PICTURE, P.ID ORDER BY AVERAGE_RATING DESC LIMIT 5");
 		
 		ResultSet rs = psmt.executeQuery();
 		
@@ -152,8 +151,8 @@ public class ProductDataAccess {
 		PreparedStatement psmt = connection.prepareStatement(
 				"SELECT P.EAN, P.NAME, P.PICTURE, AVG_RATING(P.ID), P.ID "
 				+ "FROM PRODUCTS P "
-				+ "INNER JOIN REVIEWS R ON P.ID = R.PRODUCT_ID  "
-				+ "ORDER BY R.REVIEW_DATE DESC");
+				+ "INNER JOIN REVIEWS R ON P.ID = R.PRODUCT_ID "
+				+ "GROUP BY P.EAN, P.NAME, P.PICTURE, P.ID, R.REVIEW_DATE ORDER BY R.REVIEW_DATE DESC LIMIT 5");
 		
 		ResultSet rs = psmt.executeQuery();
 		

@@ -14,8 +14,8 @@ public class ResultToTable {
 	public static String ProductsToTable(List<Product> products) {
 		String table = "";
 		for (Product product : products) {
-			table += "<table class='table table-striped tabled-bordered table-hover table-condensed'>";
-			table += "<td rowspan='3' style='width: 15%' ><img src='" + product.getPicture() + "' style='max-width: 70px; max-height: 100px;'/></td>";
+			table += "<table class='table table-striped tabled-bordered table-condensed'>";
+			table += "<td rowspan='3' style='width: 15%; height: 150px;' ><img src='" + product.getPicture() + "' style='max-width: 70px; max-height: 100px;'/></td>";
 			table += "<form action='ShowProductDetailsServlet' method='get'>";
 			table += "<input type='hidden' name='id' value='" + product.getId() + "'>";
 			table += "<button type='submit' class='btn btn-primary' style='width: 90%;'>" + product.getProductname()+ "</button>";
