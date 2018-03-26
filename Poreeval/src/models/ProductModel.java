@@ -28,7 +28,9 @@ public class ProductModel {
     	this.productDataAccess.DeleteProductById(id);
     }
     
-    
+    /**
+     * Erstellt ein neues Produkt.
+     */
     public void CreateProduct(long ean, String name,
         String picture) throws SQLException {
 
@@ -38,6 +40,9 @@ public class ProductModel {
 
     }
     
+    /**
+     * Update eines vorhandenen Produkts.
+     */
     public void UpdateProduct(int id, long ean, String name,
         String picture) throws SQLException {
 
@@ -47,6 +52,9 @@ public class ProductModel {
 
     }
 
+    /**
+     * Sucht Produkte anhand der übergebenen EAN oder des Namens.
+     */
     public List<Product> SearchProducts(long ean, String name)
         throws SQLException {
 
@@ -63,6 +71,9 @@ public class ProductModel {
         return productList;
     }
     
+    /**
+     * Holt ein Produkt und alle dazugehörigen Reviews.
+     */
     public Product GetProductWithReviews(int id) throws SQLException {
     	Product product = this.productDataAccess.GetProductById(id);
     	List<Review> reviews = this.reviewDataAccess.GetReviewsForProductId(id);
@@ -71,15 +82,24 @@ public class ProductModel {
     	return product;
     }
    
-    
+    /**
+     * Holt alle Produkte.
+     */
     public List<Product> GetAllProducts() throws SQLException {
     	return this.productDataAccess.GetAllProducts();
     }
     
+    /**
+     * Holt die 5 am besten bewerteten Produkte.
+     */
     public List<Product> GetBestRatedProducts() throws SQLException {
     	return this.productDataAccess.GetBestRatedProducts();
     }
     
+    
+    /**
+     * Holt die 5 zuletzt bewerteten Produkte.
+     */
     public List<Product> GetRecentlyRatedProducts() throws SQLException {
     	return this.productDataAccess.GetRecentlyRatedProducts();
     }

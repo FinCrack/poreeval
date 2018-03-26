@@ -11,11 +11,13 @@ import java.util.List;
 import data.Review;
 
 /** @author Lennard Brunke 259315
- * 
+ * DataAccess für Reviews.
  */
 public class ReviewDataAccess {
     
-    
+    /**
+     * Fügt ein neues Review ein.
+     */
     public void InsertReview(Review review) throws SQLException {
         
         Connection connection = DatabaseConnection.getConnection();
@@ -34,6 +36,10 @@ public class ReviewDataAccess {
         connection.close();
     }
     
+
+    /**
+     * Update auf ein vorhandenes Review.
+     */
     public void UpdateReview(Review review) throws SQLException {
         
         Connection connection = DatabaseConnection.getConnection();
@@ -53,7 +59,9 @@ public class ReviewDataAccess {
         connection.close();
     }
     
-    
+    /**
+     * Löscht ein Review anhand der ID.
+     */
     public void DeleteReview(int id) throws SQLException {
         Connection connection = DatabaseConnection.getConnection();
         PreparedStatement psmt = connection.prepareStatement(
@@ -65,7 +73,9 @@ public class ReviewDataAccess {
         connection.close();
     }
     
-    
+    /**
+     * Holt ein Review anhand der ID.
+     */
     public Review GetReview(int id) throws SQLException {
         
         Connection connection = DatabaseConnection.getConnection();
@@ -85,6 +95,9 @@ public class ReviewDataAccess {
         return review;
     }
     
+    /**
+     * Holt alle Reviews für ein Produkt anhand dessen ID.
+     */
     public List<Review> GetReviewsForProductId(int id) throws SQLException {
         
         Connection connection = DatabaseConnection.getConnection();
@@ -104,6 +117,9 @@ public class ReviewDataAccess {
         return reviews;
     }
 
+    /**
+     * Erstellt aus einem ResultSet eine List von Reviews.
+     */
     private List<Review> ResultSetToReviewList(ResultSet rs) throws SQLException {
         List<Review> reviewList = new ArrayList<Review>();
 
