@@ -1,6 +1,5 @@
 package data;
 
-import java.awt.Image;
 import java.util.List;
 
 /** @author Lennard Brunke 259315
