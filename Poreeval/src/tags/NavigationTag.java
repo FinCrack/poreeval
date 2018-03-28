@@ -84,8 +84,8 @@ public class NavigationTag extends TagSupport {
 							+ loginControl
 						    + "</ul>"
 								+ "<li>"
-									+ "<form class='navbar-form navbar-left'>"
-										+ "<a href='http://localhost:8080/Poreeval/AllProductsServlet' role='button' class='btn btn-default'>Alle Produkte</a>"
+									+ "<form class='navbar-form navbar-left' action='AllProductsServlet'>"
+										+ "<button type='submit' class='btn btn-default'>Alle Produkte</button>"	
 									+ "</form>"
 								+ "</li>"
 								+ "<li>"
